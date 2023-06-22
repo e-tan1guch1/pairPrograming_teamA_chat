@@ -26,7 +26,7 @@ public class LoginController {
 	@Autowired
 	Account account;
 	
-	@GetMapping("/login")
+	@GetMapping({"/login","/logout"})
 	public String index() {
 		session.invalidate();
 		return "Login";

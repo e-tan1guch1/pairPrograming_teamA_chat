@@ -14,16 +14,16 @@
 	</table>
 	</form>
 	
-	<th:block th:if="${talk != null}">
+	<th:block th:if="${chats != null}">
 		<table border="1">
-			<tr　 th:each="talk:${talk}">
-				<td>[[${talk.name}]]</td>
-				<td>[[${talk.text}]]</td>
+			<tr　 th:each="chat:${chats}">
+				<td>[[${chat.name}]]</td>
+				<td>[[${chat.text}]]</td>
 <!--				<td>（メッセージ送信時間）</td>-->
 			</tr>
 		</table>
 	</th:block>
 	
-	<a href="">ログアウト</a>
+	<a href="/logout">ログアウト</a>
 </body>
 </html>
