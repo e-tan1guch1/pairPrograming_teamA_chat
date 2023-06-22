@@ -7,9 +7,13 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
+
+	<a href="/logout">ログアウト</a>
+
 	<header th:replace="header"></header>
 	<br>
-	<form action="/chat" method="post">
+	<form action="/chat/add" method="post">
+		
 		<textarea name="text" cols="40" rows="10" placeholder="メッセージを入力"></textarea>
 		<br>
 		<button>送信</button>

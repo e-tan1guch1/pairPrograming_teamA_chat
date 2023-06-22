@@ -6,8 +6,10 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE chats
 (
    id SERIAL PRIMARY KEY,
-   user_id Integer,
-   text TEXT
+   user_id INTEGER,
+   text TEXT,
+   address_id INTEGER,
+   date DATE
 );
 
 -- ユーザーテーブル
