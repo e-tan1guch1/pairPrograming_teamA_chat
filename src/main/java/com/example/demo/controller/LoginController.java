@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.model.Account;
 import com.example.demo.repository.UserRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -21,6 +22,9 @@ public class LoginController {
 	
 	@Autowired
 	HttpSession session;
+	
+	@Autowired
+	Account account;
 	
 	@GetMapping("/login")
 	public String index() {
@@ -40,6 +44,7 @@ public class LoginController {
 		if(result.isPresent()) {
 			u= result.get();
 			page = "Chat";
+			account.setName(u.getName());
 		} else {
 			page = "Login";
 		}
