@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,11 +25,16 @@ public class Chat {
 	private String text; // テキスト
 	
 	@Column(name = "address_id")
-	private String addressId;
+	private Integer addressId;
 	
-	private String date;
+	private LocalDateTime date;
 	
-	Chat(){
+	public Chat(){
 		
+	}
+
+	public Chat(Integer userId, String text) {
+		this.userId = userId;
+		this.text = text;
 	}
 }
