@@ -1,5 +1,40 @@
 @charset "UTF-8";
 
-body{
-	background-color:#FBE5EB;
+body {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	min-width: 900px;
+}
+
+header,
+footer {
+	color: white;
+	background-color: #F5B8B5;
+	padding-top: 4px;
+	/* 内側余白(上) */
+	padding-bottom: 4px;
+	/* 内側余白(下) */
+}
+
+header {
+	padding-left: 15px;
+	text-align: left;
+}
+
+header a, nav a {
+	color: #ffffff;
+}
+
+textarea {
+	border: 2px solid #F5B8B5;
+	border-radius: 0.67em;
+	padding: 0.5em;
+	background-color: snow;
+	outline: none;
+	color: #666666;
+}
+
+header placeholder {
+	color: #F5B8B5;
 }
