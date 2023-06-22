@@ -1,5 +1,6 @@
 -- テーブル削除
 DROP TABLE IF EXISTS chats;
+DROP TABLE IF EXISTS users;
 
 -- チャットテーブル
 CREATE TABLE chats
