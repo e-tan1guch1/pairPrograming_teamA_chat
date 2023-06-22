@@ -6,7 +6,8 @@
 	<title>チャット画面</title>
 </head>
 <body>
-	<a href="/logout">ログアウト</a>
+	<header th:replace="header"></header>
+	<br>
 	<form action="/chat" method="post">
 		<textarea name="text" cols="40" rows="10" placeholder="メッセージを入力"></textarea>
 		<br>
@@ -23,7 +24,7 @@
 			</tr>
 		</table>
 	</th:block>
-
+<footer th:replace="footer"></footer>
 </body>
 
 </html>
