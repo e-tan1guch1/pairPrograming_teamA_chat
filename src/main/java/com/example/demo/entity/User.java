@@ -11,13 +11,19 @@ import lombok.Data;
 @Entity
 @Table(name = "users")
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id; // ユーザID
 
-	private Integer name; // ユーザID
+	private String name; // ユーザネーム
+
+	private String email; // メールアドレス
+
+	private String password; // パスワード
 	
-	private String text; // テキスト
+	User(){
+		
+	}
 
 }

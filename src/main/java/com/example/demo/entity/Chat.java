@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "users")
+@Table(name = "chats")
 public class Chat {
 
 	@Id
@@ -18,10 +18,11 @@ public class Chat {
 	private Integer id; // チャットID
 
 	@Column(name = "user_id")
-	private String userId; // ユーザid
-
-	private String email; // メールアドレス
-
-	private String password; // パスワード
-
+	private Integer userId; // ユーザid
+	
+	private String text; // テキスト
+	
+	Chat(){
+		
+	}
 }
