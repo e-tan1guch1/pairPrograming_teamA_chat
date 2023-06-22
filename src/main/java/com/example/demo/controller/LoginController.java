@@ -39,7 +39,7 @@ public class LoginController {
 		User u = null;
 		if(result.isPresent()) {
 			u= result.get();
-			page = "";
+			page = "Chat";
 		} else {
 			page = "Login";
 		}
