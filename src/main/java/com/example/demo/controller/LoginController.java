@@ -43,7 +43,7 @@ public class LoginController {
 		User u = null;
 		if(result.isPresent()) {
 			u= result.get();
-			page = "Chat";
+			page = "redirect:/chat";
 			account.setName(u.getName());
 		} else {
 			page = "Login";
