@@ -40,5 +40,10 @@ public class ChatController {
 
 		return "Chat";
 	}
+	
+	@GetMapping("/chat/add")
+	public String add() {
+		return "";
+	}
 
 }

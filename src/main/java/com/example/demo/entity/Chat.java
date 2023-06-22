@@ -22,6 +22,11 @@ public class Chat {
 	
 	private String text; // テキスト
 	
+	@Column(name = "address_id")
+	private String addressId;
+	
+	private String date;
+	
 	Chat(){
 		
 	}
