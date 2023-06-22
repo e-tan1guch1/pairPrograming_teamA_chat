@@ -28,7 +28,7 @@ public class ChatController {
 
 		m.addAttribute("chats", chats);
 		
-		return "redirect:/Chat";
+		return "Chat";
 	}
 
 }
