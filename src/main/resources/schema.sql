@@ -5,6 +5,15 @@ DROP TABLE IF EXISTS chats;
 CREATE TABLE chats
 (
    id SERIAL PRIMARY KEY,
-   name TEXT,
+   user_id Integer,
    text TEXT
+);
+
+-- ユーザーテーブル
+CREATE TABLE users
+(
+   id SERIAL PRIMARY KEY,
+   name TEXT,
+   email TEXT,
+   password TEXT
 );
