@@ -16,10 +16,14 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id; // ユーザID
 
-	private Integer name; // ユーザネーム
+	private String name; // ユーザネーム
 
 	private String email; // メールアドレス
 
 	private String password; // パスワード
+	
+	User(){
+		
+	}
 
 }

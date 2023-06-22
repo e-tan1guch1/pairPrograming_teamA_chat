@@ -18,7 +18,11 @@ public class Chat {
 	private Integer id; // チャットID
 
 	@Column(name = "user_id")
-	private String userId; // ユーザid
+	private Integer userId; // ユーザid
 	
 	private String text; // テキスト
+	
+	Chat(){
+		
+	}
 }
