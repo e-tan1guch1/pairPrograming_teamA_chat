@@ -17,7 +17,7 @@
 	<th:block th:if="${chats != null}">
 		<table border="1">
 			<tr　 th:each="chat:${chats}">
-				<td>[[${chat.userId}]]</td>
+				<td>[[${chat.name}]]</td>
 				<td>[[${chat.text}]]</td>
 				<!--				<td>（メッセージ送信時間）</td>-->
 			</tr>
