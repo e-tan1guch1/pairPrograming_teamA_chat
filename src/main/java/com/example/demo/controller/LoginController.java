@@ -12,13 +12,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.repository.UserRepository;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class LoginController {
 	@Autowired
 	UserRepository userRepository;
 	
+	@Autowired
+	HttpSession session;
+	
 	@GetMapping("/login")
 	public String index() {
+		session.invalidate();
 		return "Login";
 	}
 
