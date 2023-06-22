@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Chat;
 import com.example.demo.entity.User;
+import com.example.demo.model.Account;
 import com.example.demo.model.Display;
 import com.example.demo.repository.ChatRepository;
 import com.example.demo.repository.UserRepository;
 
 @Controller
 public class ChatController {
+	
+	@Autowired
+	Account account;
 
 	@Autowired
 	ChatRepository chatRepository;
@@ -48,6 +52,7 @@ public class ChatController {
 			@RequestParam(name="text", defaultValue="")String text
 			) {
 		
+		chatRepository.save(new Chat(account.getId(), text));
 		
 		return "redirect:/chat";
 	}

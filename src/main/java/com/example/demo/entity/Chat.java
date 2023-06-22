@@ -30,4 +30,9 @@ public class Chat {
 	Chat(){
 		
 	}
+	
+	public Chat(Integer userId, String text) {
+		this.userId = userId;
+		this.text = text;
+	}
 }
