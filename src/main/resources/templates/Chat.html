@@ -6,27 +6,25 @@
 	<title>チャット画面</title>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
+
 <body>
 	<header th:replace="header"></header>
 	<br>
 	<form action="/chat/add" method="post">
-		
+
 		<textarea name="text" cols="40" rows="10" placeholder="メッセージを入力"></textarea>
 		<br>
 		<button>送信</button>
 	</form>
 	<br>
-	
+
 	<th:block th:if="${chats != null}">
-		<table border="1">
-			<tr　 th:each="chat:${chats}">
-				<td>[[${chat.name}]]</td>
-				<td>[[${chat.text}]]</td>
-				<!--				<td>（メッセージ送信時間）</td>-->
-			</tr>
-		</table>
+		<div class="bin">
+			<p th:each="chat:${chats}">[[${chat.name}]]　[[${chat.text}]]</p>
+<!--			<td>（メッセージ送信時間）</td>-->
+		</div>
 	</th:block>
-<footer th:replace="footer"></footer>
+	<footer th:replace="footer"></footer>
 </body>
 
 </html>
