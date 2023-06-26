@@ -11,7 +11,7 @@
 <header th:replace="header"></header>
 <article>
 <div class="side">
-	<p>宛先？</p>
+	<p>[[${addressName}]]</p>
 </div>
 
 	<br>
@@ -26,6 +26,7 @@
 
 	<form action="/chat/add" method="post">
 		<textarea name="text" cols="40" rows="10" placeholder="メッセージを入力"></textarea>
+		<input type="hidden" name="addressId" th:value="${addressId}">
 		<br>
 		<button>送信</button>
 	</form>
