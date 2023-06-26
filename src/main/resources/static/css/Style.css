@@ -18,7 +18,8 @@ footer {
 }
 
 body {
-  padding: 20px;
+	margin: 0%;
+	padding: 0%
 }
 
 
@@ -27,7 +28,8 @@ header {
 	text-align: left;
 }
 
-header a, nav a {
+header a,
+nav a {
 	color: #ffffff;
 }
 
@@ -45,29 +47,30 @@ header placeholder {
 }
 
 .balloon-left {
-  position: relative;
-  display: inline-block;
-  margin: 1.5em 0 1.5em 15px;
-  padding: 7px 10px;
-  min-width: 120px;
-  max-width: 100%;
-  color: #555;
-  font-size: 16px;
-  background: pink;
-  border-radius: 10px;
+	position: relative;
+	display: inline-block;
+	margin: 1.5em 0 1.5em 15px;
+	padding: 7px 10px;
+	min-width: 120px;
+	max-width: 100%;
+	color: #555;
+	font-size: 16px;
+	background: pink;/*	要調整*/
+	border-radius: 10px;
+	margin-left:-500px /*	要調整*/
 }
 
 .balloon-left:before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -30px;
-  margin-top: -15px;
-  border: 15px solid transparent;
-  border-right: 15px solid pink;
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -25px;
+	margin-top: -15px;
+	border: 15px solid transparent;
+	border-right: 15px solid pink;/*	要調整*/
 }
 
 .balloon-left p {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }

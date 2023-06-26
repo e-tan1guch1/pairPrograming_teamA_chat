@@ -12,7 +12,7 @@
 	<br>
 
 	<th:block th:if="${chats != null}">
-		<div class="bin">
+		<div class="balloon-left">
 			<p th:each="chat:${chats}">[[${chat.name}]]　[[${chat.text}]]</p>
 <!--			<td>（メッセージ送信時間）</td>-->
 		</div>
