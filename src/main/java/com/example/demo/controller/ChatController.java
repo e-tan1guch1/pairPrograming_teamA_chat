@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -67,7 +68,30 @@ public class ChatController {
 		
 		chatRepository.save(new Chat(account.getId(), text, addressId, timeNow));
 		
-		return "redirect:/chat";
+		return "redirect:/chat/" + addressId;
+	}
+	
+	// 宛先ごとのチャット履歴表示
+	@GetMapping("/chat/{addressId}")
+	public String chatEachUser(
+			@PathVariable("addressId")Integer addressId,
+			Model m) {
+
+		// チャット内容の全件検索
+		List<Chat> chats = chatRepository.findEachChat(account.getId(), addressId);
+		List<Display> displays = new ArrayList<>();
+		List<User> addressList = userRepository.findAll();
+
+		for (Chat chat : chats) {
+			int userId = chat.getId();
+			Optional<User> opt = userRepository.findById(userId);
+			displays.add(new Display(opt.get().getName(), chat.getText()));
+		}
+		m.addAttribute("addressId", addressId);
+		m.addAttribute("chats", displays);
+		m.addAttribute("addressList", addressList);
+
+		return "Chat";
 	}
 
 }
