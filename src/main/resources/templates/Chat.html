@@ -11,6 +11,11 @@
 	<header th:replace="header"></header>
 	<br>
 
+<div class="side">
+	<p>宛先？</p>
+</div>
+
+<div class="content">
 	<th:block th:if="${chats != null}">
 		<div class="balloon-left">
 			<p th:each="chat:${chats}">[[${chat.name}]]　[[${chat.text}]]</p>
@@ -32,8 +37,8 @@
 		</form>
 	</th:block>
 	<br>
-
-	<footer th:replace="footer"></footer>
+</div>
+<!--	<footer th:replace="footer"></footer>-->
 </body>
 
 </html>
