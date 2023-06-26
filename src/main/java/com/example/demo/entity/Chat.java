@@ -33,8 +33,10 @@ public class Chat {
 		
 	}
 
-	public Chat(Integer userId, String text) {
+	public Chat(Integer userId, String text, Integer addressId, LocalDateTime date) {
 		this.userId = userId;
 		this.text = text;
+		this.addressId = addressId;
+		this.date = date;
 	}
 }

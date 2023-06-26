@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -41,6 +42,7 @@ public class ChatController {
 
 		List<Chat> chats = chatRepository.findAll();
 		List<Display> displays = new ArrayList<>();
+		List<User> addressList = userRepository.findAll();
 
 		for (Chat chat : chats) {
 			int userId = account.getId();
@@ -48,6 +50,7 @@ public class ChatController {
 			displays.add(new Display(opt.get().getName(), chat.getText()));
 		}
 		m.addAttribute("chats", displays);
+		m.addAttribute("addressList", addressList);
 
 		return "Chat";
 	}
@@ -55,10 +58,13 @@ public class ChatController {
 	@PostMapping("/chat/add")
 	public String add(
 			Model m,
-			@RequestParam(name="text", defaultValue="")String text
+			@RequestParam(name="text", defaultValue="")String text,
+			@RequestParam(name="address", defaultValue="")Integer addressId
 			) {
 		
-		chatRepository.save(new Chat(account.getId(), text));
+		LocalDateTime timeNow = LocalDateTime.now();
+		
+		chatRepository.save(new Chat(account.getId(), text, addressId, timeNow));
 		
 		return "redirect:/chat";
 	}
