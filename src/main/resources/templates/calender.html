@@ -9,48 +9,55 @@
 
 <body>
 	<header th:replace="header"></header>
-	<h1>[[${yearMonth}]]</h1>
-	<div class="calendar-container">
-	<table class="calendar">
-		<tr>
-			<th>SUN</th>
-			<th>MON</th>
-			<th>TUE</th>
-			<th>WED</th>
-			<th>THU</th>
-			<th>FRI</th>
-			<th>SAT</th>
-		</tr>
-		<script th:inline="javascript">
-			var i = 1;
-			const dayList =/*[[${dayList}]]*/
-				dayList.forEach(function (day) {
-					if (i == 1 || i == 8 || i == 15 || i == 22 || i == 29) {
-						document.write('<tr class="day">')
-					}
-					if (day == 0) {
-						document.write('<td></td>')
-					} else {
-						document.write('<td>' + day + '</td>')
-					}
-					if (i == 7 || i == 14 || i == 21 || i == 28 || i == 35) {
-						document.write('</tr>')
-					}
-					i++;
-				});
-		</script>
-	</table>
+	<div class="calenderDiv">
+		<form class = "calenderForm">
+			<input type="hidden" name="calenderYM" th:value="${calenderYM}">
+			<input type="hidden" name="prevOrNext" th:value="prev">
+			<button class = "calenderButton">←</button>
+		</form>
+		
+		<h1 style="display:inline;">
+			[[${yearMonth}]]
+		</h1>
+
+		<form style="display: inline">
+			<input type="hidden" name="calenderYM" th:value="${calenderYM}">
+			<input type="hidden" name="prevOrNext" th:value="next">
+			<button class = "calenderButton">→</button>
+		</form>
 	</div>
-	<form>
-		<input type="hidden" name="yearMonth" th:value="${yearMonth}">
-		<input type="hidden" th:value="prev">
-		<button>前の月</button>
-	</form>
-	<form>
-		<input type="hidden" name="yearMonth" th:value="${yearMonth}">
-		<input type="hidden" th:value="next">
-		<button>次の月</button>
-	</form>
+	<div class="calendar-container">
+		<table class="calendar">
+			<tr>
+				<th>SUN</th>
+				<th>MON</th>
+				<th>TUE</th>
+				<th>WED</th>
+				<th>THU</th>
+				<th>FRI</th>
+				<th>SAT</th>
+			</tr>
+			<script th:inline="javascript">
+				var i = 1;
+				const dayList =/*[[${dayList}]]*/
+					dayList.forEach(function (day) {
+						if (i == 1 || i == 8 || i == 15 || i == 22 || i == 29 || i == 36) {
+							document.write('<tr class="day">')
+						}
+						if (day == 0) {
+							document.write('<td></td>')
+						} else {
+							document.write('<td>' + day + '</td>')
+						}
+						if (i == 7 || i == 14 || i == 21 || i == 28 || i == 35 || i == 42) {
+							document.write('</tr>')
+						}
+						i++;
+					});
+			</script>
+		</table>
+	</div>
+
 
 </body>
 
