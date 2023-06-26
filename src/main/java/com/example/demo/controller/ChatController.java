@@ -46,7 +46,7 @@ public class ChatController {
 		List<User> addressList = userRepository.findAll();
 
 		for (Chat chat : chats) {
-			int userId = account.getId();
+			int userId = chat.getId();
 			Optional<User> opt = userRepository.findById(userId);
 			displays.add(new Display(opt.get().getName(), chat.getText()));
 		}
