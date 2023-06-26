@@ -47,11 +47,14 @@ public class ChatController {
 		List<User> addressList = userRepository.findAll();
 
 		for (Chat chat : chats) {
-			int userId = chat.getId();
+			int userId = chat.getUserId();
 			Optional<User> opt = userRepository.findById(userId);
 			if (opt.isPresent()) {
 				displays.add(new Display(opt.get().getName(), chat.getText()));
 			}
+		}
+		for (Display display : displays) {
+			System.out.println(display);
 		}
 		m.addAttribute("chats", displays);
 		m.addAttribute("addressList", addressList);
@@ -63,8 +66,7 @@ public class ChatController {
 	public String add(
 			Model m,
 			@RequestParam(name = "text", defaultValue = "") String text,
-			@RequestParam(name = "addressId", defaultValue = "") Integer addressId
-			) {
+			@RequestParam(name = "addressId", defaultValue = "") Integer addressId) {
 
 		System.out.println("addressId:" + addressId);
 		LocalDateTime timeNow = LocalDateTime.now();
@@ -90,7 +92,7 @@ public class ChatController {
 		List<User> addressList = userRepository.findAll();
 
 		for (Chat chat : chats) {
-			int userId = chat.getId();
+			int userId = chat.getUserId();
 			Optional<User> opt = userRepository.findById(userId);
 			if (opt.isPresent()) {
 				displays.add(new Display(opt.get().getName(), chat.getText()));
