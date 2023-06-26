@@ -40,6 +40,7 @@ public class ChatController {
 	public String chat(
 			Model m) {
 
+		// チャット内容の全件検索
 		List<Chat> chats = chatRepository.findAll();
 		List<Display> displays = new ArrayList<>();
 		List<User> addressList = userRepository.findAll();

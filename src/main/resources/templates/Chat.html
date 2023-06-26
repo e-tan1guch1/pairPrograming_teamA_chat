@@ -22,10 +22,12 @@
 		<textarea name="text" cols="40" rows="10" placeholder="メッセージを入力"></textarea>
 		<br>
 		<button>送信</button>
-		<select name="addressId" th:each="address:${addressList}">
-			<option value="${address.id}">[[${address.name}]]：[[${address.email}]]</option>
-		</select>
 	</form>
+
+	<th:block th:each="address:${addressList}">
+		<button value="${address.id}">[[${address.name}]]：[[${address.email}]]</button>
+		</form>
+	</th:block>
 	<br>
 
 	<footer th:replace="footer"></footer>
