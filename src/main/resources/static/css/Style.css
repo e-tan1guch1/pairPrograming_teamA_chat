@@ -33,21 +33,22 @@ nav a {
 	color: #ffffff;
 }
 
-.side{
-	width:200px;
-  height: 300px;
-  text-align:center;
-  background: blue;
+.side {
+	width: 200px;
+	height: 800px;
+	text-align: center;
+	background: blue;
 }
 
-.content{
-	 width:250px;
-  height:300px;
-  text-align:center;
+.content {
+	width: 800px;
+	height: 300px;
+	text-align: center;
 }
 
 article {
-  display:flex;/*サイドバーとメインコンテンツを横並びにする指定をした*/
+	display: flex;
+	/*サイドバーとメインコンテンツを横並びにする指定をした*/
 }
 
 textarea {
@@ -72,9 +73,11 @@ header placeholder {
 	max-width: 100%;
 	color: #555;
 	font-size: 16px;
-	background: pink;/*	要調整*/
+	background: pink;
+	/*	要調整*/
 	border-radius: 10px;
-	margin-left:-500px /*	要調整*/
+	margin-left: -400px
+		/*	要調整*/
 }
 
 .balloon-left:before {
@@ -84,7 +87,8 @@ header placeholder {
 	left: -25px;
 	margin-top: -15px;
 	border: 15px solid transparent;
-	border-right: 15px solid pink;/*	要調整*/
+	border-right: 15px solid pink;
+	/*	要調整*/
 }
 
 .balloon-left p {
