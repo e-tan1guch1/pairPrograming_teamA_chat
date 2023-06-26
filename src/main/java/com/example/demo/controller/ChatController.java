@@ -49,7 +49,9 @@ public class ChatController {
 		for (Chat chat : chats) {
 			int userId = chat.getId();
 			Optional<User> opt = userRepository.findById(userId);
-			displays.add(new Display(opt.get().getName(), chat.getText()));
+			if (opt.isPresent()) {
+				displays.add(new Display(opt.get().getName(), chat.getText()));
+			}
 		}
 		m.addAttribute("chats", displays);
 		m.addAttribute("addressList", addressList);

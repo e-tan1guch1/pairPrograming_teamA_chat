@@ -8,9 +8,15 @@
 </head>
 
 <body>
-	<header th:replace="header"></header>
+<header th:replace="header"></header>
+
+<div class="side">
+	<p>宛先？</p>
+</div>
+
 	<br>
 
+<div class="content">
 	<th:block th:if="${chats != null}">
 		<div class="balloon-left">
 			<p th:each="chat:${chats}">[[${chat.name}]]　[[${chat.text}]]</p>
@@ -32,8 +38,7 @@
 		</form>
 	</th:block>
 	<br>
-
-	<footer th:replace="footer"></footer>
+	</div>
 </body>
 
 </html>

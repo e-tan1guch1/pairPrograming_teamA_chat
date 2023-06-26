@@ -33,6 +33,23 @@ nav a {
 	color: #ffffff;
 }
 
+.side{
+	width:200px;
+  height: 300px;
+  text-align:center;
+  background: blue;
+}
+
+.content{
+	 width:250px;
+  height:300px;
+  text-align:center;
+}
+
+article {
+  display:flex;/*サイドバーとメインコンテンツを横並びにする指定をした*/
+}
+
 textarea {
 	border: 2px solid #F5B8B5;
 	border-radius: 0.67em;
