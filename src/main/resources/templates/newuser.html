@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>新規登録画面</title>
+</head>
+<body>
+	<h1>新規登録</h1>
+	<form action="/login/newuser" method="post">
+		<span th:each="e:${error}" style="color: red">
+			[[${e}]]<br>
+			</span>
+		<table border="1">
+			<tr>
+				<th>ユーザID</th>
+				<td><input type="text" name="id"th:value="${id}"></td>
+			</tr>
+			<tr>
+				<th>ユーザネーム</th>
+				<td><input type="text" name="name" th:value="${name}"></td>
+			</tr>
+			<tr>
+				<th>メールアドレス</th>
+				<td><input type="text" name="email"th:value="${email}"></td>
+			</tr>
+			<tr>
+				<th>パスワード</th>
+				<td><input type="password" name="password"th:value="${password}"></td>
+			</tr>
+		</table>
+		<button>登録</button>
+	</form>
+	<a href="/login">ログイン画面へ戻る</a>
+
+</body>
+</html>
