@@ -25,7 +25,11 @@
 	</form>
 
 	<th:block th:each="address:${addressList}">
-		<button value="${address.id}">[[${address.name}]]：[[${address.email}]]</button>
+		<form th:action="|/chat/${address.id}|">
+			<button>
+				[[${address.name}]]：[[${address.email}]]
+			</button>
+		</form>
 	</th:block>
 	<br>
 
