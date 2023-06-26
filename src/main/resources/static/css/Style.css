@@ -23,25 +23,41 @@ body {
 }
 
 
-header {
+header h1{
 	padding-left: 15px;
 	text-align: left;
 }
 
-header a,
+header a{
+	color:#ffffff;
+	position: absolute;
+	top:2%;
+	right:2%;
+}
+
+header span{
+	margin-right:0;
+	margin-left:auto;
+	width:30%;
+}
+
 nav a {
 	color: #ffffff;
 }
 
 .side {
 	width: 200px;
-	height: 800px;
+	height: 1000px;
 	text-align: center;
-	background: blue;
+	background: #ffdaf4;
+}
+
+.side p {
+	color: #ffffff;
 }
 
 .content {
-	width: 800px;
+	width: 1000px;
 	height: 300px;
 	text-align: center;
 }
