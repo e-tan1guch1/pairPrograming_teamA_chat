@@ -24,10 +24,10 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class ChatController {
-	
+
 	@Autowired
 	HttpSession session;
-	
+
 	@Autowired
 	Account account;
 
@@ -58,25 +58,30 @@ public class ChatController {
 
 		return "Chat";
 	}
-	
+
 	@PostMapping("/chat/add")
 	public String add(
 			Model m,
-			@RequestParam(name="text", defaultValue="")String text,
-			@RequestParam(name="address", defaultValue="")Integer addressId
+			@RequestParam(name = "text", defaultValue = "") String text,
+			@RequestParam(name = "addressId", defaultValue = "") Integer addressId
 			) {
-		
+
+		System.out.println("addressId:" + addressId);
 		LocalDateTime timeNow = LocalDateTime.now();
-		
+
 		chatRepository.save(new Chat(account.getId(), text, addressId, timeNow));
-		
-		return "redirect:/chat/" + addressId;
+
+		if (addressId == null) {
+			return "redirect:/chat";
+		} else {
+			return "redirect:/chat/" + addressId;
+		}
 	}
-	
+
 	// 宛先ごとのチャット履歴表示
 	@GetMapping("/chat/{addressId}")
 	public String chatEachUser(
-			@PathVariable("addressId")Integer addressId,
+			@PathVariable("addressId") Integer addressId,
 			Model m) {
 
 		// チャット内容の全件検索
@@ -87,9 +92,12 @@ public class ChatController {
 		for (Chat chat : chats) {
 			int userId = chat.getId();
 			Optional<User> opt = userRepository.findById(userId);
-			displays.add(new Display(opt.get().getName(), chat.getText()));
+			if (opt.isPresent()) {
+				displays.add(new Display(opt.get().getName(), chat.getText()));
+			}
 		}
 		m.addAttribute("addressId", addressId);
+		m.addAttribute("addressName", userRepository.findById(addressId).get().getName());
 		m.addAttribute("chats", displays);
 		m.addAttribute("addressList", addressList);
 
