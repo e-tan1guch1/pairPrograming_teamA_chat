@@ -73,9 +73,9 @@ public class ChatController {
 
 		chatRepository.save(new Chat(account.getId(), text, addressId, timeNow));
 
-		if (addressId == null) {
+		if(addressId == null) {
 			return "redirect:/chat";
-		} else {
+		}else {
 			return "redirect:/chat/" + addressId;
 		}
 	}

@@ -51,11 +51,12 @@ header div.user a {
 	width: 200px;
 	height: 500px;
 	text-align: center;
-	background-color: lightcoral
+	background-color: lightcoral;
 }
 
-.side p {
-	color: #ffffff;
+.side a {
+	color: white;
+	text-decoration: none;
 }
 
 .content {
@@ -91,7 +92,8 @@ header placeholder {
 }
 
 .balloon-left {
-	position: relative;
+	position: absolute;
+	left: 250px;
 	display: inline-block;
 	margin: 1.5em 0 1.5em 15px;
 	padding: 7px 10px;
@@ -100,20 +102,17 @@ header placeholder {
 	color: #555;
 	font-size: 16px;
 	background: peachpuff;
-	/*	要調整*/
-	border-radius: 10px;
-	margin-left: -400px
-		/*	要調整*/
+	border-radius: 15px;
 }
 
 .balloon-left:before {
 	content: "";
 	position: absolute;
 	top: 50%;
-	left: -25px;
+	left: -30px;
 	margin-top: -15px;
 	border: 15px solid transparent;
-	border-right: 15px solid peachpuff;
+	border-right: 25px solid peachpuff;
 	/*	要調整*/
 }
 
