@@ -1,7 +1,10 @@
 <header>
-<h1>チャットアプリ（仮）</h1>
-	<span th:text="${@account.name}+' さんがログイン中'"></span>
+	<div class="user"><p th:text="${@account.name}+' さんがログイン中'"></p>
+	<a href="/logout"><img src="/images/logout.png" alt="logout"></a></div>
+	<h1>チャットアプリ（仮）</h1>
+	<div class="aplication">
 	<a href="/logout">ログアウト</a>
 	<a href="/calender">カレンダー</a>
 	<a href="/todoList">TODOリスト</a>
+	</div>
 </header>
