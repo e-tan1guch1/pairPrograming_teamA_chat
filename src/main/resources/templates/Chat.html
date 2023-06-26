@@ -10,6 +10,14 @@
 <body>
 	<header th:replace="header"></header>
 	<br>
+
+	<th:block th:if="${chats != null}">
+		<div class="bin">
+			<p th:each="chat:${chats}">[[${chat.name}]]　[[${chat.text}]]</p>
+<!--			<td>（メッセージ送信時間）</td>-->
+		</div>
+	</th:block>
+
 	<form action="/chat/add" method="post">
 
 		<textarea name="text" cols="40" rows="10" placeholder="メッセージを入力"></textarea>
@@ -18,12 +26,6 @@
 	</form>
 	<br>
 
-	<th:block th:if="${chats != null}">
-		<div class="balloon-left">
-			<p th:each="chat:${chats}">[[${chat.name}]]　[[${chat.text}]]</p>
-<!--			<td>（メッセージ送信時間）</td>-->
-		</div>
-	</th:block>
 	<footer th:replace="footer"></footer>
 </body>
 
