@@ -9,7 +9,7 @@ CREATE TABLE chats
    user_id INTEGER,
    text TEXT,
    address_id INTEGER,
-   date DATE
+   date TIMESTAMP
 );
 
 -- ユーザーテーブル
