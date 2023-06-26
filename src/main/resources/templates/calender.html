@@ -4,10 +4,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
+	<header th:replace="header"></header>
 	<h1>[[${yearMonth}]]</h1>
+	<div class="calendar-container">
 	<table class="calendar">
 		<tr>
 			<th>SUN</th>
@@ -23,7 +26,7 @@
 			const dayList =/*[[${dayList}]]*/
 				dayList.forEach(function (day) {
 					if (i == 1 || i == 8 || i == 15 || i == 22 || i == 29) {
-						document.write('<tr>')
+						document.write('<tr class="day">')
 					}
 					if (day == 0) {
 						document.write('<td></td>')
@@ -37,6 +40,18 @@
 				});
 		</script>
 	</table>
+	</div>
+	<form>
+		<input type="hidden" name="yearMonth" th:value="${yearMonth}">
+		<input type="hidden" th:value="prev">
+		<button>前の月</button>
+	</form>
+	<form>
+		<input type="hidden" name="yearMonth" th:value="${yearMonth}">
+		<input type="hidden" th:value="next">
+		<button>次の月</button>
+	</form>
+
 </body>
 
 </html>

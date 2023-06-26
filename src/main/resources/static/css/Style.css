@@ -121,3 +121,37 @@ header placeholder {
 	margin: 0;
 	padding: 0;
 }
+
+/* calender用 CSS */
+.calendar-container {
+  width: 500px;
+  margin: 0 auto;
+  border-radius: 5px;
+  background: #f6f5f4;
+  color: #1a1a1a;
+}
+
+th, td {
+  text-align: center;
+  padding: 10px;
+}
+th {
+  font-weight: normal;
+  font-size: 14px;
+}
+td {
+  font-weight: bold;
+}
+
+.calendar {
+  padding: 0 30px 30px 30px;
+  width: 100%;
+}
+
+.day *:first-child {
+  color: #ff838b;
+}
+
+.day *:last-child {
+  color: #6fb5ff;
+}

@@ -15,25 +15,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CalenderController {
 	@GetMapping("calender")
 	public String index(Model m,
-			@RequestParam(name = "nowYear", required=false)String nowYear,
-			@RequestParam(name = "nowMonth", required=false)String nowMonth,
-			@RequestParam(name = "prevOrNext", required=false)String prevOrNext
-			) {
+			@RequestParam(name = "calenderYM", required = false) LocalDate yearMonth,
+			@RequestParam(name = "prevOrNext", required = false) String prevOrNext) {
+		LocalDate day = null;
 
-		// 現在時刻を取得
-		LocalDate day = LocalDate.now();
-		
+		if (yearMonth == null) {
+			// 現在時刻を取得
+			day = LocalDate.now();
+		} else {
+			if (prevOrNext.equals("next")) {
+				day = yearMonth.plusMonths(1);
+			} else {
+				day = yearMonth.minusMonths(1);
+			}
+		}
+		m.addAttribute("calenderYM", day);
+
 		// 「yyyy年MM月」の形に変更
 		YearMonth yyyyMM = YearMonth.of(day.getYear(), day.getMonth());
-		
+
 		// 「yyyy年MM月」の初日（一日）
 		LocalDate firstDate = LocalDate.of(day.getYear(), day.getMonth(), 1);
-		
+
 		// 初日の曜日を調べる（Sunday: 1 Monday: 2 ... Saturday: 7）
 		int dayOfWeek = firstDate.getDayOfWeek().getValue();
 		if (dayOfWeek == 7) {
 			dayOfWeek = 1;
-		}else {
+		} else {
 			dayOfWeek++;
 		}
 
@@ -56,8 +64,7 @@ public class CalenderController {
 				list.add(j++);
 			}
 		}
-		
-		
+
 		m.addAttribute("dayList", list);
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy年MM月");
