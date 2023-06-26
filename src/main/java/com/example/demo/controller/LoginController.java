@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,4 +54,48 @@ public class LoginController {
 		
 		return page;
 	}
+	@GetMapping("/login/newuser")
+	public String newuser() {
+		return "newuser";
+	}
+	@PostMapping("/login/newuser")
+	public String newuser(
+			@RequestParam(name = "id", required = false) Integer id,
+			@RequestParam(name = "name", required = false) String name,
+			@RequestParam(name = "email", required = false) String email,
+			@RequestParam(name = "password", required = false) String password,
+			
+			Model m) {
+		List<String> error = new ArrayList<>();
+		
+//		if (id.equals("") == true) {
+//			error.add("id：必須");
+//		}
+
+		if (name.equals("") == true) {
+			error.add("名前：必須");
+	
+		}
+		if (email.equals("") == true) {
+			error.add("メールアドレス：必須");
+
+		}
+		if (password.equals("") == true) {
+			error.add("パスワード：必須");
+		}
+		if (error.size() > 0) {
+			
+			m.addAttribute("error", error);
+//			m.addAttribute("id", id);
+			m.addAttribute("name", name);
+			m.addAttribute("email", email);
+			m.addAttribute("pasword", password);
+			return "newuser";
+		}
+		User user = new User(id, name, email, password);
+		userRepository.save(user);
+		
+		return "redirect:/login";
+	}
+	
 }
