@@ -12,7 +12,7 @@
 	<br>
 
 	<th:block th:if="${chats != null}">
-		<div class="bin">
+		<div class="balloon-left">
 			<p th:each="chat:${chats}">[[${chat.name}]]　[[${chat.text}]]</p>
 			<!--			<td>（メッセージ送信時間）</td>-->
 		</div>
@@ -22,10 +22,15 @@
 		<textarea name="text" cols="40" rows="10" placeholder="メッセージを入力"></textarea>
 		<br>
 		<button>送信</button>
-		<select name="addressId" th:each="address:${addressList}">
-			<option value="${address.id}">[[${address.name}]]：[[${address.email}]]</option>
-		</select>
 	</form>
+
+	<th:block th:each="address:${addressList}">
+		<form th:action="|/chat/${address.id}|">
+			<button>
+				[[${address.name}]]：[[${address.email}]]
+			</button>
+		</form>
+	</th:block>
 	<br>
 
 	<footer th:replace="footer"></footer>

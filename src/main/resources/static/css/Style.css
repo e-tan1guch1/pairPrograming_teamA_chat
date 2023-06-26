@@ -17,12 +17,19 @@ footer {
 	/* 内側余白(下) */
 }
 
+body {
+	margin: 0%;
+	padding: 0%
+}
+
+
 header {
 	padding-left: 15px;
 	text-align: left;
 }
 
-header a, nav a {
+header a,
+nav a {
 	color: #ffffff;
 }
 
@@ -35,7 +42,35 @@ textarea {
 	color: #666666;
 }
 
-
 header placeholder {
 	color: #F5B8B5;
+}
+
+.balloon-left {
+	position: relative;
+	display: inline-block;
+	margin: 1.5em 0 1.5em 15px;
+	padding: 7px 10px;
+	min-width: 120px;
+	max-width: 100%;
+	color: #555;
+	font-size: 16px;
+	background: pink;/*	要調整*/
+	border-radius: 10px;
+	margin-left:-500px /*	要調整*/
+}
+
+.balloon-left:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -25px;
+	margin-top: -15px;
+	border: 15px solid transparent;
+	border-right: 15px solid pink;/*	要調整*/
+}
+
+.balloon-left p {
+	margin: 0;
+	padding: 0;
 }
