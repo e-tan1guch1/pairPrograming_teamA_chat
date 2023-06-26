@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>TODOリスト</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+	<form action="/chat/todo" method="post">
+		
+		<h3>記入日</h3>
+		<input type="date" name="releaseDate">
+		<br>
+		<h3>本日やるべきこと</h3>
+		<textarea name="text" cols="40" rows="10" placeholder="本日の実行リスト"></textarea>
+		<br>
+		<button>送信</button>
+	</form>
+	<br>
+	
+<footer th:replace="footer"></footer>
+</body>
+
+</html>
