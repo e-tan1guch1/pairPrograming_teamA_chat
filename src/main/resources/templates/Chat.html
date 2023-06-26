@@ -30,13 +30,13 @@
 		<button class="send">送信</button>
 	</form><br>
 
-	<th:block th:each="address:${addressList}">
-		<form th:action="|/chat/${address.id}|">
-			<button>
-				[[${address.name}]]：[[${address.email}]]
-			</button>
-		</form>
-	</th:block>
+<!--	<th:block th:each="address:${addressList}">-->
+<!--		<form th:action="|/chat/${address.id}|">-->
+<!--			<button>-->
+<!--				[[${address.name}]]：[[${address.email}]]-->
+<!--			</button>-->
+<!--		</form>-->
+<!--	</th:block>-->
 	<br>
 	</div>
 </article>
