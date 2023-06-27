@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -104,8 +106,26 @@ public class ChatController {
 			@PathVariable("addressId") Integer addressId,
 			Model m) {
 
-		// チャット内容の全件検索
-		List<Chat> chats = chatRepository.findEachChat(account.getId(), addressId);
+		// 個人チャットの履歴を検索
+		List<Chat> chats = chatRepository.findEachChat1(account.getId(), addressId);
+		List<Chat> chats2 = chatRepository.findEachChat2(account.getId(), addressId);
+		chats.addAll(chats2);
+		
+		// チャット履歴を時間でソート
+        Collections.sort(
+                chats, 
+                new Comparator<Chat>() {
+                    @Override
+                    public int compare(Chat obj1, Chat obj2) {
+                        if(obj2.getDate().isBefore(obj1.getDate())) {
+                        	return 1;
+                        }else {
+                        	return -1;
+                        }
+                    }
+                }
+            );
+		
 		List<Display> displays = new ArrayList<>();
 		List<User> addressList = userRepository.findAll();
 
@@ -116,6 +136,8 @@ public class ChatController {
 				displays.add(new Display(opt.get().getName(), chat.getText()));
 			}
 		}
+
+		
 		m.addAttribute("addressId", addressId);
 		m.addAttribute("addressName", userRepository.findById(addressId).get().getName());
 		m.addAttribute("chats", displays);

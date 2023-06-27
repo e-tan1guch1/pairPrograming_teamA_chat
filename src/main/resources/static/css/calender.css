@@ -17,11 +17,6 @@ footer {
 	/* 内側余白(下) */
 }
 
-body {
-	margin: 0%;
-	padding: 0%
-}
-
 header div.user {
 	margin-left: auto;
 	margin-right: 20px;
@@ -69,15 +64,6 @@ article {
 	display: flex;
 }
 
-.send {
-	width: 60px;
-	height: 30px;
-	background: lightcoral;
-	border-radius: 5px;
-	border-color: white;
-	color: white;
-}
-
 textarea {
 	border: 2px solid lightcoral;
 	border-radius: 0.67em;
@@ -89,44 +75,6 @@ textarea {
 
 header placeholder {
 	color: #F5B8B5;
-}
-
-.balloon-left {
-	position: absolute;
-	left: 250px;
-	display: inline-block;
-	margin: 1.5em 0 1.5em 15px;
-	padding: 7px 10px;
-	min-width: 120px;
-	max-width: 100%;
-	color: #555;
-	font-size: 16px;
-	background: peachpuff;
-	border-radius: 15px;
-}
-
-.balloon-left:before {
-	content: "";
-	position: absolute;
-	top: 50%;
-	left: -30px;
-	margin-top: -15px;
-	border: 15px solid transparent;
-	border-right: 25px solid peachpuff;
-	/*	要調整*/
-}
-
-.balloon-left p {
-	margin: 0;
-	padding: 0;
-}
-
-/*まずはお決まりのボックスサイズ算出をborer-boxに */
-*,
-*:before,
-*:after {
-	-webkit-box-sizing: inherit;
-	box-sizing: inherit;
 }
 
 /* calender用 CSS */
@@ -169,11 +117,16 @@ td {
 .calenderh1 {
 	display: inline;
 	vertical-align: -10%;
+	padding-left: 15px;
+	padding-right: 10px;
 }
 
-.calefnderDiv {
-	display: flex;
-	vertical-align: -30%;
+.calenderDiv {
+	padding-top: 10px;
+	/* 内側余白(上) */
+	padding-bottom: 10px;
+	/* 内側余白(下) */
+	
 }
 
 .arrow-top {
