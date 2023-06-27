@@ -26,6 +26,7 @@
 			</th:block>
 			
 			<th:block th:if="${chats != null}" th:each="chat:${chats}">
+				<small>[[${chat.name}]]</small>
 				<div class="balloon-left">
 					<p>[[${chat.text}]]</p>
 				</div>
