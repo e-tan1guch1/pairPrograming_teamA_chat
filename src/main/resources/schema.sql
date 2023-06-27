@@ -1,6 +1,7 @@
 -- テーブル削除
 DROP TABLE IF EXISTS chats;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS todos;
 
 -- チャットテーブル
 CREATE TABLE chats
@@ -19,4 +20,14 @@ CREATE TABLE users
    name TEXT,
    email TEXT,
    password TEXT
+);
+
+-- TODOテーブル
+CREATE TABLE todos
+(
+   id SERIAL PRIMARY KEY,
+   releaseDate TIMESTAMP,
+   hour INTEGER,
+   minute INTEGER,
+   text TEXT
 );
