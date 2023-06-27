@@ -17,28 +17,30 @@
 			</p>
 		</div>
 		<br>
-		<div class="content">
-			<th:block th:if="${demo != null}" th:each="demo:${demo}">
-				<div class="balloon-left">
-					<p>[[${demo}]]</p>
-				</div>
-				<br><br>
-			</th:block>
+		<block class="content">
+				<th:block th:if="${demo != null}" th:each="demo:${demo}">
+					<div class="balloon-left">
+						<p>[[${demo}]]</p>
+					</div>
+					<br><br>
+				</th:block>
 
 			<th:block th:if="${chats != null}">
 				<small style="padding-top: 6px;">[[${addressName}]]</small>
 				<small style="padding-top: 6px; right:-670px">あなた</small>
 			</th:block>
 
-			<th:block th:each="chat : ${chats}">
-				<th:block th:if="${chat.userId} == ${@account.id}">
-					<div class="balloon-right">[[${chat.text}]]</div><br><br>
+			<section class="scroll">
+				<th:block th:each="chat : ${chats}">
+					<th:block th:if="${chat.userId} == ${@account.id}">
+						<div class="balloon-right">[[${chat.text}]]</div><br><br>
+					</th:block>
+
+					<th:block th:if="${chat.userId} != ${@account.id}">
+						<div class="balloon-left">[[${chat.text}]]</div><br><br>
+					</th:block>
 				</th:block>
-				
-				<th:block th:if="${chat.userId} != ${@account.id}">
-					<div class="balloon-left">[[${chat.text}]]</div><br><br>
-				</th:block>
-			</th:block>		
+			</section>
 
 			<th:block th:if="${addressId != null}">
 				<br>
@@ -51,7 +53,7 @@
 			</th:block>
 
 			<br>
-		</div>
+		</block>
 	</article>
 </body>
 
