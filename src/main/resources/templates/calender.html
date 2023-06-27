@@ -4,27 +4,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/css/calender.css">
 </head>
 
 <body>
 	<header th:replace="header"></header>
 	<div class="calenderDiv">
-		<form class = "calenderForm">
-			<input type="hidden" name="calenderYM" th:value="${calenderYM}">
-			<input type="hidden" name="prevOrNext" th:value="prev">
-			<button class = "calenderButton">←</button>
-		</form>
-		
-		<h1 style="display:inline;">
+		<a th:href="|/calender?calenderYM=${calenderYM}&prevOrNext=prev|"
+			class="btn btn--circle btn--circle-c btn--shadow">
+			<i class="arrow-left"></i></a>
+		<h1 class="calenderh1">
 			[[${yearMonth}]]
 		</h1>
-
-		<form style="display: inline">
-			<input type="hidden" name="calenderYM" th:value="${calenderYM}">
-			<input type="hidden" name="prevOrNext" th:value="next">
-			<button class = "calenderButton">→</button>
-		</form>
+		<a th:href="|/calender?calenderYM=${calenderYM}&prevOrNext=next|"
+			class="btn btn--circle btn--circle-c btn--shadow">
+			<i class="arrow-right"></i></a>
 	</div>
 	<div class="calendar-container">
 		<table class="calendar">
