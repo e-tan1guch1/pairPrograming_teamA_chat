@@ -18,6 +18,13 @@
 		</div>
 		<br>
 		<div class="content">
+			<th:block th:if="${demo != null}" th:each="demo:${demo}">
+				<div class="balloon-left">
+					<p>[[${demo}]]</p>
+				</div>
+				<br><br>
+			</th:block>
+			
 			<th:block th:if="${chats != null}" th:each="chat:${chats}">
 				<div class="balloon-left">
 					<p>[[${chat.text}]]</p>

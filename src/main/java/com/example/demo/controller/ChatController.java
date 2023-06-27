@@ -37,31 +37,49 @@ public class ChatController {
 	@Autowired
 	UserRepository userRepository;
 
+//	@GetMapping("/chat")
+//	public String chat(
+//			Model m) {
+//
+//		// チャット内容の全件検索
+//		List<Chat> chats = chatRepository.findAll();
+//		List<Display> displays = new ArrayList<>();
+//		List<User> addressList = userRepository.findAll();
+//
+//		for (Chat chat : chats) {
+//			int userId = chat.getUserId();
+//			Optional<User> opt = userRepository.findById(userId);
+//			if (opt.isPresent()) {
+//				displays.add(new Display(opt.get().getName(), chat.getText()));
+//			}
+//		}
+//		for (Display display : displays) {
+//			System.out.println(display);
+//		}
+//		m.addAttribute("chats", displays);
+//		m.addAttribute("addressList", addressList);
+//
+//		return "Chat";
+//	}
+	
 	@GetMapping("/chat")
 	public String chat(
 			Model m) {
-
-		// チャット内容の全件検索
-		List<Chat> chats = chatRepository.findAll();
-		List<Display> displays = new ArrayList<>();
+		
+		ArrayList<String>demo = new ArrayList<String>();
+		
+		demo.add(new String("ここにメッセージが表示されます"));
+		demo.add(new String("左のリストから送信先を選択して、 チャットを始めよう！"));
+		
 		List<User> addressList = userRepository.findAll();
-
-		for (Chat chat : chats) {
-			int userId = chat.getUserId();
-			Optional<User> opt = userRepository.findById(userId);
-			if (opt.isPresent()) {
-				displays.add(new Display(opt.get().getName(), chat.getText()));
-			}
-		}
-		for (Display display : displays) {
-			System.out.println(display);
-		}
-		m.addAttribute("chats", displays);
 		m.addAttribute("addressList", addressList);
-
-		return "Chat";
+		
+		m.addAttribute("demo", demo);
+		
+		 return "Chat";
+		
 	}
-
+	
 	@PostMapping("/chat/add")
 	public String add(
 			Model m,
