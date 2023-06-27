@@ -136,7 +136,6 @@ public class ChatController {
 				displays.add(new Display(opt.get().getName(), chat.getText()));
 			}
 		}
-
 		
 		m.addAttribute("addressId", addressId);
 		m.addAttribute("addressName", userRepository.findById(addressId).get().getName());

@@ -25,21 +25,16 @@
 				<br><br>
 			</th:block>
 
-			<th:block th:if="${chats != null}" th:each="chat:${chats}">
-				<small th:text="${chat.name}"></small>
+			<th:block th:if="${chats != null}">
+				<small style="padding-top: 6px;">[[${addressName}]]</small>
+				<small style="padding-top: 6px; right:-670px">あなた</small>
 			</th:block>
 
-			<th:block th:if="${chats != null}" th:each="chat:${chats}">
-				<div class="balloon-left">
-					<p>[[${chat.text}]]</p>
-				</div>
-				<br><br>
-			</th:block>
-
-			<div class="balloon-right">
-				<p>test</p>
-			</div>
-			<br><br>
+			<th:each="${chats}">
+				<th:block th:if="${chat.userId} == ${account.id}">
+					<div class="balloon-right">[[${chats.text}]]</div>
+				</th:block>
+			</th:each>		
 
 			<th:block th:if="${addressId != null}">
 				<br>
