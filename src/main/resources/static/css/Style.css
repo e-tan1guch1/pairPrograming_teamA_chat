@@ -91,11 +91,17 @@ header placeholder {
 	color: #F5B8B5;
 }
 
+small{
+	position: absolute;
+	left: 280px;
+	color:#f06060;
+}
+
 .balloon-left {
 	position: absolute;
 	left: 250px;
 	display: inline-block;
-	margin: 1.5em 0 1.5em 15px;
+	margin: 1.5em 20px 1.5em 15px;
 	padding: 7px 10px;
 	min-width: 120px;
 	max-width: 100%;
@@ -117,6 +123,36 @@ header placeholder {
 }
 
 .balloon-left p {
+	margin: 0;
+	padding: 0;
+}
+
+.balloon-right {
+	position: absolute;
+	right: 150px;
+	display: inline-block;
+	margin: 1.5em 15px 1.5em 20px;
+	padding: 7px 10px;
+	min-width: 120px;
+	max-width: 100%;
+	color: #555;
+	font-size: 16px;
+	background: peachpuff;
+	border-radius: 15px;
+}
+
+.balloon-right:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: -30px;
+	margin-top: -15px;
+	border: 15px solid transparent;
+	border-left: 25px solid peachpuff;
+	/*	要調整*/
+}
+
+.balloon-right p {
 	margin: 0;
 	padding: 0;
 }

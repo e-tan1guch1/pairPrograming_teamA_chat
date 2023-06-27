@@ -24,14 +24,22 @@
 				</div>
 				<br><br>
 			</th:block>
-			
+
 			<th:block th:if="${chats != null}" th:each="chat:${chats}">
-				<small>[[${chat.name}]]</small>
+				<small th:text="${chat.name}"></small>
+			</th:block>
+
+			<th:block th:if="${chats != null}" th:each="chat:${chats}">
 				<div class="balloon-left">
 					<p>[[${chat.text}]]</p>
 				</div>
 				<br><br>
 			</th:block>
+
+			<div class="balloon-right">
+				<p>test</p>
+			</div>
+			<br><br>
 
 			<th:block th:if="${addressId != null}">
 				<br>
@@ -42,6 +50,7 @@
 					<button class="send">送信</button>
 				</form><br>
 			</th:block>
+
 			<br>
 		</div>
 	</article>
