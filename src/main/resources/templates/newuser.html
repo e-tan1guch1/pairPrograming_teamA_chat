@@ -1,32 +1,42 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>新規登録画面</title>
+	<meta charset="UTF-8">
+	<title>新規登録画面</title>
+	<link rel="stylesheet" type="text/css" href="/css/newuser.css">
 </head>
+
 <body>
-	<h1>新規登録</h1>
-	<form action="/login/newuser" method="post">
-		<span th:each="e:${error}" style="color: red">
-			[[${e}]]<br>
-			</span>
-		<table border="1">
-			<tr>
-				<th>ユーザネーム</th>
-				<td><input type="text" name="name" th:value="${name}"></td>
-			</tr>
-			<tr>
-				<th>メールアドレス</th>
-				<td><input type="text" name="email"th:value="${email}"></td>
-			</tr>
-			<tr>
-				<th>パスワード</th>
-				<td><input type="password" name="password"th:value="${password}"></td>
-			</tr>
-		</table>
-		<button>登録</button>
-	</form>
-	<a href="/login">ログイン画面へ戻る</a>
+
+	<header>
+		<div class="user">
+			<p th:text="新規登録用ページ"></p>
+		</div>
+		<h1><a href="/login">チャットアプリ（仮）</a></h1>
+	</header>
+
+	<div class="error">
+		<th:block th:if="${error}" th:each="e:${error}">
+			<div class="balloon-right">
+				<p>[[${e}]]</p>
+			</div><br><br>
+		</th:block>
+	</div>
+
+	<div class="container">
+
+		<form action="/login/newuser" method="post" class="saveForm">
+			<input type="text" name="name" placeholder="名前" th:value="${name}">
+			<input type="text" name="email" placeholder="メールアドレス" th:value="${email}">
+			<input type="password" name="password" placeholder="パスワード" th:value="${password}">
+			<button>確認画面に進む</button>
+		</form><br>
+		<a href="/login">ログイン画面へ戻る</a>
+
+	</div>
+	<footer th:replace="footer"></footer>
 
 </body>
+
 </html>

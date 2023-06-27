@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>確認ページ</title>
+	<link rel="stylesheet" type="text/css" href="/css/newuser2.css">
+</head>
+
+<body>
+
+	<header>
+		<div class="user">
+			<p text="新規登録情報　確認用ページ"></p>
+		</div>
+		<h1><a href="/login">チャットアプリ（仮）</a></h1>
+	</header>
+
+
+	<div class="container">
+		入力内容はこちらでよろしいですか？
+		<form action="/login/newuser" method="post" class="saveForm">
+			<div class="box2">
+				<p th:text="${user.name}"></p>
+			</div>
+			<div class="box2">
+				<p th:text="${user.email}"></p>
+			</div>
+			<div class="box2">
+				<p th:text="${user.password}"></p>
+			</div>
+			<input type="hidden" name="name" th:value="${user.name}">
+			<input type="hidden" name="email" th:value="${user.email}">
+			<input type="hidden" name="password" th:value="${user.password}">
+			<button>登録</button>
+		</form><br>
+		<a href="/login">ログイン画面へ戻る</a>
+
+	</div>
+	<footer th:replace="footer"></footer>
+
+</body>
+
+</html>
