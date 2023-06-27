@@ -30,11 +30,15 @@
 				<small style="padding-top: 6px; right:-670px">あなた</small>
 			</th:block>
 
-			<th:each="chat : ${chats}">
-				<th:block th:if="${chat.userId} == ${account.id}">
-					<div class="balloon-right">[[${chats.text}]]</div>
+			<th:block th:each="chat : ${chats}">
+				<th:block th:if="${chat.userId} == ${@account.id}">
+					<div class="balloon-right">[[${chat.text}]]</div><br><br>
 				</th:block>
-			</th:each>		
+				
+				<th:block th:if="${chat.userId} != ${@account.id}">
+					<div class="balloon-left">[[${chat.text}]]</div><br><br>
+				</th:block>
+			</th:block>		
 
 			<th:block th:if="${addressId != null}">
 				<br>
