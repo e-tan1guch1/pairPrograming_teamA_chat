@@ -24,9 +24,18 @@ header div.user {
 	width: 23%;
 }
 
-header div.aplication a {
+header div.application a {
 	color: white;
 	/*	height: 24px;*/
+	text-decoration: none;
+	display: inline-block;
+	justify-content:center;
+	align-items:center;
+	width: 180px;
+}
+
+header div.application a:hover{
+background:  indianred;
 }
 
 header h1 {
@@ -40,18 +49,6 @@ header div.user a {
 	position: absolute;
 	top: 2%;
 	right: 2%;
-}
-
-.side {
-	width: 200px;
-	height: 500px;
-	text-align: center;
-	background-color: lightcoral;
-}
-
-.side a {
-	color: white;
-	text-decoration: none;
 }
 
 .content {
@@ -126,7 +123,7 @@ td {
 	/* 内側余白(上) */
 	padding-bottom: 10px;
 	/* 内側余白(下) */
-	
+
 }
 
 .arrow-top {

@@ -26,10 +26,18 @@ header div.user {
 	width: 23%;
 }
 
-header div.aplication a {
+header div.application a {
 	color: white;
-	text-decoration: none;
 	/*	height: 24px;*/
+	text-decoration: none;
+	display: inline-block;
+	justify-content:center;
+	align-items:center;
+	width: 180px;
+}
+
+header div.application a:hover{
+background: indianred;
 }
 
 header h1 {
