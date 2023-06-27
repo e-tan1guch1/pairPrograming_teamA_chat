@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.entity.Chat;
 import com.example.demo.entity.User;
 import com.example.demo.model.Account;
-import com.example.demo.model.Display;
+import com.example.demo.model.Address;
 import com.example.demo.repository.ChatRepository;
 import com.example.demo.repository.UserRepository;
 
@@ -73,9 +72,16 @@ public class ChatController {
 		demo.add(new String("ここにメッセージが表示されます"));
 		demo.add(new String("左のリストから送信先を選択して、 チャットを始めよう！"));
 		
-		List<User> addressList = userRepository.findAll();
+        //自分以外の連絡先を取得
+		List<User> userList = userRepository.findAll();
+		List<Address> addressList = new ArrayList<>();	
+		for (User user : userList) {
+			if(user.getId()!=account.getId()) {
+				addressList.add(new Address(user.getId(),user.getName(), user.getEmail()));
+			}
+		}
+
 		m.addAttribute("addressList", addressList);
-		
 		m.addAttribute("demo", demo);
 		
 		 return "Chat";
@@ -125,21 +131,19 @@ public class ChatController {
                     }
                 }
             );
-		
-		List<Display> displays = new ArrayList<>();
-		List<User> addressList = userRepository.findAll();
 
-		for (Chat chat : chats) {
-			int userId = chat.getUserId();
-			Optional<User> opt = userRepository.findById(userId);
-			if (opt.isPresent()) {
-				displays.add(new Display(opt.get().getName(), chat.getText()));
+        //自分以外の連絡先を取得
+		List<User> userList = userRepository.findAll();
+		List<Address> addressList = new ArrayList<>();	
+		for (User user : userList) {
+			if(user.getId()!=account.getId()) {
+				addressList.add(new Address(user.getId(),user.getName(), user.getEmail()));
 			}
 		}
 		
 		m.addAttribute("addressId", addressId);
 		m.addAttribute("addressName", userRepository.findById(addressId).get().getName());
-		m.addAttribute("chats", displays);
+		m.addAttribute("chats", chats);
 		m.addAttribute("addressList", addressList);
 
 		return "Chat";
