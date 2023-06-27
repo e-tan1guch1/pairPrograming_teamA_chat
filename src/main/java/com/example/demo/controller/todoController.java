@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.Todo;
 import com.example.demo.model.Account;
-import com.example.demo.model.Todo;
 import com.example.demo.repository.TodoRepository;
 import com.example.demo.repository.UserRepository;
 
@@ -33,13 +33,20 @@ public class todoController {
 
 	@Autowired
 	TodoRepository todoRepository;
+	
+	@GetMapping("/todoList")
+	public String list() {
+		
+		return "todolist";
+	}
+	
 
-	@GetMapping("/chat/todo")
+	@GetMapping("/todolist/newtodo")
 	public String index() {
 		return "todo";
 	}
 
-	@PostMapping("/chat/todo")
+	@PostMapping("/todolist/newtodo")
 	public String todo(Model m,
 
 			@RequestParam(name = "releaseDate", defaultValue = "") 
@@ -51,7 +58,7 @@ public class todoController {
 		Todo todos = new Todo(releaseDate,hour, minute, text);
 		todoRepository.save(todos);
 
-		return "redirect:/chat";
+		return "redirect:/todolist";
 	}
 
 	//	@GetMapping("/chat/diary")
