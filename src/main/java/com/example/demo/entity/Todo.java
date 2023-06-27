@@ -1,9 +1,10 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
 import java.time.LocalDate;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +20,7 @@ public class Todo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
+	@Column(name="releasedate")
 	private LocalDate releaseDate;
 	private Integer hour;
 	private Integer minute;
