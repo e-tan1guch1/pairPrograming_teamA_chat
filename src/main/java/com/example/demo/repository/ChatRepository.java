@@ -12,6 +12,12 @@ public interface ChatRepository extends JpaRepository<Chat, Integer> {
 			value = "SELECT * FROM chats WHERE user_id = ?1 AND address_id = ?2", 
 			nativeQuery = true
 			)
-	List<Chat> findEachChat(Integer id, Integer addressId);
+	List<Chat> findEachChat1(Integer id, Integer addressId);
+	
+	@Query(
+			value = "SELECT * FROM chats WHERE user_id = ?2 AND address_id = ?1", 
+			nativeQuery = true
+			)
+	List<Chat> findEachChat2(Integer id, Integer addressId);
 
 }
