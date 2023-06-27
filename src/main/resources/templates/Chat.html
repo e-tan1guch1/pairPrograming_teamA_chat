@@ -30,7 +30,7 @@
 				<small style="padding-top: 6px; right:-670px">あなた</small>
 			</th:block>
 
-			<th:each="${chats}">
+			<th:each="chat : ${chats}">
 				<th:block th:if="${chat.userId} == ${account.id}">
 					<div class="balloon-right">[[${chats.text}]]</div>
 				</th:block>
