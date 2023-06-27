@@ -19,6 +19,9 @@ public class CalenderController {
 			@RequestParam(name = "prevOrNext", required = false) String prevOrNext) {
 		LocalDate day = null;
 
+		System.out.println(yearMonth);
+		System.out.println(prevOrNext);
+		
 		if (yearMonth == null) {
 			// 現在時刻を取得
 			day = LocalDate.now();
@@ -29,6 +32,7 @@ public class CalenderController {
 				day = yearMonth.minusMonths(1);
 			}
 		}
+		System.out.println(day);
 		m.addAttribute("calenderYM", day);
 
 		// 「yyyy年MM月」の形に変更
@@ -52,7 +56,7 @@ public class CalenderController {
 		List<Integer> list = new ArrayList<>();
 
 		int j = 1;
-		for (int i = 1; i <= 35; i++) {
+		for (int i = 1; i <= 42; i++) {
 			if (i < dayOfWeek) {
 				list.add(0);
 				continue;

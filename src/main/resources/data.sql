@@ -1,7 +1,3 @@
 -- ユーザーテーブルデータ
-INSERT INTO users(name, email,password) VALUES('チャット君', 'chat@a.com', 'himitu');
-
-
--- チャットテーブルデータ
-INSERT INTO chats(user_id, text, address_id, date) VALUES(1, 'ここにメッセージが表示されます', 1, null);
-INSERT INTO chats(user_id, text, address_id, date) VALUES(1, '楽しんで', 1, null);
+INSERT INTO users(name, email,password) VALUES('荒川講師', 'arakawa@mail', 'aaa');
+INSERT INTO users(name, email,password) VALUES('白戸講師', 'shiroto@mail', 'sss');

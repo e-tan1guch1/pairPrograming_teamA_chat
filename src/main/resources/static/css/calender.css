@@ -1,0 +1,170 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	min-width: 900px;
+}
+
+header,
+footer {
+	color: white;
+	background-color: #f06060;
+	padding-top: 4px;
+	/* 内側余白(上) */
+	padding-bottom: 4px;
+	/* 内側余白(下) */
+}
+
+header div.user {
+	margin-left: auto;
+	margin-right: 20px;
+	margin-top: 15px;
+	width: 23%;
+}
+
+header div.aplication a {
+	color: white;
+	/*	height: 24px;*/
+}
+
+header h1 {
+	margin-top: 0px;
+	padding-left: 15px;
+	text-align: left;
+}
+
+header div.user a {
+	color: #ffffff;
+	position: absolute;
+	top: 2%;
+	right: 2%;
+}
+
+.side {
+	width: 200px;
+	height: 500px;
+	text-align: center;
+	background-color: lightcoral;
+}
+
+.side a {
+	color: white;
+	text-decoration: none;
+}
+
+.content {
+	width: 1000px;
+	height: 300px;
+	text-align: center;
+}
+
+article {
+	display: flex;
+}
+
+textarea {
+	border: 2px solid lightcoral;
+	border-radius: 0.67em;
+	padding: 0.5em;
+	background-color: snow;
+	outline: none;
+	color: #666666;
+}
+
+header placeholder {
+	color: #F5B8B5;
+}
+
+/* calender用 CSS */
+.calendar-container {
+	width: 500px;
+	margin: 0 auto;
+	border-radius: 5px;
+	background: #f6f5f4;
+	color: #1a1a1a;
+}
+
+th,
+td {
+	text-align: center;
+	padding: 10px;
+}
+
+th {
+	font-weight: normal;
+	font-size: 14px;
+}
+
+td {
+	font-weight: bold;
+}
+
+.calendar {
+	padding: 0 30px 30px 30px;
+	width: 100%;
+}
+
+.day *:first-child {
+	color: #ff838b;
+}
+
+.day *:last-child {
+	color: #6fb5ff;
+}
+
+.calenderh1 {
+	display: inline;
+	vertical-align: -10%;
+	padding-left: 15px;
+	padding-right: 10px;
+}
+
+.calenderDiv {
+	padding-top: 10px;
+	/* 内側余白(上) */
+	padding-bottom: 10px;
+	/* 内側余白(下) */
+	
+}
+
+.arrow-top {
+	border: 0;
+	border-top: solid 2px #051181;
+	border-right: solid 2px #051181;
+	display: inline-block;
+	transform: rotate(-45deg);
+	width: 10px;
+	height: 10px;
+}
+
+.arrow-right {
+	border: 0;
+	border-top: solid 2px #fb3c3c;
+	border-right: solid 2px #fb3c3c;
+	display: inline-block;
+	transform: rotate(45deg);
+	width: 10px;
+	height: 10px;
+}
+
+.arrow-bottom {
+	border: 0;
+	border-bottom: solid 2px #feb64a;
+	border-right: solid 2px #feb64a;
+	display: inline-block;
+	transform: rotate(45deg);
+	width: 10px;
+	height: 10px;
+}
+
+.arrow-left {
+	border: 0;
+	border-top: solid 2px #fb3c3c;
+	border-left: solid 2px #fb3c3c;
+	display: inline-block;
+	transform: rotate(-45deg);
+	width: 10px;
+	height: 10px;
+}

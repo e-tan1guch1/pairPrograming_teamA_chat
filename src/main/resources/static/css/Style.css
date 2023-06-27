@@ -10,7 +10,7 @@ body {
 header,
 footer {
 	color: white;
-	background-color:#f06060;
+	background-color: #f06060;
 	padding-top: 4px;
 	/* 内側余白(上) */
 	padding-bottom: 4px;
@@ -22,40 +22,41 @@ body {
 	padding: 0%
 }
 
-header div.user{
-	margin-left:auto;
-	margin-right:20px;
+header div.user {
+	margin-left: auto;
+	margin-right: 20px;
 	margin-top: 15px;
-	width:23%;
+	width: 23%;
 }
 
-header div.aplication a{
-	color:white;
-/*	height: 24px;*/
+header div.aplication a {
+	color: white;
+	/*	height: 24px;*/
 }
 
-header h1{
+header h1 {
 	margin-top: 0px;
 	padding-left: 15px;
 	text-align: left;
 }
 
-header div.user a{
-	color:#ffffff;
+header div.user a {
+	color: #ffffff;
 	position: absolute;
-	top:2%;
-	right:2%;
+	top: 2%;
+	right: 2%;
 }
 
 .side {
 	width: 200px;
 	height: 500px;
 	text-align: center;
-	background-color: lightcoral
+	background-color: lightcoral;
 }
 
-.side p {
-	color: #ffffff;
+.side a {
+	color: white;
+	text-decoration: none;
 }
 
 .content {
@@ -68,13 +69,13 @@ article {
 	display: flex;
 }
 
-.send{
+.send {
 	width: 60px;
-  height: 30px;
-  background: lightcoral;
-  border-radius: 5px;
-  border-color:white;
-  color:white;
+	height: 30px;
+	background: lightcoral;
+	border-radius: 5px;
+	border-color: white;
+	color: white;
 }
 
 textarea {
@@ -90,30 +91,34 @@ header placeholder {
 	color: #F5B8B5;
 }
 
+small{
+	position: absolute;
+	left: 280px;
+	color:#f06060;
+}
+
 .balloon-left {
-	position: relative;
+	position: absolute;
+	left: 250px;
 	display: inline-block;
-	margin: 1.5em 0 1.5em 15px;
+	margin: 1.5em 20px 1.5em 15px;
 	padding: 7px 10px;
 	min-width: 120px;
 	max-width: 100%;
 	color: #555;
 	font-size: 16px;
 	background: peachpuff;
-	/*	要調整*/
-	border-radius: 10px;
-	margin-left: -400px
-		/*	要調整*/
+	border-radius: 15px;
 }
 
 .balloon-left:before {
 	content: "";
 	position: absolute;
 	top: 50%;
-	left: -25px;
+	left: -30px;
 	margin-top: -15px;
 	border: 15px solid transparent;
-	border-right: 15px solid peachpuff;
+	border-right: 25px solid peachpuff;
 	/*	要調整*/
 }
 
@@ -122,36 +127,32 @@ header placeholder {
 	padding: 0;
 }
 
-/* calender用 CSS */
-.calendar-container {
-  width: 500px;
-  margin: 0 auto;
-  border-radius: 5px;
-  background: #f6f5f4;
-  color: #1a1a1a;
+.balloon-right {
+	position: absolute;
+	right: 150px;
+	display: inline-block;
+	margin: 1.5em 15px 1.5em 20px;
+	padding: 7px 10px;
+	min-width: 120px;
+	max-width: 100%;
+	color: #555;
+	font-size: 16px;
+	background: peachpuff;
+	border-radius: 15px;
 }
 
-th, td {
-  text-align: center;
-  padding: 10px;
-}
-th {
-  font-weight: normal;
-  font-size: 14px;
-}
-td {
-  font-weight: bold;
-}
-
-.calendar {
-  padding: 0 30px 30px 30px;
-  width: 100%;
+.balloon-right:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: -30px;
+	margin-top: -15px;
+	border: 15px solid transparent;
+	border-left: 25px solid peachpuff;
+	/*	要調整*/
 }
 
-.day *:first-child {
-  color: #ff838b;
-}
-
-.day *:last-child {
-  color: #6fb5ff;
+.balloon-right p {
+	margin: 0;
+	padding: 0;
 }
