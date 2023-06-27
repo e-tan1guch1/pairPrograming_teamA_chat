@@ -88,8 +88,9 @@ public class LoginController {
 		}
 		User user = new User(name, email, password);
 		userRepository.save(user);
+		m.addAttribute("user", user);
 		
-		return "redirect:/login";
+		return "newuser2";
 	}
 	
 }

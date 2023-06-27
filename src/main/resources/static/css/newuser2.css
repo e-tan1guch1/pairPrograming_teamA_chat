@@ -115,39 +115,16 @@ button:hover {
 
 }
 
-.balloon-right {
-	position: absolute;
-	right: 150px;
-	display: inline-block;
-	margin: 1.5em 15px 1.5em 20px;
-	padding: 7px 10px;
-	min-width: 120px;
-	max-width: 100%;
-	color: #555;
-	font-size: 16px;
-	background: peachpuff;
-	border-radius: 15px;
-	color: red;
+.box2 {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
 }
-
-.balloon-right:before {
-	content: "";
-	position: absolute;
-	top: 50%;
-	right: -30px;
-	margin-top: -15px;
-	border: 15px solid transparent;
-	border-left: 25px solid peachpuff;
-	/*	要調整*/
-}
-
-.balloon-right p {
-	margin: 0;
-	padding: 0;
-}
-
-.error {
-	width: 200px;
-	height: 300px;
-	float: right;
+.box2 p {
+    margin: 0; 
+    padding: 0;
 }
