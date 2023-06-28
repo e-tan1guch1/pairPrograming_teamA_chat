@@ -20,6 +20,7 @@ public class Todo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	@Column(name="releasedate")
 	private LocalDate releaseDate;
 	private Integer hour;
