@@ -99,12 +99,5 @@ public class todoController {
 		return "redirect:/todoList";
 	}
 	
-	
-
-	//	@GetMapping("/chat/diary")
-	//	public String diary() {
-	//		session.invalidate();
-	//		return "diary";
-	//	}
 
 }
