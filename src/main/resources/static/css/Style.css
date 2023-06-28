@@ -26,6 +26,13 @@ header div.user {
 	width: 23%;
 }
 
+header div.setting {
+	margin-left: auto;
+	margin-right: 20px;
+	margin-top: 15px;
+	width: 23%;
+}
+
 header div.application a {
 	color: white;
 	/*	height: 24px;*/
@@ -55,6 +62,13 @@ header div.user a {
 	color: #ffffff;
 	position: absolute;
 	top: 2%;
+	right: 2%;
+}
+
+header div.setting a {
+	color: #ffffff;
+	position: absolute;
+	top: 8%;
 	right: 2%;
 }
 
