@@ -70,11 +70,11 @@ public class LoginController {
 		List<String> error = new ArrayList<>();
 
 		if (name.equals("") == true) {
-			error.add("名前：必須");
+			error.add("名前は必須です");
 
 		}
 		if (email.equals("") == true) {
-			error.add("メールアドレス：必須");
+			error.add("メールアドレスは必須です");
 
 		} else {
 			Optional<User> opt = userRepository.findByEmail(email);
@@ -83,7 +83,7 @@ public class LoginController {
 			}
 		}
 		if (password.equals("") == true) {
-			error.add("パスワード：必須");
+			error.add("パスワードは必須です");
 		}
 		if (error.size() > 0) {
 

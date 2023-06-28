@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+body{
+	background: peachpuff;
+}
+
 div.user {
 	margin-left: auto;
 	margin-right: 20px;
@@ -30,11 +34,17 @@ div.user a {
 	display: block;
 	width: 600px;
 	height: 450px;
-	background-color: #f06060;
+background-color: white;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+.container input{
+	background-color: whitesmoke;
+	border-radius: 10px;
+	padding-left:100px;
 }
 
 .saveForm {
@@ -68,28 +78,29 @@ button {
 	font-weight: bold;
 	border: 2px solid #fff;
 	color: #fff;
-	background: #f06060;
+	
+	border-radius: 10px;
+	background: lightcoral;
 }
 
 button:hover {
 	background: #fff;
 	color: #f06060;
-
+	border-color: lightcoral;
 }
 
 .balloon-right {
 	position: absolute;
-	right: 150px;
+	right: 100px;
 	display: inline-block;
 	margin: 1.5em 15px 1.5em 20px;
 	padding: 7px 10px;
 	min-width: 120px;
 	max-width: 100%;
-	color: #555;
 	font-size: 16px;
-	background: peachpuff;
+	background: floralwhite;
 	border-radius: 15px;
-	color: red;
+	color: lightcoral;
 }
 
 .balloon-right:before {
@@ -99,7 +110,7 @@ button:hover {
 	right: -30px;
 	margin-top: -15px;
 	border: 15px solid transparent;
-	border-left: 25px solid peachpuff;
+	border-left: 25px solid floralwhite;
 	/*	要調整*/
 }
 
@@ -112,4 +123,14 @@ button:hover {
 	width: 200px;
 	height: 300px;
 	float: right;
+}
+
+a{
+	color:#f06060;
+}
+
+footer{
+	position:fixed;
+	bottom:0;
+	width:100%;
 }
