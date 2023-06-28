@@ -107,6 +107,11 @@ div.scroll::-webkit-scrollbar {
 	display: none;
 }
 
+/*.scroll div{*/
+/*	display:inline-block;*/
+/*	text-align: center;*/
+/*}*/
+
 .send {
 	width: 60px;
 	height: 30px;
