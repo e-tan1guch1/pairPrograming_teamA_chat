@@ -1,31 +1,5 @@
 @charset "UTF-8";
 
-body {
-	margin: 0;
-	padding: 0;
-	text-align: center;
-	min-width: 900px;
-	align-items: center;
-}
-
-header,
-footer {
-	color: white;
-	background-color: #f06060;
-	padding-top: 4px;
-	/* 内側余白(上) */
-	padding-bottom: 4px;
-	/* 内側余白(下) */
-}
-
-header placeholder {
-	color: #F5B8B5;
-}
-
-header a {
-	text-decoration: none;
-	color: white;
-}
 
 div.user {
 	margin-left: auto;
