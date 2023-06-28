@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	min-width: 900px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+header,
+footer {
+	color: white;
+	background-color: #f06060;
+	padding-top: 4px;
+	/* 内側余白(上) */
+	padding-bottom: 4px;
+	/* 内側余白(下) */
+}
+
+header div.user {
+	margin-left: auto;
+	margin-right: 20px;
+	margin-top: 15px;
+	width: 23%;
+}
+
+header div.setting {
+	margin-left: auto;
+	margin-right: 20px;
+	margin-top: 15px;
+	width: 23%;
+}
+
+header div.application a {
+	color: white;
+	/*	height: 24px;*/
+	text-decoration: none;
+	display: inline-block;
+	justify-content: center;
+	align-items: center;
+	width: 180px;
+}
+
+header div.application a:hover {
+	background: indianred;
+}
+
+header h1 {
+	margin-top: 0px;
+	padding-left: 15px;
+	text-align: center;
+}
+
+header a {
+	text-decoration: none;
+	color: white;
+}
+
+header div.user a {
+	color: #ffffff;
+	position: absolute;
+	top: 2%;
+	right: 2%;
+}
+
+header div.setting a {
+	color: #ffffff;
+	position: absolute;
+	top: 8%;
+	right: 2%;
+}	
