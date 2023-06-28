@@ -5,8 +5,8 @@ body {
 	padding: 0;
 	text-align: center;
 	min-width: 900px;
-	overflow-x:hidden;
-/*	overflow-y: hidden;*/
+	overflow-x: hidden;
+	overflow-y: hidden;
 }
 
 header,
@@ -38,13 +38,13 @@ header div.application a {
 	/*	height: 24px;*/
 	text-decoration: none;
 	display: inline-block;
-	justify-content:center;
-	align-items:center;
+	justify-content: center;
+	align-items: center;
 	width: 180px;
 }
 
-header div.application a:hover{
-background: indianred;
+header div.application a:hover {
+	background: indianred;
 }
 
 header h1 {
@@ -82,16 +82,17 @@ header div.setting a {
 .side a {
 	color: white;
 	text-decoration: none;
-	display:block;
-	width:200px;
-	padding:0;
-	margin:0;
-	background:lightcoral;
-	text-align:center;
+	display: inline-block;
+	width: 200px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin: 0;
+	background: lightcoral;
+	text-align: center;
 }
 
-.side a:hover{
-	background:#f07070;
+.side a:hover {
+	background: #f07070;
 }
 
 .content {
@@ -106,9 +107,18 @@ article {
 
 /*あとでやる*/
 
-section.scroll {
-	overflow-y: none;
-	height: 250px;
+div.scroll {
+	overflow-y: scroll;
+	height: 480px;
+	width: 105%;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	/*	border:solid blue;*/
+	overflow-x: hidden;
+}
+
+div.scroll::-webkit-scrollbar {
+	display: none;
 }
 
 .send {
@@ -118,9 +128,15 @@ section.scroll {
 	border-radius: 5px;
 	border-color: white;
 	color: white;
+	position: absolute;
+	bottom: 10px;
+	left: 690px;
 }
 
 textarea {
+	position: absolute;
+	bottom: 50px;
+	left: 570px;
 	border: 2px solid lightcoral;
 	border-radius: 0.67em;
 	padding: 0.5em;
@@ -140,10 +156,11 @@ small {
 }
 
 .balloon-left {
-	position: absolute;
-	left: 250px;
+	position: relative;
+	float: left;
+	left: 70px;
 	display: inline-block;
-	margin: 1.5em 20px 1.5em 15px;
+	/*	margin: 1.5em 20px 1.5em 15px;*/
 	padding: 7px 10px;
 	min-width: 120px;
 	max-width: 100%;
@@ -151,13 +168,17 @@ small {
 	font-size: 16px;
 	background: peachpuff;
 	border-radius: 15px;
+	
+	margin:auto;
+/*	text-align: center;*/
 }
 
 .balloon-left:before {
 	content: "";
-	position: absolute;
-	top: 50%;
-	left: -30px;
+	position: relative;
+	float: left;
+	top: 11px;
+	left: -41px;
 	margin-top: -15px;
 	border: 15px solid transparent;
 	border-right: 25px solid peachpuff;
@@ -170,10 +191,12 @@ small {
 }
 
 .balloon-right {
-	position: absolute;
-	right: 150px;
+	position: relative;
+	float: right;
+	right: 60px;
 	display: inline-block;
-	margin: 1.5em 15px 1.5em 20px;
+	text-align: center;
+	/*	margin: 10px 15px 10px 20px;*/
 	padding: 7px 10px;
 	min-width: 120px;
 	max-width: 100%;
@@ -181,13 +204,17 @@ small {
 	font-size: 16px;
 	background: peachpuff;
 	border-radius: 15px;
+	
+	margin:auto;
 }
 
 .balloon-right:before {
 	content: "";
-	position: absolute;
-	top: 50%;
-	right: -30px;
+	position: relative;
+	float: right;
+	/*	top: 10%;*/
+	top: 11px;
+	right: -40px;
 	margin-top: -15px;
 	border: 15px solid transparent;
 	border-left: 25px solid peachpuff;
