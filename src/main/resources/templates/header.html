@@ -1,10 +1,17 @@
 <header>
-	<div class="user"><p th:text="${@account.name}+' さんがログイン中'"></p>
-	<a href="/logout"><img src="/images/logout.png" alt="logout"></a></div>
+	<div class="user">
+		<p th:text="${@account.name}+' さんがログイン中'"></p>
+		<a href="/logout"><img src="/images/logout.png" alt="logout"></a>
+	</div>
+	<div class="user">
+		<p th:text="設定"></p>
+		<a href="/setting"><img src="/images/setting.png" alt="setting"></a>
+	</div>
+
 	<h1><a href="/chat">チャットアプリ（仮）</a></h1>
 	<div class="application">
-	<a href="/chat">チャット</a>｜｜
-	<a href="/calender">カレンダー</a>｜｜
-	<a href="/todoList">TODOリスト</a>
+		<a href="/chat">チャット</a>｜｜
+		<a href="/calender">カレンダー</a>｜｜
+		<a href="/todoList">TODOリスト</a>
 	</div>
 </header>
