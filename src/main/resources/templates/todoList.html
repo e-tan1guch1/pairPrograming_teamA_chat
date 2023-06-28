@@ -16,7 +16,6 @@
 	<div class="container">
 		<table border="1">
 			<tr>
-				<th>ID</th>
 				<th>記入日</th>
 				<th>時間</th>
 				<th>実行リスト</th>
@@ -25,6 +24,8 @@
 			</tr>
 			<th:block th:each=" todo: ${todos}">
 				<tr>
+					<input type="hidden" name="{todo.id}" value="id">
+
 					<td>[[${todo.releaseDate}]]</td>
 					<td>[[${todo.hour}]]時[[${todo.minute}]]分</td>
 					<td>[[${todo.text}]]</td>

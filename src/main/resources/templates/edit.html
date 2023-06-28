@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>TODOリスト変更</title>
+</head>
+
+<body>
+
+	<form th:action="|/todoList/${todo.id}/edit|" method="post">
+		<table border="1">
+			<input type="hidden" name="{todo.id}" value="id">
+			<tr>
+				<th>記入日</th>
+				<td><input type="date" name="releaseDate"></td>
+			</tr>
+
+			<tr>
+				<th>時間</th>
+				<td>
+					<select id="hour" name="hour"></select>時
+					<select id="minute" name="minute"></select>分
+				</td>
+			</tr>
+			<tr>
+				<th>本日の実行リスト</th>
+				<td><textarea name="text"></textarea></td>
+			</tr>
+		</table>
+		<script>
+			// 時間のドロップダウンメニューを生成
+			var hourDropdown = document.getElementById("hour");
+			for (var hour = 00; hour < 24; hour++) {
+				var option = document.createElement("option");
+				option.text = hour.toString().padStart(2, "0");
+				hourDropdown.add(option);
+			}
+
+			// 分のドロップダウンメニューを生成
+			var minuteDropdown = document.getElementById("minute");
+			for (var minute = 00; minute < 60; minute++) {
+				var option = document.createElement("option");
+				option.text = minute.toString().padStart(2, "0");
+				minuteDropdown.add(option);
+			}
+		</script>
+		<button>更新</button>
+
+
+	</form>
+</body>
+
+</html>
