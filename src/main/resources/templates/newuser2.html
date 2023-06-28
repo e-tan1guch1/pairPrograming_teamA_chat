@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<title>確認ページ</title>
 	<link rel="stylesheet" type="text/css" href="/css/base.css">
-	<link rel="stylesheet" type="text/css" href="/css/newuser2.css">
+	<link rel="stylesheet" type="text/css" href="/css/newuser.css">
 </head>
 
 <body>
@@ -21,6 +21,10 @@
 		<div class="balloon-right">
 			<p>入力内容は<br>
 				こちらでよろしいですか？</p>
+		</div><br><br><br><br>
+		
+		<div class="balloon-left">
+			<p><a href="#">戻って訂正する</a></p>
 		</div><br><br>
 	</div>
 
@@ -28,21 +32,20 @@
 
 	<div class="container">
 		<form action="/login/newuser2" method="post" class="saveForm">
-			<div class="box2">
-				<p th:text="${user.name}"></p>
-			</div>
-			<div class="box2">
-				<p th:text="${user.email}"></p>
-			</div>
-			<div class="box2">
-				<p th:text="${user.password}"></p>
-			</div>
-			<input type="hidden" name="name" th:value="${user.name}">
-			<input type="hidden" name="email" th:value="${user.email}">
-			<input type="hidden" name="password" th:value="${user.password}">
-			<button>登録</button>
-		</form><br>
-		<a href="/login">ログイン画面へ戻る</a>
+				<div class="box2">
+					<p th:text="${user.name}"></p>
+				</div>
+				<div class="box2">
+					<p th:text="${user.email}"></p>
+				</div>
+				<div class="box2">
+					<p th:text="${user.password}"></p>
+				</div>
+				<input type="hidden" name="name" th:value="${user.name}">
+				<input type="hidden" name="email" th:value="${user.email}">
+				<input type="hidden" name="password" th:value="${user.password}">
+				<button>登録</button>
+			</form><br><br>
 
 	</div>
 	<footer th:replace="footer"></footer>

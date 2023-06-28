@@ -123,3 +123,39 @@ footer{
 	bottom:0;
 	width:100%;
 }
+
+.balloon-right {
+	position: absolute;
+	right: 100px;
+	display: inline-block;
+	margin: 1.5em 15px 1.5em 20px;
+	padding: 7px 10px;
+	min-width: 120px;
+	max-width: 100%;
+	font-size: 16px;
+	background: floralwhite;
+	border-radius: 15px;
+	color: lightcoral;
+}
+
+.balloon-right:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: -30px;
+	margin-top: -15px;
+	border: 15px solid transparent;
+	border-left: 25px solid floralwhite;
+	/*	要調整*/
+}
+
+.balloon-right p {
+	margin: 0;
+	padding: 0;
+}
+
+.error {
+	width: 200px;
+	height: 300px;
+	float: right;
+}

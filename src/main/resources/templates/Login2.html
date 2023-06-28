@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>ログイン画面</title>
+	<link rel="stylesheet" type="text/css" href="/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/css/Login.css">
+</head>
+
+<body>
+	<header>
+		<div class="user">
+			<p th:text="ログイン用ページ"></p>
+		</div>
+		<h1>チャットアプリ（仮）</h1>
+	</header>
+
+<div class="error">
+		<div class="balloon-right">
+			<p>[[${user.name}]]さん</p>
+		</div><br><br>
+		<div class="balloon-right">
+			<p>ようこそ</p>
+		</div><br><br>
+		<div class="balloon-right">
+			<p>チャットアプリ(仮)へ</p>
+		</div><br><br>
+	</div>
+
+	<div class="container">
+		<form action="/login" method="post" class="loginForm">
+			<input type="text" class="email" name="email" placeholder="　　メールアドレス">
+			<input type="password" class="password" name="password" placeholder="　　パスワード">
+			<button>ログイン</button>
+		</form><br><br>
+	</div>
+	<footer th:replace="footer"></footer>
+</body>
+
+</html>
