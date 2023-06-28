@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<title>チャット画面</title>
 	<link rel="stylesheet" type="text/css" href="/css/base.css">
-	<link rel="stylesheet" type="text/css" href="/css/chat.css">
+	<link rel="stylesheet" type="text/css" href="/css/profile.css">
 </head>
 
 <body>
@@ -21,9 +21,18 @@
 	<div class="container">
 
 		<form action="/login/newuser" method="post" class="saveForm">
-			<input type="text" name="name" placeholder="名前" th:value="${user.name}">
-			<input type="text" name="email" placeholder="メールアドレス" th:value="${user.email}">
-			<input type="password" name="password" placeholder="パスワード" th:value="${user.password}">
+			<div>
+				<label>名前</label>
+				<input type="text" name="name" placeholder="名前" th:value="${user.name}">
+			</div>
+			<div>
+				<label>メールアドレス</label>
+				<input type="text" name="email" placeholder="メールアドレス" th:value="${user.email}">
+			</div>
+			<div>
+				<label>パスワード</span>
+					<input type="password" name="password" placeholder="パスワード" th:value="${user.password}">
+			</div>
 			<button>確認画面に進む</button>
 		</form><br>
 		<a href="/login">ログイン画面へ戻る</a>
