@@ -1,7 +1,7 @@
 <header>
 	<div class="user">
 		<p th:text="${@account.name}+' さんがログイン中'"></p>
-		<a href="/logout"></a>
+		<a href=""></a>
 	</div>
 	<!--	<div class="setting">-->
 	<!--		<p th:text="設定"></p>-->
@@ -17,8 +17,8 @@
 			<li><a href="/todoList">TODOリスト</a></li>
 			<li><a href="#">Menu <span>▼</span></a>
 				<ul>
-					<li><a href="#">プロフィール</a></li>
-					<li><a href="#"><img src="/images/logout.png" alt="logout">ログアウト</a></li>
+					<li><a href="/profile">プロフィール</a></li>
+					<li><a href="/logout"><img src="/images/logout.png" alt="logout">ログアウト</a></li>
 				</ul>
 			</li>
 		</ul>

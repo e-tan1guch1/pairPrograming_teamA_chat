@@ -38,56 +38,56 @@ public class ChatController {
 	@Autowired
 	UserRepository userRepository;
 
-//	@GetMapping("/chat")
-//	public String chat(
-//			Model m) {
-//
-//		// チャット内容の全件検索
-//		List<Chat> chats = chatRepository.findAll();
-//		List<Display> displays = new ArrayList<>();
-//		List<User> addressList = userRepository.findAll();
-//
-//		for (Chat chat : chats) {
-//			int userId = chat.getUserId();
-//			Optional<User> opt = userRepository.findById(userId);
-//			if (opt.isPresent()) {
-//				displays.add(new Display(opt.get().getName(), chat.getText()));
-//			}
-//		}
-//		for (Display display : displays) {
-//			System.out.println(display);
-//		}
-//		m.addAttribute("chats", displays);
-//		m.addAttribute("addressList", addressList);
-//
-//		return "Chat";
-//	}
-	
+	//	@GetMapping("/chat")
+	//	public String chat(
+	//			Model m) {
+	//
+	//		// チャット内容の全件検索
+	//		List<Chat> chats = chatRepository.findAll();
+	//		List<Display> displays = new ArrayList<>();
+	//		List<User> addressList = userRepository.findAll();
+	//
+	//		for (Chat chat : chats) {
+	//			int userId = chat.getUserId();
+	//			Optional<User> opt = userRepository.findById(userId);
+	//			if (opt.isPresent()) {
+	//				displays.add(new Display(opt.get().getName(), chat.getText()));
+	//			}
+	//		}
+	//		for (Display display : displays) {
+	//			System.out.println(display);
+	//		}
+	//		m.addAttribute("chats", displays);
+	//		m.addAttribute("addressList", addressList);
+	//
+	//		return "Chat";
+	//	}
+
 	@GetMapping("/chat")
 	public String chat(
 			Model m) {
-		
-		ArrayList<String>demo = new ArrayList<String>();
-		
+
+		ArrayList<String> demo = new ArrayList<String>();
+
 		demo.add(new String("ここにメッセージが表示されます"));
 		demo.add(new String("左のリストから送信先を選択して、 チャットを始めよう！"));
-		
-        //自分以外の連絡先を取得
+
+		//自分以外の連絡先を取得
 		List<User> userList = userRepository.findAll();
-		List<Address> addressList = new ArrayList<>();	
+		List<Address> addressList = new ArrayList<>();
 		for (User user : userList) {
-			if(user.getId()!=account.getId()) {
-				addressList.add(new Address(user.getId(),user.getName(), user.getEmail()));
+			if (user.getId() != account.getId()) {
+				addressList.add(new Address(user.getId(), user.getName(), user.getEmail()));
 			}
 		}
 
 		m.addAttribute("addressList", addressList);
 		m.addAttribute("demo", demo);
-		
-		 return "Chat";
-		
+
+		return "Chat";
+
 	}
-	
+
 	@PostMapping("/chat/add")
 	public String add(
 			Model m,
@@ -97,11 +97,13 @@ public class ChatController {
 		System.out.println("addressId:" + addressId);
 		LocalDateTime timeNow = LocalDateTime.now();
 
-		chatRepository.save(new Chat(account.getId(), text, addressId, timeNow));
+		if (!text.equals("")) {
+			chatRepository.save(new Chat(account.getId(), text, addressId, timeNow));
+		}
 
-		if(addressId == null) {
+		if (addressId == null) {
 			return "redirect:/chat";
-		}else {
+		} else {
 			return "redirect:/chat/" + addressId;
 		}
 	}
@@ -116,31 +118,30 @@ public class ChatController {
 		List<Chat> chats = chatRepository.findEachChat1(account.getId(), addressId);
 		List<Chat> chats2 = chatRepository.findEachChat2(account.getId(), addressId);
 		chats.addAll(chats2);
-		
-		// チャット履歴を時間でソート
-        Collections.sort(
-                chats, 
-                new Comparator<Chat>() {
-                    @Override
-                    public int compare(Chat obj1, Chat obj2) {
-                        if(obj2.getDate().isBefore(obj1.getDate())) {
-                        	return 1;
-                        }else {
-                        	return -1;
-                        }
-                    }
-                }
-            );
 
-        //自分以外の連絡先を取得
+		// チャット履歴を時間でソート
+		Collections.sort(
+				chats,
+				new Comparator<Chat>() {
+					@Override
+					public int compare(Chat obj1, Chat obj2) {
+						if (obj2.getDate().isBefore(obj1.getDate())) {
+							return 1;
+						} else {
+							return -1;
+						}
+					}
+				});
+
+		//自分以外の連絡先を取得
 		List<User> userList = userRepository.findAll();
-		List<Address> addressList = new ArrayList<>();	
+		List<Address> addressList = new ArrayList<>();
 		for (User user : userList) {
-			if(user.getId()!=account.getId()) {
-				addressList.add(new Address(user.getId(),user.getName(), user.getEmail()));
+			if (user.getId() != account.getId()) {
+				addressList.add(new Address(user.getId(), user.getName(), user.getEmail()));
 			}
 		}
-		
+
 		m.addAttribute("addressId", addressId);
 		m.addAttribute("addressName", userRepository.findById(addressId).get().getName());
 		m.addAttribute("chats", chats);
