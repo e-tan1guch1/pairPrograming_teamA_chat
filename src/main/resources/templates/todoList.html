@@ -14,21 +14,33 @@
 
 	<hr>
 	<div class="container">
-	<table border="1">
-		<tr>
-			<th>記入日</th>
-			<th>時間</th>
-			<th>実行リスト</th>
-			<th></th>
-		</tr>
-		<th:block th:each=" todo: ${todos}">
+		<table border="1">
 			<tr>
-				<td>[[${todo.releaseDate}]]</td>
-				<td>[[${todo.hour}]]時[[${todo.minute}]]分</td>
-				<td>[[${todo.text}]]</td>
+				<th>ID</th>
+				<th>記入日</th>
+				<th>時間</th>
+				<th>実行リスト</th>
+				<th> </th>
+				<th> </th>
 			</tr>
-		</th:block>
-	</table>
+			<th:block th:each=" todo: ${todos}">
+				<tr>
+					<td>[[${todo.releaseDate}]]</td>
+					<td>[[${todo.hour}]]時[[${todo.minute}]]分</td>
+					<td>[[${todo.text}]]</td>
+					<td>
+						<form th:action="|/todoList/${todo.id}/edit|" method="get">
+							<input type="submit" value="変更">
+						</form>
+					</td>
+					<td>
+						<form th:action="|/todoList/${todo.id}/delete|" method="post">
+							<input type="submit" value="実行済み">
+						</form>
+					</td>
+				</tr>
+			</th:block>
+		</table>
 	</div>
 
 	<footer th:replace="footer"></footer>
