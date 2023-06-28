@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+body{
+	background: peachpuff;
+}
+
 div.user {
 	margin-left: auto;
 	margin-right: 20px;
@@ -19,35 +23,63 @@ div.user a {
 	right: 2%;
 }
 
-
-.container a {
-	text-decoration: none;
-}
-
-
 .container {
-	text-align: center;
 	display: block;
 	width: 600px;
-	height: 450px;
-	background-color: #f06060;
+	height: 400px;
+/*	background-color: #f06060;*/
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 15px;
 	margin-bottom: 15px;
+	
+	background-color: white;
 }
 
-.saveForm {
+.container input{
+	background-color: whitesmoke;
+	border-radius: 10px;
+	padding-left:100px;
+}
+
+a{
+	color:#f06060;
+}
+
+button {
 	display: block;
-	margin: auto;
-	text-align: left;
-	width: 530px;
+	text-align: center;
+	text-decoration: none;
+	width: 50px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	font-weight: bold;
+	border: 2px solid #fff;
+	color: #fff;
+/*	background: #f06060;*/
+
+	border-radius: 10px;
+	background: lightcoral;
+	
 }
 
-.saveForm input {
+button:hover {
+	background: #fff;
+	color: #f06060;
+	border-color: lightcoral;
+}
+
+footer{
+	position:fixed;
+	bottom:0;
+	width:100%;
+}
+
+input {
 	position: relative;
 	display: block;
-	width: 500px;
+	width: 400px;
 	padding: 15px;
 	border: none;
 	border-radius: 5px;
@@ -56,20 +88,7 @@ div.user a {
 	outline: none;
 }
 
-button {
-	display: block;
-	text-align: center;
-	text-decoration: none;
-	width: 500px;
-	padding: 1rem 4rem;
-	margin-top: 50px;
-	margin-right: 10px;
-	margin-left: 10px;
-	font-weight: bold;
-	border: 2px solid #fff;
-	color: #fff;
-	background: #f06060;
-}
+
 
 button:hover {
 	background: #fff;
@@ -114,10 +133,16 @@ button:hover {
 	float: right;
 }
 
-.saveForm div {
+table {
 	padding-top: 30px;
 }
 
 .saveForm div input {
 	display: inline-block;
+}
+
+td{
+	padding-left:10px;
+	text-align: left;
+	color: lightcoral;
 }
