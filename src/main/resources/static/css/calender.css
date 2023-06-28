@@ -82,6 +82,7 @@ header placeholder {
 /* calender用 CSS */
 .calendar-container {
 	width: 500px;
+	height:321px;
 	margin: 0 auto;
 	border-radius: 5px;
 	background: #f6f5f4;

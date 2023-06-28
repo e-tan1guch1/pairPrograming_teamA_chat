@@ -37,7 +37,7 @@ public class todoController {
 	@GetMapping("/todoList")
 	public String list() {
 		
-		return "todolist";
+		return "todoList";
 	}
 	
 
@@ -58,7 +58,7 @@ public class todoController {
 		Todo todos = new Todo(releaseDate,hour, minute, text);
 		todoRepository.save(todos);
 
-		return "redirect:/todolist";
+		return "redirect:/todoList";
 	}
 
 	//	@GetMapping("/chat/diary")
