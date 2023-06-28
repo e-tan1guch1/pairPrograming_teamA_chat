@@ -33,8 +33,6 @@ article {
 	display: flex;
 }
 
-/*あとでやる*/
-
 div.scroll {
 	overflow-y: scroll;
 	height: 480px;
@@ -49,6 +47,11 @@ div.scroll::-webkit-scrollbar {
 	display: none;
 }
 
+/*.scroll div{*/
+/*	display:inline-block;*/
+/*	text-align: center;*/
+/*}*/
+
 .send {
 	width: 60px;
 	height: 30px;
@@ -58,7 +61,7 @@ div.scroll::-webkit-scrollbar {
 	color: white;
 	position: absolute;
 	bottom: 10px;
-	left: 690px;
+	left: 695px;
 }
 
 textarea {
@@ -88,7 +91,6 @@ small {
 	float: left;
 	left: 70px;
 	display: inline-block;
-	/*	margin: 1.5em 20px 1.5em 15px;*/
 	padding: 7px 10px;
 	min-width: 120px;
 	max-width: 100%;
@@ -96,10 +98,7 @@ small {
 	font-size: 16px;
 	background: peachpuff;
 	border-radius: 15px;
-	
-	margin:auto;
-/*	text-align: center;*/
-}
+	}
 
 .balloon-left:before {
 	content: "";
@@ -110,13 +109,12 @@ small {
 	margin-top: -15px;
 	border: 15px solid transparent;
 	border-right: 25px solid peachpuff;
-	/*	要調整*/
 }
 
-.balloon-left p {
-	margin: 0;
-	padding: 0;
-}
+/*.balloon-left p {*/
+/*	margin: 0;*/
+/*	padding: 0;*/
+/*}*/
 
 .balloon-right {
 	position: relative;
@@ -146,10 +144,39 @@ small {
 	margin-top: -15px;
 	border: 15px solid transparent;
 	border-left: 25px solid peachpuff;
-	/*	要調整*/
 }
 
 .balloon-right p {
+	margin: 0;
+	padding: 0;
+}
+
+
+.balloon-demo {
+	position: absolute;
+	left: 250px;
+	display: inline-block;
+	margin: 1.5em 20px 1.5em 15px;
+	padding: 7px 10px;
+	min-width: 120px;
+	max-width: 100%;
+	color: #555;
+	font-size: 16px;
+	background: peachpuff;
+	border-radius: 15px;
+}
+
+.balloon-demo:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -30px;
+	margin-top: -15px;
+	border: 15px solid transparent;
+	border-right: 25px solid peachpuff;
+}
+
+.balloon-demo p {
 	margin: 0;
 	padding: 0;
 }

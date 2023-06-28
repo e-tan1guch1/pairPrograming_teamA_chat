@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>チャット画面</title>
+	<link rel="stylesheet" type="text/css" href="/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/css/profile.css">
+</head>
+
+<body>
+	<header th:replace="header"></header>
+	<div class="error">
+		<th:block th:if="${error}" th:each="e:${error}">
+			<div class="balloon-right">
+				<p>[[${e}]]</p>
+			</div><br><br>
+		</th:block>
+	</div>
+
+	<div class="container">
+
+		<form action="/login/newuser" method="post" class="saveForm">
+			<div>
+				<label>名前</label>
+				<input type="text" name="name" placeholder="名前" th:value="${user.name}">
+			</div>
+			<div>
+				<label>メールアドレス</label>
+				<input type="text" name="email" placeholder="メールアドレス" th:value="${user.email}">
+			</div>
+			<div>
+				<label>パスワード</span>
+					<input type="password" name="password" placeholder="パスワード" th:value="${user.password}">
+			</div>
+			<button>確認画面に進む</button>
+		</form><br>
+		<a href="/login">ログイン画面へ戻る</a>
+
+	</div>
+	<footer th:replace="footer"></footer>
+</body>
+
+</html>

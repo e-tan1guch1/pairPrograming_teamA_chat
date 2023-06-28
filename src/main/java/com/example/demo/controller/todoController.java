@@ -64,22 +64,40 @@ public class todoController {
 
 		return "redirect:/todoList";
 	}
-	@GetMapping("/users/{releaseDate}/edit")
+	
+	@GetMapping("/todoList/{id}/edit")
 	public String edit(
-			@PathVariable("releaseDate")LocalDate releaseDate,
+			@PathVariable("id")Integer id,
 			Model m) {
-		Todo todos = todoRepository.findByreleaseDate(releaseDate).get();
-		m.addAttribute("todos", todos);
+		Todo todo = todoRepository.findById(id).get();
+		m.addAttribute("todo", todo);
 
-		return "edit/todo";
+		return "edit";
 	}
 	
+	@PostMapping("/todoList/{id}/edit")
+	public String edit(
+			@PathVariable("id") Integer id,
+			@RequestParam(name = "releaseDate", defaultValue = "") 
+			@DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate releaseDate,
+			@RequestParam(name = "hour", required = false) Integer hour,
+			@RequestParam(name = "minute", required = false) Integer minute,
+			@RequestParam(name = "text", required = false) String text,
+			Model m) {
+		Todo todos = new Todo(id, releaseDate,hour, minute, text);
+		todoRepository.save(todos);
+		
+		return "redirect:/todoList";
+	}
 	
+	@PostMapping("/todoList/{id}/delete")
+	public String delete(
+			@PathVariable("id") Integer id,
+			Model m) {
+		todoRepository.deleteById(id);
 
-	//	@GetMapping("/chat/diary")
-	//	public String diary() {
-	//		session.invalidate();
-	//		return "diary";
-	//	}
+		return "redirect:/todoList";
+	}
+	
 
 }
