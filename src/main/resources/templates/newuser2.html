@@ -11,15 +11,22 @@
 
 	<header>
 		<div class="user">
-			<p text="新規登録情報　確認用ページ"></p>
+			<p>新規登録情報　確認用ページ</p>
 		</div>
 		<h1><a href="/login">チャットアプリ（仮）</a></h1>
 	</header>
 
+	<div class="error">
+			<div class="balloon-right">
+				<p>入力内容は<br>
+					こちらでよろしいですか？</p>
+			</div><br><br>
+	</div>
+
+
 
 	<div class="container">
-		入力内容はこちらでよろしいですか？
-		<form action="/login/newuser" method="post" class="saveForm">
+		<form action="/login/newuser2" method="post" class="saveForm">
 			<div class="box2">
 				<p th:text="${user.name}"></p>
 			</div>
