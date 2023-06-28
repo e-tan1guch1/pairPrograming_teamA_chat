@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -35,7 +36,10 @@ public class todoController {
 	TodoRepository todoRepository;
 	
 	@GetMapping("/todoList")
-	public String list() {
+	public String list(Model m) {
+		List<Todo> todos = todoRepository.findAll();
+		m.addAttribute("todos",todos);
+		
 		
 		return "todoList";
 	}
