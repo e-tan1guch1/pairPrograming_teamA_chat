@@ -90,7 +90,8 @@ ul>li>span {
 
 ul>li:hover>a {
 	background-color: #efefef;
-	color: #444;
+/*	color: #444;*/
+	color: white;
 }
 
 /* Submenu */

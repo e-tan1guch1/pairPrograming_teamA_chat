@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+body{
+	background: peachpuff;
+}
 
 div.user {
 	margin-left: auto;
@@ -30,11 +33,41 @@ div.user a {
 	display: block;
 	width: 600px;
 	height: 400px;
-	background-color: #f06060;
+/*	background-color: #f06060;*/
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 15px;
 	margin-bottom: 15px;
+	
+	background-color: white;
+}
+
+.container input{
+	background-color: whitesmoke;
+	border-radius: 10px;
+	padding-left:100px;
+}
+
+.email{
+	background-image: url(/images/mail.png);
+	background-repeat:no-repeat;
+	background-size: 25px 25px;
+	background-position: 11px 11px;
+}
+
+.password{
+	background-image: url(/images/key.png);
+	background-repeat:no-repeat;
+	background-size: 25px 25px;
+	background-position: 11px 11px;
+}
+
+.email:focus{
+background-image:none;
+}
+
+.password:focus{
+	background-image:none;
 }
 
 .loginForm {
@@ -56,6 +89,10 @@ div.user a {
 	outline: none;
 }
 
+a{
+	color:#f06060;
+}
+
 button {
 	display: block;
 	text-align: center;
@@ -68,11 +105,21 @@ button {
 	font-weight: bold;
 	border: 2px solid #fff;
 	color: #fff;
-	background: #f06060;
+/*	background: #f06060;*/
+
+	border-radius: 10px;
+	background: lightcoral;
+	
 }
 
 button:hover {
 	background: #fff;
 	color: #f06060;
+	border-color: lightcoral;
+}
 
+footer{
+	position:fixed;
+	bottom:0;
+	width:100%;
 }
