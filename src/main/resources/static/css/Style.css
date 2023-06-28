@@ -71,7 +71,7 @@ header div.user a {
 	display: inline-block;
 	width: 200px;
 	padding-top: 10px;
-	padding-bottom:10px;
+	padding-bottom: 10px;
 	margin: 0;
 	background: lightcoral;
 	text-align: center;
@@ -96,10 +96,10 @@ article {
 div.scroll {
 	overflow-y: scroll;
 	height: 480px;
-	width:100%;
+	width: 105%;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
-/*	border:solid blue;*/
+	/*	border:solid blue;*/
 	overflow-x: hidden;
 }
 
@@ -115,14 +115,14 @@ div.scroll::-webkit-scrollbar {
 	border-color: white;
 	color: white;
 	position: absolute;
-	bottom:10px;
-	left:690px;
+	bottom: 10px;
+	left: 690px;
 }
 
 textarea {
 	position: absolute;
-	bottom:50px;
-	left:570px;
+	bottom: 50px;
+	left: 570px;
 	border: 2px solid lightcoral;
 	border-radius: 0.67em;
 	padding: 0.5em;
@@ -143,10 +143,10 @@ small {
 
 .balloon-left {
 	position: relative;
-	float:left;
-	left: 50px;
+	float: left;
+	left: 70px;
 	display: inline-block;
-/*	margin: 1.5em 20px 1.5em 15px;*/
+	/*	margin: 1.5em 20px 1.5em 15px;*/
 	padding: 7px 10px;
 	min-width: 120px;
 	max-width: 100%;
@@ -154,12 +154,15 @@ small {
 	font-size: 16px;
 	background: peachpuff;
 	border-radius: 15px;
+	
+	margin:auto;
+/*	text-align: center;*/
 }
 
 .balloon-left:before {
 	content: "";
 	position: relative;
-	float:left;
+	float: left;
 	top: 11px;
 	left: -41px;
 	margin-top: -15px;
@@ -174,12 +177,12 @@ small {
 }
 
 .balloon-right {
-	position:relative;
-	float:right;
-/*	right: 150px;*/
+	position: relative;
+	float: right;
+	right: 60px;
 	display: inline-block;
-	margin-right:20px;
-/*	margin: 10px 15px 10px 20px;*/
+	text-align: center;
+	/*	margin: 10px 15px 10px 20px;*/
 	padding: 7px 10px;
 	min-width: 120px;
 	max-width: 100%;
@@ -187,13 +190,15 @@ small {
 	font-size: 16px;
 	background: peachpuff;
 	border-radius: 15px;
+	
+	margin:auto;
 }
 
 .balloon-right:before {
 	content: "";
 	position: relative;
-	float:right;
-/*	top: 10%;*/
+	float: right;
+	/*	top: 10%;*/
 	top: 11px;
 	right: -40px;
 	margin-top: -15px;
