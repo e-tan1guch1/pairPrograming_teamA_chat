@@ -119,6 +119,40 @@ button:hover {
 	padding: 0;
 }
 
+.balloon-left {
+	position: absolute;
+	right: 200px;
+	display: inline-block;
+	margin: 1.5em 15px 1.5em 20px;
+	padding: 7px 10px;
+	min-width: 120px;
+	max-width: 100%;
+	font-size: 16px;
+	background:lightcoral;;
+	border-radius: 15px;
+	color: lightcoral;
+}
+
+.balloon-left:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -25px;
+	margin-top: -15px;
+	border: 15px solid transparent;
+	border-right: 25px solid lightcoral;
+	/*	要調整*/
+}
+
+.balloon-left p {
+	margin: 0;
+	padding: 0;
+}
+
+.balloon-left a {
+color:floralwhite;
+}
+
 .error {
 	width: 200px;
 	height: 300px;
@@ -133,4 +167,17 @@ footer{
 	position:fixed;
 	bottom:0;
 	width:100%;
+}
+
+.box2 {
+    padding:12px  21px;
+    margin-top: 50px;
+    font-weight: bold;
+    color: #f06060;/*文字色*/
+    background:#fff1e6;
+    border-radius: 5px;/*角の丸み*/
+}
+.box2 p {
+    margin: 0; 
+    padding: 0;
 }

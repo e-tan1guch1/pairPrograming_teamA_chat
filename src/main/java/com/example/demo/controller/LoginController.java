@@ -127,7 +127,7 @@ public class LoginController {
 		userRepository.save(user);
 		m.addAttribute("user", user);
 
-		return "newuser3";
+		return "Login2";
 	}
 
 }
