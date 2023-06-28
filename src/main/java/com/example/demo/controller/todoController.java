@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -52,7 +53,6 @@ public class todoController {
 
 	@PostMapping("/todolist/newtodo")
 	public String todo(Model m,
-
 			@RequestParam(name = "releaseDate", defaultValue = "") 
 			@DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate releaseDate,
 			@RequestParam(name = "hour", required = false) Integer hour,
@@ -64,6 +64,17 @@ public class todoController {
 
 		return "redirect:/todoList";
 	}
+	@GetMapping("/users/{releaseDate}/edit")
+	public String edit(
+			@PathVariable("releaseDate")LocalDate releaseDate,
+			Model m) {
+		Todo todos = todoRepository.findByreleaseDate(releaseDate).get();
+		m.addAttribute("todos", todos);
+
+		return "edit/todo";
+	}
+	
+	
 
 	//	@GetMapping("/chat/diary")
 	//	public String diary() {

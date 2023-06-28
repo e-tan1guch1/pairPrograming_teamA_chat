@@ -20,8 +20,8 @@
 			<tr>
 				<th>時間</th>
 				<td>
-					<select id="hour"></select>時
-					<select id="minute"></select>分
+					<select id="hour" name="hour"></select>時
+					<select id="minute" name="minute"></select>分
 				</td>
 
 			</tr>
@@ -37,7 +37,7 @@
 		<script>
 			// 時間のドロップダウンメニューを生成
 			var hourDropdown = document.getElementById("hour");
-			for (var hour = 0; hour < 24; hour++) {
+			for (var hour = 00; hour < 24; hour++) {
 				var option = document.createElement("option");
 				option.text = hour.toString().padStart(2, "0");
 				hourDropdown.add(option);
@@ -45,7 +45,7 @@
 
 			// 分のドロップダウンメニューを生成
 			var minuteDropdown = document.getElementById("minute");
-			for (var minute = 0; minute < 60; minute++) {
+			for (var minute = 00; minute < 60; minute++) {
 				var option = document.createElement("option");
 				option.text = minute.toString().padStart(2, "0");
 				minuteDropdown.add(option);
