@@ -11,12 +11,14 @@ body {
 
 header,
 footer {
+	position: relative;
 	color: white;
 	background-color: #f06060;
 	padding-top: 4px;
 	/* 内側余白(上) */
 	padding-bottom: 4px;
 	/* 内側余白(下) */
+	z-index: 20;
 }
 
 header div.user {
@@ -33,15 +35,15 @@ header div.setting {
 	width: 23%;
 }
 
-header div.application a {
-	color: white;
-	/*	height: 24px;*/
-	text-decoration: none;
-	display: inline-block;
-	justify-content: center;
-	align-items: center;
-	width: 180px;
-}
+/*header div.application a {*/
+/*	color: white;*/
+/*		height: 24px;*/
+/*	text-decoration: none;*/
+/*	display: inline-block;*/
+/*	justify-content: center;*/
+/*	align-items: center;*/
+/*	width: 180px;*/
+/*}*/
 
 header div.application a:hover {
 	background: indianred;
@@ -65,9 +67,57 @@ header div.user a {
 	right: 2%;
 }
 
-header div.setting a {
-	color: #ffffff;
+ul {
+	margin:0;
+	text-align: right;
+}
+
+ul>li {
+	display: inline-block;
+}
+
+ul>li>a {
+	padding: 15px 30px;
+	display: block;
+	font-size: 0.8em;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+}
+
+ul>li>span {
+	margin-left: 1.2em;
+}
+
+ul>li:hover>a {
+	background-color: #efefef;
+	color: #444;
+}
+
+/* Submenu */
+
+ul li ul {
 	position: absolute;
-	top: 8%;
-	right: 2%;
-}	
+	top: 180px;
+	right: 0;
+}
+
+ul li ul li {
+	display: block;
+}
+
+ul li ul li a {
+	background-color: #efefef;
+	color: #444;
+}
+
+ul li ul li a:hover {
+	background-color: #ddd;
+}
+
+.application ul li ul {
+	display: none;
+}
+
+.application ul li:hover ul {
+	display: block;
+}
