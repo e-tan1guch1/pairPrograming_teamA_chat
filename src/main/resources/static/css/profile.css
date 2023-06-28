@@ -40,14 +40,14 @@ div.user a {
 .saveForm {
 	display: block;
 	margin: auto;
-	text-align: center;
+	text-align: left;
+	width: 530px;
 }
 
 .saveForm input {
 	position: relative;
 	display: block;
 	width: 500px;
-	margin-top: 50px;
 	padding: 15px;
 	border: none;
 	border-radius: 5px;
@@ -114,8 +114,8 @@ button:hover {
 	float: right;
 }
 
-.saveForm div input {
-	display: inline-block;
+.saveForm div {
+	padding-top: 30px;
 }
 
 .saveForm div input {
