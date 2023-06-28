@@ -38,6 +38,15 @@ public class Todo {
 		this.minute = minute;
 		this.text = text;
 	}
+
+	public Todo(Integer id, LocalDate releaseDate, Integer hour, Integer minute, String text) {
+		this.id = id;
+		this.releaseDate = releaseDate;
+		this.hour = hour;
+		this.minute = minute;
+		this.text = text;
+	}
+	
 	
 
 }
