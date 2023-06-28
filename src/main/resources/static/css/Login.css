@@ -1,22 +1,5 @@
 @charset "UTF-8";
 
-body {
-	margin: 0;
-	padding: 0;
-	text-align: center;
-	min-width: 900px;
-	align-items: center;
-}
-
-header,
-footer {
-	color: white;
-	background-color: #f06060;
-	padding-top: 4px;
-	/* 内側余白(上) */
-	padding-bottom: 4px;
-	/* 内側余白(下) */
-}
 
 div.user {
 	margin-left: auto;
@@ -37,18 +20,6 @@ div.user a {
 	right: 2%;
 }
 
-.side {
-	width: 200px;
-	height: 500px;
-	text-align: center;
-	background-color: lightcoral;
-}
-
-.side a {
-	color: white;
-	text-decoration: none;
-}
-
 .container a{
 	
 	text-decoration:none;
@@ -64,23 +35,6 @@ div.user a {
 	margin-right: auto;
 	margin-top: 15px;
 	margin-bottom: 15px;
-}
-
-article {
-	display: flex;
-}
-
-.send {
-	width: 60px;
-	height: 30px;
-	background: lightcoral;
-	border-radius: 5px;
-	border-color: white;
-	color: white;
-}
-
-header placeholder {
-	color: #F5B8B5;
 }
 
 .loginForm {
