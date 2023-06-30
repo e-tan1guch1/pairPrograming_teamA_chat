@@ -67,7 +67,7 @@ public class LoginController {
 		if (errors.size() > 0) {
 			model.addAttribute("errors", errors);
 			model.addAttribute("email", email);
-			model.addAttribute("pasword", password);
+			model.addAttribute("password", password);
 		}
 		
 
