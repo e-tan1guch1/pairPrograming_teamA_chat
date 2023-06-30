@@ -66,7 +66,7 @@ background-color: white;
 	outline: none;
 }
 
-button {
+.container button {
 	display: block;
 	text-align: center;
 	text-decoration: none;
@@ -83,7 +83,7 @@ button {
 	background: lightcoral;
 }
 
-button:hover {
+.container button:hover {
 	background: #fff;
 	color: #f06060;
 	border-color: lightcoral;
@@ -151,6 +151,12 @@ button:hover {
 
 .balloon-left a {
 color:floralwhite;
+}
+
+.balloon-left button{
+	color:white;
+	border:none;
+	background-color: transparent;
 }
 
 .error {

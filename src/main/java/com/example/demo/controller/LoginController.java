@@ -75,23 +75,30 @@ public class LoginController {
 	}
 
 	@GetMapping("/login/newuser")
-	public String newuser() {
-		return "newuser";
-	}
-
-	@PostMapping("/login/newuser")
-	public String newuser(
-			@RequestParam(name = "name", required = false) String name,
+	public String newuser(@RequestParam(name = "name", required = false) String name,
 			@RequestParam(name = "email", required = false) String email,
 			@RequestParam(name = "password", required = false) String password,
 
 			Model m) {
+		
+		m.addAttribute("name", name);
+		m.addAttribute("email", email);
+		m.addAttribute("password", password);
+		return "newuser";
+	}
+
+	@PostMapping("/login/newuser")
+	public String newuser(Model m,
+			@RequestParam(name = "name", required = false) String name,
+			@RequestParam(name = "email", required = false) String email,
+			@RequestParam(name = "password", required = false) String password) {
 		List<String> error = new ArrayList<>();
 
 		if (name.equals("") == true) {
 			error.add("名前は必須です");
 
 		}
+		
 		if (email.equals("") == true) {
 			error.add("メールアドレスは必須です");
 
@@ -101,15 +108,17 @@ public class LoginController {
 				error.add("登録済みのメールアドレスです");
 			}
 		}
+		
 		if (password.equals("") == true) {
 			error.add("パスワードは必須です");
 		}
+		
 		if (error.size() > 0) {
 
 			m.addAttribute("error", error);
 			m.addAttribute("name", name);
 			m.addAttribute("email", email);
-			m.addAttribute("pasword", password);
+			m.addAttribute("password", password);
 			return "newuser";
 		}
 
@@ -138,7 +147,7 @@ public class LoginController {
 			m.addAttribute("error", error);
 			m.addAttribute("name", name);
 			m.addAttribute("email", email);
-			m.addAttribute("pasword", password);
+			m.addAttribute("password", password);
 			return "newuser";
 		}
 
