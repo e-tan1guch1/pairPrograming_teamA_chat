@@ -29,13 +29,18 @@ public class LoginController {
 	Account account;
 
 	@GetMapping({ "/login", "/logout" })
-	public String index() {
+	public String index(
+			
+			Model m) {
+		
 		session.invalidate();
+		
 		return "Login";
 	}
 
 	@PostMapping("/login")
 	public String login(Model model,
+			@RequestParam(name = "error", defaultValue = "") String error,
 			@RequestParam(name = "email", required = false) String email,
 			@RequestParam(name = "password", required = false) String password) {
 
@@ -51,6 +56,20 @@ public class LoginController {
 		} else {
 			page = "Login";
 		}
+		
+		List<String> errors = new ArrayList<>();
+		if (email.equals("") == true || email.length() == 0) {
+			errors.add( "e-mailを入力してください");
+		}
+		if (password.equals("") == true || password.length() == 0) {
+			errors.add("パスワードを入力してください");
+		}
+		if (errors.size() > 0) {
+			model.addAttribute("errors", errors);
+			model.addAttribute("email", email);
+			model.addAttribute("pasword", password);
+		}
+		
 
 		return page;
 	}

@@ -16,12 +16,19 @@
 		<h1>チャットアプリ（仮）</h1>
 	</header>
 
+
 	<div class="container">
 		<form action="/login" method="post" class="loginForm">
-			<input type="text" class="email" name="email" placeholder="　　メールアドレス">
-			<input type="password" class="password" name="password" placeholder="　　パスワード">
+			<span th:each="e:${errors}">[[${e}]]<br></span>
+			
+			<input type="text" class="email" name="email" placeholder="　　メールアドレス"
+			th:value="${email}">
+			<input type="password" class="password" name="password" placeholder="　　パスワード"
+			th:value="${password}">
 			<button>ログイン</button>
+			
 		</form><br><br>
+		
 		<a href="/login/newuser">新規会員登録はこちら</a>
 	</div>
 	<footer th:replace="footer"></footer>
