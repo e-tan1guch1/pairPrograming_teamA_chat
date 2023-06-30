@@ -157,14 +157,18 @@ public class ChatController {
 		
 		return "redirect:/chat/"+ addressId;
 	}
-//	@PostMapping("/chat/delete")
-//	public String delete(
-//			@PathVariable("addressId") Integer addressId,
-//			@PathVariable("text") Chat text,
-//			Model m) {
-//		chatRepository.delete(text);
-//
-//		return "redirect:/chat/" + "{addressId}";
-//	}
+	
+	@PostMapping("chat/{chatId}/delete")
+	public String delete(
+			@PathVariable("chatId") Integer chatId,
+			@RequestParam("addressId") Integer addressId,
+			Model m) {
+		
+		chatRepository. deleteById(chatId);
+		
+		return "redirect:/chat/"+ addressId;
+//		return "redirect:/chat/"+  ;
+	}
+
 
 }

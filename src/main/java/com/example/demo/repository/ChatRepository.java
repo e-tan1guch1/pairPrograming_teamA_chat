@@ -19,5 +19,6 @@ public interface ChatRepository extends JpaRepository<Chat, Integer> {
 			nativeQuery = true
 			)
 	List<Chat> findEachChat2(Integer id, Integer addressId);
+	
 
 }
