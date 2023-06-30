@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>TODOリスト変更</title>
+	<link rel="stylesheet" type="text/css" href="/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/css/friends.css">
+</head>
+
+<body>
+	<header th:replace="header"></header>
+
+	<div class="side">
+			<a th:href="|/friends|">フレンド一覧</a><br>
+			<a th:href="|/friends/add|">フレンド追加</a><br>
+			<a th:href="|/friends/list|">フレンド依頼</a><br>
+	</div>
+
+	<div class="label">フレンド一覧</div>
+	<div class="container">
+		<th:block th:each="friend: ${friends}">
+			<table>
+				<tr>
+					<td rowspan="2"><img src="/images/businessman48px.png" alt="icon"></td>
+					<td class="nameTd">[[${friend.name}]]</td>
+				</tr>
+				<tr>
+					<td class="emailTd">[[${friend.email}]]</td>
+					<td>
+						<form>
+							<button>削除</button>
+						</form>
+					</td>
+				</tr>
+			</table>
+		</th:block>
+	</div>
+</body>
+
+</html>

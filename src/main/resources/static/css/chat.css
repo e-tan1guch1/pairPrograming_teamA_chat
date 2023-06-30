@@ -5,6 +5,7 @@
 	height: 1000px;
 	text-align: center;
 	background-color: lightcoral;
+	overflow: hidden;
 }
 
 .side a {
@@ -98,9 +99,8 @@ small {
 	font-size: 16px;
 	background: peachpuff;
 	border-radius: 15px;
-	
 	z-index: 20;
-	}
+}
 
 .balloon-left:before {
 	content: "";
@@ -134,9 +134,9 @@ small {
 	font-size: 16px;
 	background: peachpuff;
 	border-radius: 15px;
-	
 	margin:auto;
 	z-index:20;
+	margin: auto;
 }
 
 .balloon-right:before {

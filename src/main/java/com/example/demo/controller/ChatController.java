@@ -149,5 +149,22 @@ public class ChatController {
 
 		return "Chat";
 	}
+	
+	@GetMapping("/chat/{addressId}/edit")
+	public String edit(
+			@PathVariable("addressId") Integer addressId,
+			Model m) {
+		
+		return "redirect:/chat/"+ addressId;
+	}
+//	@PostMapping("/chat/delete")
+//	public String delete(
+//			@PathVariable("addressId") Integer addressId,
+//			@PathVariable("text") Chat text,
+//			Model m) {
+//		chatRepository.delete(text);
+//
+//		return "redirect:/chat/" + "{addressId}";
+//	}
 
 }

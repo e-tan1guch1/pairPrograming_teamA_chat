@@ -34,6 +34,7 @@ public class LogincheckAspect {
 		// 未ログインの場合ログインページにリダイレクト
 		@Around("execution(* com.example.demo.controller.CalenderController.*(..)) ||"
 				+ "execution(* com.example.demo.controller.ChatController.*(..)) ||"
+				+ "execution(* com.example.demo.controller.FriendController.*(..)) ||"
 				+ "execution(* com.example.demo.controller.ProfileController.*(..)) ||"
 				+ "execution(* com.example.demo.controller.todoController.*(..))")
 		public Object checkLogin(ProceedingJoinPoint jp) throws Throwable {

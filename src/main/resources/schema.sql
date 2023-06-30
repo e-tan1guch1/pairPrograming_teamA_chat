@@ -2,6 +2,7 @@
 DROP TABLE IF EXISTS chats;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS todos;
+DROP TABLE IF EXISTS frends;
 
 -- チャットテーブル
 CREATE TABLE chats
@@ -12,7 +13,6 @@ CREATE TABLE chats
    address_id INTEGER,
    date TIMESTAMP
 );
-
 -- ユーザーテーブル
 CREATE TABLE users
 (
@@ -21,7 +21,13 @@ CREATE TABLE users
    email TEXT,
    password TEXT
 );
-
+-- フレンドテーブル
+CREATE TABLE frends
+(
+   id SERIAL PRIMARY KEY,
+   user_id INTEGER,
+   user2_id INTEGER
+);
 -- TODOテーブル
 CREATE TABLE todos
 (
