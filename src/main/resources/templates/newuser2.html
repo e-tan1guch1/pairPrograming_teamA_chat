@@ -24,7 +24,11 @@
 		</div><br><br><br><br>
 		
 		<div class="balloon-left">
-			<p><a href="#">戻って訂正する</a></p>
+				<form action="/login/newuser" method="get">
+				<button>戻って訂正する</button>
+				<input type="hidden" name="name" th:value="${user.name}">
+				<input type="hidden" name="email" th:value="${user.email}">
+					</form>				
 		</div><br><br>
 	</div>
 
