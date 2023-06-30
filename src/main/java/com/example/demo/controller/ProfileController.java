@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,64 +19,110 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class ProfileController {
-	
+
 	@Autowired
 	HttpSession session;
-	
+
 	@Autowired
 	Account account;
-	
+
 	@Autowired
 	UserRepository userRepository;
-	
+
 	@GetMapping("/profile")
 	public String profile(Model m) {
-		
+
+		//アカウント情報表示用
 		User user = userRepository.findById(account.getId()).get();
-		
 		m.addAttribute("user", user);
+
+		return "profile";
+	}
+
+	//名前変更用メソッド
+	@PostMapping("/profile/edit/name")
+	public String editNmae(Model m,
+			@RequestParam(name = "id", defaultValue = "") Integer id,
+			@RequestParam(name = "name", defaultValue = "") String name) {
+
+		List<String> error = new ArrayList<>();
+		User user = userRepository.findById(id).get();
+
+		//名前のエラーチェック
+		if (name.equals("") == true) {
+			error.add("名前は1文字以上で記入してください");
+		}
+		if (error.size() > 0) {
+			m.addAttribute("error", error);
+		} else {
+			//エラーがなければ変更
+			userRepository.save(new User(account.getId(), name, user.getEmail(), user.getPassword()));
+			account.setName(name);
+		}
+		m.addAttribute("user", user);
+
+		return "profile";
+	}
+
+	@PostMapping("/profile/edit/email")
+	public String editEmail(Model m,
+			@RequestParam(name = "id", defaultValue = "") Integer id,
+			@RequestParam(name = "email", defaultValue = "") String email) {
+
+		List<String> error = new ArrayList<>();
+		User user = userRepository.findById(id).get();
+
+		//メールアドレスのエラーチェック
+		if (email.equals("") == true) {
+			error.add("メールアドレスは1文字以上で記入してください");
+		} else if (!isMailAddress(email)) {
+			error.add("メールアドレスを入力してください");
+		} else if (userRepository.findByEmail(email).isPresent()) {
+			error.add("登録済みのメールアドレスです");
+		}
+		if (error.size() > 0) {
+			m.addAttribute("error", error);
+		} else {
+			//エラーがなければ変更
+			userRepository.save(new User(account.getId(), user.getName(), email, user.getPassword()));
+		}
+		m.addAttribute("user", user);
+
 		return "profile";
 	}
 	
-	@PostMapping("/profile")
-	public String profile2(Model m,
-			@RequestParam(name="", defaultValue="")String name,
-			@RequestParam(name="", defaultValue="")String email,
-			@RequestParam(name="", defaultValue="")String password
-			) {
-		
+	//名前変更用メソッド
+	@PostMapping("/profile/edit/password")
+	public String editPassword(Model m,
+			@RequestParam(name = "id", defaultValue = "") Integer id,
+			@RequestParam(name = "password", defaultValue = "") String password) {
+
 		List<String> error = new ArrayList<>();
-		
-		if (name.equals("") == true) {
-			error.add("名前は必須です");
+		User user = userRepository.findById(id).get();
 
-		}
-		if (email.equals("") == true) {
-			error.add("メールアドレスは必須です");
-
-		} else {
-			Optional<User> opt = userRepository.findByEmail(email);
-			if (opt.isPresent()) {
-				error.add("登録済みのメールアドレスです");
-			}
-		}
+		//名前のエラーチェック
 		if (password.equals("") == true) {
-			error.add("パスワードは必須です");
+			error.add("パスワードは1文字以上で記入してください");
 		}
 		if (error.size() > 0) {
-
 			m.addAttribute("error", error);
-			m.addAttribute("name", name);
-			m.addAttribute("email", email);
-			m.addAttribute("pasword", password);
+		} else {
+			//エラーがなければ変更
+			userRepository.save(new User(account.getId(), user.getName(), user.getEmail(), password));
 		}
-		
-		userRepository.save(new User(account.getId(), name, email, password));
-		
-		User user = userRepository.findById(account.getId()).get();
-		
 		m.addAttribute("user", user);
+
 		return "profile";
+	}
+
+	// メールアドレスかどうかを判定
+	public static boolean isMailAddress(String value) {
+	    boolean result = false;
+	    if (value != null) {
+	        Pattern pattern = Pattern.compile("^([a-zA-Z0-9])+([a-zA-Z0-9._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9._-]+)+$");
+	        result = pattern.matcher(value).matches();
+	    }
+	    return result;
 	}
 
 }
