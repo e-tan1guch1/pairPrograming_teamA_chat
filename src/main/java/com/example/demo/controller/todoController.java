@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.Chat;
 import com.example.demo.entity.Todo;
 import com.example.demo.model.Account;
 import com.example.demo.repository.TodoRepository;
@@ -40,7 +43,27 @@ public class todoController {
 	public String list(Model m) {
 		List<Todo> todos = todoRepository.findAll();
 		m.addAttribute("todos",todos);
+				
+//		Optional<Todo> opt = todoRepository.findById(account.getId());
+//		Todo todo =null;
+//		
+//		if (opt.isPresent()) {
+//			todo = opt.get();
+//			m.addAttribute("date",todo.getReleaseDate());
+//				}
 		
+		Collections.sort(
+				todos,
+				new Comparator<Todo>() {
+					@Override
+					public int compare(todos) {
+						if (obj2.getDate().isBefore(obj1.getDate())) {
+							return 1;
+						} else {
+							return -1;
+						}
+					}
+				});
 		
 		return "todoList";
 	}

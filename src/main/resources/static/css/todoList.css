@@ -1,40 +1,46 @@
 @charset "UTF-8";
+article {
+	display: flex;
+}
 
-.content {
-	width: 1000px;
-	height: 300px;
+.side {
+	width: 200px;
+	height: 1000px;
+	text-align: center;
+	background-color: lightcoral;
+}
+
+.side a {
+	color: white;
+	text-decoration: none;
+	display: inline-block;
+	width: 200px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin: 0;
+	background: lightcoral;
 	text-align: center;
 }
 
-/*あとでやる*/
-
-section.scroll {
-	overflow-y: none;
-	height: 250px;
+.side a:hover {
+	background: #f07070;
 }
 
-.send {
-	width: 60px;
-	height: 30px;
-	background: lightcoral;
-	border-radius: 5px;
-	border-color: white;
-	color: white;
+.container div{
+/*	display:inline-block;*/
+/*	display:block;*/
+
+	position: relative;
+	text-decoration: underline dashed 2px lightcoral;
+	text-underline-offset: 8px;
+	padding-top: 10px;
+	left: 120px;
+/*	min-width:500px;*/
 }
 
-textarea {
-	border: 2px solid lightcoral;
-	border-radius: 0.67em;
-	padding: 0.5em;
-	background-color: snow;
-	outline: none;
-	color: #666666;
-}
-
-header placeholder {
-	color: #F5B8B5;
-}
-
-.container {
-	display:inline-block;
+.container p{
+	position:relative;
+	left:100px;
+	font-size: 20px;
+	color:#f07070;
 }

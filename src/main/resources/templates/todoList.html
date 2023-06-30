@@ -10,42 +10,33 @@
 
 <body>
 	<header th:replace="header"></header>
+	<article>
+		<div class="side">
+			<a href="/todolist/newtodo">新規入力</a>
+		</div>
 
-	<a href="/todolist/newtodo">新規入力</a>
-
-	<hr>
-	<div class="container">
-		<table border="1">
-			<tr>
-				<th>記入日</th>
-				<th>時間</th>
-				<th>実行リスト</th>
-				<th> </th>
-				<th> </th>
-			</tr>
-			<th:block th:each=" todo: ${todos}">
-				<tr>
-					<input type="hidden" name="{todo.id}" value="id">
-
-					<td>[[${todo.releaseDate}]]</td>
-					<td>[[${todo.hour}]]時[[${todo.minute}]]分</td>
-					<td>[[${todo.text}]]</td>
-					<td>
-						<form th:action="|/todoList/${todo.id}/edit|" method="get">
-							<input type="submit" value="変更">
-						</form>
-					</td>
-					<td>
+		<div class="container">
+			<th:block th:each="todo: ${todos}">
+				<p style="padding-top: 6px;">[[${todo.releaseDate}]]</p>
+				<th:block th:each=" todo: ${todos}">
+					
+					<div style="display:inline-flex">
+						<input type="hidden" name="{todo.id}" value="id">
 						<form th:action="|/todoList/${todo.id}/delete|" method="post">
 							<input type="submit" value="実行済み">
 						</form>
-					</td>
-				</tr>
+						　[[${todo.hour}]]時[[${todo.minute}]]分
+						　[[${todo.text}]]　
+						<form th:action="|/todoList/${todo.id}/edit|" method="get">
+							<input type="submit" value="変更">
+						</form>
+					</div>
+					<br>
+				</th:block><br>
 			</th:block>
-		</table>
-	</div>
-
-	<footer th:replace="footer"></footer>
+			<br><br>
+		</div>
+	</article>
 </body>
 
 </html>
