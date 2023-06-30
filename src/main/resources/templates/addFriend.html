@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>チャット画面</title>
+	<link rel="stylesheet" type="text/css" href="/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/css/addFriend.css">
+</head>
+
+<body>
+	<header th:replace="header"></header>
+
+	<div class="side">
+		<a th:href="|/friends|">フレンド一覧</a><br>
+		<a th:href="|/friends/add|">フレンド追加</a><br>
+		<a th:href="|/friends/list|">フレンド依頼</a><br>
+	</div>
+
+	<div class="label">フレンド追加</div>
+	<div class="container">
+		<div>
+			<form action="/friends/add" method="get" class="addForm">
+				<table>
+					<input type="hidden" name="id" th:value="${@account.id}">
+					<input type="hidden" name="search" value="search">
+					<tr>
+						<td><label>メールアドレス</label></td>
+					</tr>
+					<tr>
+						<td><input type="text" name="email" placeholder="メールアドレス"></td>
+						<td><button>検索</button></td>
+					</tr>
+				</table>
+			</form>
+			<th:block th:if="${friend}">
+				<table class="userProfile">
+					<tr>
+						<td rowspan="2"><img src="/images/businessman48px.png" alt="icon"></td>
+						<td class="nameTd">[[${friend.name}]]</td>
+					</tr>
+					<tr>
+						<td class="emailTd">[[${friend.email}]]</td>
+						<td>
+							<form action="/friends/add" method="get" class="requestForm">
+								<button>リクエスト</button>
+							</form>
+						</td>
+					</tr>
+				</table>
+
+			</th:block>
+			<th:block th:if="${error}">
+				[[${error}]]
+			</th:block>
+		</div>
+
+	</div>
+	<footer th:replace="footer"></footer>
+</body>
+
+</html>
