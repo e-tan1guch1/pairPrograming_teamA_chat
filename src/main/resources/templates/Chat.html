@@ -29,16 +29,23 @@
 			<th:block th:if="${chats != null}">
 				<small style="padding-top: 6px;">[[${addressName}]]</small>
 				<small style="padding-top: 6px; right:-670px">あなた</small>
+
 			</th:block>
+
 			<br>
 			<div class="scroll">
 				<th:block th:each="chat : ${chats}">
 					<th:block th:if="${chat.userId} == ${@account.id}">
 						<div class="balloon-right">[[${chat.text}]]</div><br><br>
+<!--						<form action="chat/delete" method="post">-->
+<!--						<button>消す</button></form>-->
 					</th:block>
 					<th:block th:if="${chat.userId} != ${@account.id}">
 						<div class="balloon-left">[[${chat.text}]]</div><br><br>
+<!--						<form action="chat/delete" method="post">-->
+<!--						<button>消す</button></form>-->
 					</th:block>
+					
 				</th:block>
 
 				<th:block th:if="${addressId != null}">
@@ -48,8 +55,14 @@
 						<textarea name="text" cols="40" rows="10" placeholder="メッセージを入力"></textarea>
 						<input type="hidden" name="addressId" th:value="${addressId}"><br>
 						<button class="send">送信</button>
+
 					</form><br>
+					<form　action="|/chat/${addressId}/edit|" method="get">
+						<input type="hidden" name="addressId" th:value="${addressId}"><br><br>
+						<button>更新</button>
+					</form>
 				</th:block>
+
 			</div>
 			<br>
 		</block>
