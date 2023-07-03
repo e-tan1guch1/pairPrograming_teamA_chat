@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Component;
 
@@ -27,24 +28,28 @@ public class Todo {
 	private Integer minute;
 	private String text; // 内容
 	
+	private LocalDateTime date;
+	
 
 	public Todo() {
 		
 	}
 	
-	public Todo(LocalDate releaseDate,Integer hour, Integer minute,String text) {
+	public Todo(LocalDate releaseDate,Integer hour, Integer minute,String text, LocalDateTime date) {
 		this.releaseDate = releaseDate;
 		this.hour = hour;
 		this.minute = minute;
 		this.text = text;
+		this.date = date;
 	}
 
-	public Todo(Integer id, LocalDate releaseDate, Integer hour, Integer minute, String text) {
+	public Todo(Integer id, LocalDate releaseDate, Integer hour, Integer minute, String text, LocalDateTime date) {
 		this.id = id;
 		this.releaseDate = releaseDate;
 		this.hour = hour;
 		this.minute = minute;
 		this.text = text;
+		this.date =date;
 	}
 	
 	

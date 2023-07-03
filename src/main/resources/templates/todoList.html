@@ -16,10 +16,16 @@
 		</div>
 
 		<div class="container">
+<!--			[[${test}]]-->
+			
+<!--			<th:block th:each="test2: ${test2}">-->
+<!--			[[${test2}]]-->
+<!--			</th:block>-->
+			
 			<th:block th:each="todo: ${todos}">
 				<p style="padding-top: 6px;">[[${todo.releaseDate}]]</p>
-				<th:block th:each=" todo: ${todos}">
-					
+				
+				<th:block th:each=" todo: ${todos}">					
 					<div style="display:inline-flex">
 						<input type="hidden" name="{todo.id}" value="id">
 						<form th:action="|/todoList/${todo.id}/delete|" method="post">

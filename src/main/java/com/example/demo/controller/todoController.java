@@ -1,9 +1,11 @@
 package com.example.demo.controller;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -14,7 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.entity.Chat;
 import com.example.demo.entity.Todo;
 import com.example.demo.model.Account;
 import com.example.demo.repository.TodoRepository;
@@ -44,20 +45,23 @@ public class todoController {
 		List<Todo> todos = todoRepository.findAll();
 		m.addAttribute("todos",todos);
 				
-//		Optional<Todo> opt = todoRepository.findById(account.getId());
-//		Todo todo =null;
-//		
-//		if (opt.isPresent()) {
-//			todo = opt.get();
+		Optional<Todo> opt = todoRepository.findById(account.getId());
+		Todo todo =null;
+		
+		if (opt.isPresent()) {
+			todo = opt.get();
 //			m.addAttribute("date",todo.getReleaseDate());
-//				}
+			String localDateStr = todo.getReleaseDate().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+			
+			m.addAttribute("test",localDateStr);
+				}
 		
 		Collections.sort(
 				todos,
 				new Comparator<Todo>() {
 					@Override
-					public int compare(todos) {
-						if (obj2.getDate().isBefore(obj1.getDate())) {
+					public int compare(Todo obj1, Todo obj2) {
+						if (obj2.getReleaseDate().isBefore(obj1.getReleaseDate())) {
 							return 1;
 						} else {
 							return -1;
@@ -65,6 +69,23 @@ public class todoController {
 					}
 				});
 		
+		List<Todo> list = todoRepository.findByReleaseDate(todo.getReleaseDate());
+		
+		
+//		ArrayList<String> test1 = new ArrayList<>(List.of("a","b","test"));
+//		ArrayList<String> test2 = new ArrayList<>(List.of("c", "d","test"));
+//		 
+//		ArrayList<ArrayList<String>> list = new ArrayList<>();
+//		list.add(test1);
+//		list.add(test2);
+//		for(int i = 0; i < list.size(); i++){
+//		    ArrayList l = list.get(i);
+//		    for(int j = 0; j < l.size(); j++){
+//		    	ArrayList p = list.get(j);
+//		    	m.addAttribute("test2",l);
+//		    }
+//		}
+				
 		return "todoList";
 	}
 	
