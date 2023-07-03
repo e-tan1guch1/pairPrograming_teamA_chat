@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>フレンド依頼一覧</title>
+	<link rel="stylesheet" type="text/css" href="/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/css/friendRequestList.css">
+</head>
+
+<body>
+	<header th:replace="header"></header>
+
+	<div class="side">
+		<a th:href="|/friends|">フレンド一覧</a><br>
+		<a th:href="|/friends/add|">フレンド追加</a><br>
+		<a th:href="|/friends/list|">フレンド依頼</a><br>
+	</div>
+
+	<div class="label">申請中のフレンド依頼</div>
+	<div class="container">
+		<th:block th:each="friend: ${sendRequests}">
+			<table>
+				<tr>
+					<td rowspan="2"><img src="/images/businessman48px.png" alt="icon"></td>
+					<td class="nameTd">[[${friend.name}]]</td>
+				</tr>
+				<tr>
+					<td class="emailTd">[[${friend.email}]]</td>
+					<td>
+						<form action="/friend/deleteRequest" method="post">
+							<input type="hidden" name="recieveUserId" th:value="${friend.id}">
+							<button>取り消し</button>
+						</form>
+					</td>
+				</tr>
+			</table>
+		</th:block>
+	</div>
+
+	<div class="label">承認待ちのフレンド依頼</div>
+	<div class="container">
+		<th:block th:each="friend: ${recieveRequests}">
+			<table>
+				<tr>
+					<td rowspan="2"><img src="/images/businessman48px.png" alt="icon"></td>
+					<td class="nameTd">[[${friend.name}]]</td>
+					<td>
+						<form action="/friend/refuseRequest" method="post">
+							<input type="hidden" name="sendUserId" th:value="${friend.id}">
+							<button>拒否する</button>
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td class="emailTd">[[${friend.email}]]</td>
+					<td>
+						<form action="/friend/approveRequest" method="post">
+							<input type="hidden" name="sendUserId" th:value="${friend.id}">
+							<button>フレンドになる</button>
+						</form>
+					</td>
+				</tr>
+			</table>
+		</th:block>
+	</div>
+</body>
+
+</html>

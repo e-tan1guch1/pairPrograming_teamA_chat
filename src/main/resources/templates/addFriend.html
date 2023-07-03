@@ -17,6 +17,14 @@
 		<a th:href="|/friends/list|">フレンド依頼</a><br>
 	</div>
 
+	<div class="error">
+		<th:block th:if="${error}">
+			<div class="balloon-right">
+				<p>[[${error}]]</p>
+			</div><br><br>
+		</th:block>
+	</div>
+
 	<div class="label">フレンド追加</div>
 	<div class="container">
 		<div>
@@ -28,7 +36,7 @@
 						<td><label>メールアドレス</label></td>
 					</tr>
 					<tr>
-						<td><input type="text" name="email" placeholder="メールアドレス"></td>
+						<td><input type="text" name="email" placeholder="メールアドレス" th:value="${email}"></td>
 						<td><button>検索</button></td>
 					</tr>
 				</table>
@@ -42,16 +50,14 @@
 					<tr>
 						<td class="emailTd">[[${friend.email}]]</td>
 						<td>
-							<form action="/friends/add" method="get" class="requestForm">
+							<form action="/friends/request" method="get" class="requestForm">
+								<input type="hidden" name="friendId" th:value="${friend.id}">
 								<button>リクエスト</button>
 							</form>
 						</td>
 					</tr>
 				</table>
 
-			</th:block>
-			<th:block th:if="${error}">
-				[[${error}]]
 			</th:block>
 		</div>
 
