@@ -16,12 +16,16 @@
 		</div>
 
 		<div class="container">
+			<div class="balloon-right">
+				今日の予定を確認しよう
+			</div>
+			
 			<th:block th:each="todo:${todo2}">
 					<input type="hidden" name="{todo.id}" value="id">
 					<span class="DATE" style="padding-top: 6px; clear:both;" th:if="${todo.id == 0}">
 						　　[[${todo.releaseDate}]]</span>
 
-					<br>
+<!--					<br>-->
 					<th:block th:unless="${todo.id == 0}">
 						<div style="display:inline-flex">
 						<form th:action="|/todoList/${todo.id}/delete|" method="post">

@@ -1,12 +1,17 @@
 @charset "UTF-8";
+
+body {
+	background: peachpuff;
+}
+
 article {
 	display: flex;
 }
 
 .side {
 	width: 200px;
-/*	height: 1000px;*/
-	height:3000px;
+	/*	height: 1000px;*/
+	height: 3000px;
 	text-align: center;
 	background-color: lightcoral;
 }
@@ -39,35 +44,102 @@ article {
 /*	min-width:500px;*/
 /*}*/
 
-.DATE{
-/*	position:relative;*/
-	position:static;
+.DATE {
+	/*	position:relative;*/
+	position: static;
 	float: left;
-	left:300px;
+	left: 300px;
 	font-size: 20px;
-	margin-top:10px;
-	color:#f07070;
+	margin-top: 10px;
+	color: #f07070;
 }
 
-.TODO{
+.TODO {
 	position: static;
-	left:300px;
+	left: 300px;
 	text-decoration: underline dashed 2px lightcoral;
 	text-underline-offset: 8px;
-/*	left: 120px;*/
-	
+	/*	left: 120px;*/
+
 }
 
-div.container{
+div.container {
 	overflow-y: scroll;
 	height: 480px;
-	width: 105%;
+	/*	width: 105%;*/
+	width: 600px;
+	height: 400px;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 	/*	border:solid blue;*/
 	overflow-x: hidden;
+
+	margin-left: auto;
+	margin-right: auto;
+
+	margin-top: 50px;
+	background-color: white;
+	padding-top: 15px;
+	margin-bottom: 15px;
+
+	display: flex;
+	flex-direction: column;
+
+	background-image: linear-gradient(#feecd3 1px, transparent 0),
+		linear-gradient(90deg, #feecd3 1px, transparent 0);
+	background-size: 20px 20px;
 }
 
 div.container::-webkit-scrollbar {
-	display: none;
+	width: 10px;
+}
+
+.container::-webkit-scrollbar-track {
+	background-color: white;
+}
+
+.container::-webkit-scrollbar-thumb {
+	background-color: #f06060;
+
+}
+
+.right {
+	align-items: flex-end;
+}
+
+.left {
+	align-items: flex-start;
+}
+
+.balloon-right {
+	position: absolute;
+	left: 200px;
+	display: inline-block;
+	margin: 10px 15px 1.5em 20px;
+	padding: 7px 10px;
+	min-width: 120px;
+	max-width: 100%;
+	font-size: 16px;
+	background: floralwhite;
+	border-radius: 15px;
+	color: #f06060;
+
+
+	text-align: center;
+}
+
+.balloon-right:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	/*	left: -25px;*/
+	right: -30px;
+	margin-top: -15px;
+	border: 15px solid transparent;
+	border-left: 25px solid floralwhite;
+}
+
+.balloon-right p {
+	margin: 0;
+	padding: 0;
 }
