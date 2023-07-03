@@ -29,6 +29,7 @@ textarea {
 	background-color: snow;
 	outline: none;
 	color: #666666;
+	white-space: pre-wrap;
 }
 
 header placeholder {
