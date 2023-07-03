@@ -49,31 +49,10 @@ public class todoController {
 		}
 		
 		Todo todo =null;
-		
-//		if (list.size()>0) {
-//			System.err.println("OK");
-//			todo = opt.get();
-////			m.addAttribute("date",todo.getReleaseDate());
-//			String localDateStr = todo.getReleaseDate().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-//			
-//			m.addAttribute("test",localDateStr);
-//				}
-		
-//		Collections.sort(
-//				todo2,
-//				new Comparator<Todo>() {
-//					@Override
-//					public int compare(Todo obj1, Todo obj2) {
-//						if (obj2.getReleaseDate().isBefore(obj1.getReleaseDate())) {
-//							return 1;
-//						} else {
-//							return -1;
-//						}
-//					}
-//				});
-	
+			
 		LocalDate tmp = LocalDate.of(1900, 1, 1);
-
+		
+		
 		for (int i = 0; i<todo2.size(); i++) {
 			Todo t = todo2.get(i);
 			LocalDate date = t.getReleaseDate();
