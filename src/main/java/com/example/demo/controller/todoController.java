@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.Comparator;
@@ -103,7 +104,9 @@ public class todoController {
 			@RequestParam(name = "minute", required = false) Integer minute,
 			@RequestParam(name = "text", required = false) String text) {
 
-		Todo todos = new Todo(releaseDate,hour, minute, text);
+		LocalDateTime timeNow = LocalDateTime.now();
+		
+		Todo todos = new Todo(releaseDate,hour, minute, text,timeNow);
 		todoRepository.save(todos);
 
 		return "redirect:/todoList";
@@ -128,7 +131,11 @@ public class todoController {
 			@RequestParam(name = "minute", required = false) Integer minute,
 			@RequestParam(name = "text", required = false) String text,
 			Model m) {
-		Todo todos = new Todo(id, releaseDate,hour, minute, text);
+		
+		LocalDateTime timeNow = LocalDateTime.now();
+		
+		Todo todos = new Todo(id,timeNow,hour, minute, text);
+//		Todo todos = new Todo(id, releaseDate,hour, minute, text);
 		todoRepository.save(todos);
 		
 		return "redirect:/todoList";
