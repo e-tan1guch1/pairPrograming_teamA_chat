@@ -35,5 +35,6 @@ CREATE TABLE todos
    releaseDate TIMESTAMP,
    hour INTEGER,
    minute INTEGER,
-   text TEXT
+   text TEXT,
+    user_id INTEGER
 );

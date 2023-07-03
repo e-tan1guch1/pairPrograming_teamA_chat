@@ -10,5 +10,7 @@ import com.example.demo.entity.Todo;
 
 public interface TodoRepository extends JpaRepository<Todo, Integer> {
 	Optional<Todo> findById(Integer id);
-	List<Todo> findByReleaseDate(LocalDate releaseDate);
+	List<Todo> findByReleaseDateAndUserId(LocalDate releaseDate,Integer userId);
+	List<Todo> findByUserIdOrderByReleaseDate(Integer userId);
+
 }

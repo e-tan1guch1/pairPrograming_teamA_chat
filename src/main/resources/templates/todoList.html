@@ -16,31 +16,29 @@
 		</div>
 
 		<div class="container">
-<!--			[[${test}]]-->
-			
-<!--			<th:block th:each="test2: ${test2}">-->
-<!--			[[${test2}]]-->
-<!--			</th:block>-->
-			
-			<th:block th:each="todo: ${todos}">
-				<p style="padding-top: 6px;">[[${todo.releaseDate}]]</p>
-				
-				<th:block th:each=" todo: ${todos}">					
-					<div style="display:inline-flex">
-						<input type="hidden" name="{todo.id}" value="id">
+			<th:block th:each="todo:${todo2}">
+					<input type="hidden" name="{todo.id}" value="id">
+					<span class="DATE" style="padding-top: 6px; clear:both;" th:if="${todo.id == 0}">
+						　　[[${todo.releaseDate}]]</span>
+
+					<br>
+					<th:block th:unless="${todo.id == 0}">
+						<div style="display:inline-flex">
 						<form th:action="|/todoList/${todo.id}/delete|" method="post">
-							<input type="submit" value="実行済み">
+							　　　　　　　<input type="submit" value="実行済み">
 						</form>
+						<span class="TODO">
 						　[[${todo.hour}]]時[[${todo.minute}]]分
 						　[[${todo.text}]]　
+						</span>
 						<form th:action="|/todoList/${todo.id}/edit|" method="get">
 							<input type="submit" value="変更">
 						</form>
-					</div>
+						</div>
+						<div></div>
+					</th:block>
 					<br>
-				</th:block><br>
 			</th:block>
-			<br><br>
 		</div>
 	</article>
 </body>

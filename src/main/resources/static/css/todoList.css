@@ -5,7 +5,8 @@ article {
 
 .side {
 	width: 200px;
-	height: 1000px;
+/*	height: 1000px;*/
+	height:3000px;
 	text-align: center;
 	background-color: lightcoral;
 }
@@ -26,21 +27,47 @@ article {
 	background: #f07070;
 }
 
-.container div{
+/*.container div{*/
 /*	display:inline-block;*/
 /*	display:block;*/
 
-	position: relative;
-	text-decoration: underline dashed 2px lightcoral;
-	text-underline-offset: 8px;
-	padding-top: 10px;
-	left: 120px;
+/*	position: relative;*/
+/*	text-decoration: underline dashed 2px lightcoral;*/
+/*	text-underline-offset: 8px;*/
+/*	padding-top: 10px;*/
+/*	left: 120px;*/
 /*	min-width:500px;*/
+/*}*/
+
+.DATE{
+/*	position:relative;*/
+	position:static;
+	float: left;
+	left:300px;
+	font-size: 20px;
+	margin-top:10px;
+	color:#f07070;
 }
 
-.container p{
-	position:relative;
-	left:100px;
-	font-size: 20px;
-	color:#f07070;
+.TODO{
+	position: static;
+	left:300px;
+	text-decoration: underline dashed 2px lightcoral;
+	text-underline-offset: 8px;
+/*	left: 120px;*/
+	
+}
+
+div.container{
+	overflow-y: scroll;
+	height: 480px;
+	width: 105%;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	/*	border:solid blue;*/
+	overflow-x: hidden;
+}
+
+div.container::-webkit-scrollbar {
+	display: none;
 }
