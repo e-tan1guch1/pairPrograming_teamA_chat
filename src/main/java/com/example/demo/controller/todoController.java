@@ -70,9 +70,9 @@ public class todoController {
 					}
 				});
 		
-		if(todo.getReleaseDate()!=null) {
+//		if(todo.getReleaseDate()!=null) {
 		List<Todo> list = todoRepository.findByReleaseDate(todo.getReleaseDate());
-		}
+//		}
 		
 //		ArrayList<String> test1 = new ArrayList<>(List.of("a","b","test"));
 //		ArrayList<String> test2 = new ArrayList<>(List.of("c", "d","test"));
