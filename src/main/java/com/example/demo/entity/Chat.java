@@ -29,6 +29,9 @@ public class Chat {
 	
 	private LocalDateTime date;
 	
+	@Column(name = "like_button")
+	private Integer likebutton;
+	
 	public Chat(){
 		
 	}
@@ -38,5 +41,12 @@ public class Chat {
 		this.text = text;
 		this.addressId = addressId;
 		this.date = date;
+	}
+	public Chat(Integer userId, String text, Integer addressId, LocalDateTime date, Integer likebutton) {
+		this.userId = userId;
+		this.text = text;
+		this.addressId = addressId;
+		this.date = date;
+		this.likebutton = likebutton;
 	}
 }

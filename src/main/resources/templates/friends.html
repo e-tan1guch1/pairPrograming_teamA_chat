@@ -28,7 +28,8 @@
 				<tr>
 					<td class="emailTd">[[${friend.email}]]</td>
 					<td>
-						<form>
+						<form action="/friend/delete" method="post">
+							<input type="hidden" name="friendId" th:value="${friend.id}">
 							<button>削除</button>
 						</form>
 					</td>

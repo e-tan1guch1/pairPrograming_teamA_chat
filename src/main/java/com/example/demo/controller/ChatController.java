@@ -149,26 +149,38 @@ public class ChatController {
 
 		return "Chat";
 	}
-	
+
 	@GetMapping("/chat/{addressId}/edit")
 	public String edit(
 			@PathVariable("addressId") Integer addressId,
 			Model m) {
-		
-		return "redirect:/chat/"+ addressId;
+
+		return "redirect:/chat/" + addressId;
 	}
-	
+
 	@PostMapping("chat/{chatId}/delete")
 	public String delete(
 			@PathVariable("chatId") Integer chatId,
 			@RequestParam("addressId") Integer addressId,
 			Model m) {
-		
-		chatRepository. deleteById(chatId);
-		
-		return "redirect:/chat/"+ addressId;
-//		return "redirect:/chat/"+  ;
+
+		chatRepository.deleteById(chatId);
+
+		return "redirect:/chat/" + addressId;
+		//		return "redirect:/chat/"+  ;
 	}
 
+	@GetMapping("/chat/{addressId}/like_button")
+	public String like(
+			@RequestParam("chat") Chat chat,
+			@RequestParam("addressId") Integer addressId,
+			@RequestParam("likebutton") String likebutton,
+			Model m) {
+
+		chatRepository.save(new Chat(chat.getId(), chat.getText(),
+				chat.getAddressId(), chat.getDate(), chat.getLikebutton()));
+
+		return "redirect:/chat/" + addressId;
+	}
 
 }

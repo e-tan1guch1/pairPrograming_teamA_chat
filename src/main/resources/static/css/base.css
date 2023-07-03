@@ -16,7 +16,7 @@ footer {
 	background-color: #f06060;
 	padding-top: 4px;
 	/* 内側余白(上) */
-/*	padding-bottom: 4px;*/
+	/*	padding-bottom: 4px;*/
 	/* 内側余白(下) */
 	z-index: 20;
 }
@@ -68,7 +68,7 @@ header div.user a {
 }
 
 ul {
-	margin:0;
+	margin: 0;
 	text-align: right;
 }
 
@@ -90,7 +90,7 @@ ul>li>span {
 
 ul>li:hover>a {
 	background-color: #efefef;
-/*	color: #444;*/
+	/*	color: #444;*/
 	color: white;
 }
 
@@ -121,9 +121,11 @@ ul li ul li a:hover {
 }
 
 .application ul li:hover ul {
+	position: absolute;
+	z-index: 30;
 	display: block;
 }
 
-img{
+img {
 	color: #000;
 }
