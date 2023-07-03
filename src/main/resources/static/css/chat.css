@@ -193,11 +193,9 @@ small {
 	font-size: 16px;
 	background: peachpuff;
 	border-radius: 15px;
-<<<<<<< HEAD
-=======
+
 	z-index: 10;
 	word-break: break-all;
->>>>>>> branch 'master' of https://github.com/e-tan1guch1/pairPrograming_teamA_chat.git
 }
 
 .balloon-right:before {
