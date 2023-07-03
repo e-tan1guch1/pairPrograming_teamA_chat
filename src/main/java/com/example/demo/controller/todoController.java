@@ -70,8 +70,9 @@ public class todoController {
 					}
 				});
 		
+		if(todo.getReleaseDate()!=null) {
 		List<Todo> list = todoRepository.findByReleaseDate(todo.getReleaseDate());
-		
+		}
 		
 //		ArrayList<String> test1 = new ArrayList<>(List.of("a","b","test"));
 //		ArrayList<String> test2 = new ArrayList<>(List.of("c", "d","test"));
@@ -104,9 +105,9 @@ public class todoController {
 			@RequestParam(name = "minute", required = false) Integer minute,
 			@RequestParam(name = "text", required = false) String text) {
 
-		LocalDateTime timeNow = LocalDateTime.now();
+//		LocalDateTime timeNow = LocalDateTime.now();
 		
-		Todo todos = new Todo(releaseDate,hour, minute, text,timeNow);
+		Todo todos = new Todo(releaseDate,hour, minute, text);
 		todoRepository.save(todos);
 
 		return "redirect:/todoList";
@@ -134,8 +135,8 @@ public class todoController {
 		
 		LocalDateTime timeNow = LocalDateTime.now();
 		
-		Todo todos = new Todo(id,timeNow,hour, minute, text);
-//		Todo todos = new Todo(id, releaseDate,hour, minute, text);
+//		Todo todos = new Todo(id,timeNow,hour, minute, text);
+		Todo todos = new Todo(id, releaseDate,hour, minute, text);
 		todoRepository.save(todos);
 		
 		return "redirect:/todoList";
