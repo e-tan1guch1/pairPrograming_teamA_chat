@@ -12,8 +12,8 @@ CREATE TABLE chats
    user_id INTEGER,
    text TEXT,
    address_id INTEGER,
-   like_button INTEGER,
-   date TIMESTAMP
+   date TIMESTAMP,
+   like_button INTEGER
 );
 -- ユーザーテーブル
 CREATE TABLE users

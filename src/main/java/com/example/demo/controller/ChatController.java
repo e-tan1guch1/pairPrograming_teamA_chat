@@ -170,17 +170,28 @@ public class ChatController {
 		//		return "redirect:/chat/"+  ;
 	}
 
-	@GetMapping("/chat/{addressId}/like_button")
-	public String like(
-			@RequestParam("chat") Chat chat,
-			@RequestParam("addressId") Integer addressId,
-			@RequestParam("likebutton") String likebutton,
-			Model m) {
-
-		chatRepository.save(new Chat(chat.getId(), chat.getText(),
-				chat.getAddressId(), chat.getDate(), chat.getLikebutton()));
-
-		return "redirect:/chat/" + addressId;
-	}
+	//	@PostMapping("/chat/{addressId}/like_button")
+	//	public String like(
+	//			@RequestParam("chat") Chat chat,
+	//			@RequestParam("id") Integer id,
+	//			@RequestParam("userId") Integer userId,
+	//			@RequestParam("text") String text,
+	//			@PathVariable("addressId") Integer addressId,
+	//			@RequestParam("likebutton") Integer likebutton,
+	//			Model m) {
+	//		System.out.println(id);
+	//		System.out.println(userId);
+	//		System.out.println(text);
+	//		System.out.println(addressId);
+	//		System.out.println(likebutton);
+	//		chatRepository.save(new Chat(chat.getId(), chat.getUserId(), chat.getText(),
+	//				chat.getAddressId(), chat.getDate(), chat.getLikebutton()));
+	//		chatRepository.save(new Chat(id,userId, text,
+	//				addressId, LocalDateTime.now(), likebutton));
+	//		
+	//		m.addAttribute("likebutton", likebutton);
+	//
+	//		return "redirect:/chat/" + addressId;
+	//	}
 
 }
