@@ -111,7 +111,7 @@ small {
 	margin-top: -15px;
 	border: 15px solid transparent;
 	border-right: 25px solid peachpuff;
-	
+
 	z-index: 10;
 }
 
@@ -134,8 +134,8 @@ small {
 	font-size: 16px;
 	background: peachpuff;
 	border-radius: 15px;
-	margin:auto;
-	z-index:20;
+	margin: auto;
+	z-index: 20;
 	margin: auto;
 }
 
@@ -149,8 +149,8 @@ small {
 	margin-top: -15px;
 	border: 15px solid transparent;
 	border-left: 25px solid peachpuff;
-	
-	z-index:10;
+
+	z-index: 10;
 }
 
 .balloon-right p {
@@ -186,4 +186,18 @@ small {
 .balloon-demo p {
 	margin: 0;
 	padding: 0;
+}
+
+.like-button {
+	float: left;
+	padding: 10px 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.liked {
+	float: left;
+	background-color: pink;
+	color: #fff;
 }
