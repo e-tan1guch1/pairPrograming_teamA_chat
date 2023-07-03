@@ -54,19 +54,40 @@ div.user a {
 	margin-top: 15px;
 	margin-left: auto;
 	margin-right: auto;
-	color: white;
+	color:white;
 }
 
 .container {
+	overflow: hidden;
 	display: block;
 	width: 600px;
-	height: 400px;
+	height: 180px;
 	/*	background-color: #f06060;*/
+	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
-	margin-bottom: 15px;
 
 	background-color: white;
+}
+
+.container {
+	overflow-y: scroll;
+	/*	-ms-overflow-style: none;*/
+	/*	border:solid blue;*/
+	overflow-x: hidden;
+}
+
+.container::-webkit-scrollbar {
+	width: 10px;
+}
+
+.container::-webkit-scrollbar-track {
+	background-color: white;
+}
+
+.container::-webkit-scrollbar-thumb {
+	background-color: #f06060;
+	border-radius: 5px;
 }
 
 .container input {
@@ -83,30 +104,6 @@ button {
 	display: block;
 	text-align: center;
 	text-decoration: none;
-	width: 50px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-left: 0px;
-	font-weight: bold;
-	border: 2px solid #fff;
-	color: #fff;
-	/*	background: #f06060;*/
-
-	border-radius: 10px;
-	background: lightcoral;
-
-}
-
-button:hover {
-	background: #fff;
-	color: #f06060;
-	border-color: lightcoral;
-}
-
-.requestForm button {
-	display: inline-block;
-	text-align: center;
-	text-decoration: none;
 	width: 120px;
 	margin-top: 0px;
 	margin-right: 0px;
@@ -121,7 +118,7 @@ button:hover {
 
 }
 
-.requestForm button:hover {
+button:hover {
 	background: #fff;
 	color: #f06060;
 	border-color: lightcoral;
@@ -147,7 +144,11 @@ input {
 
 
 
+button:hover {
+	background: #fff;
+	color: #f06060;
 
+}
 
 .balloon-right {
 	position: absolute;
@@ -159,7 +160,7 @@ input {
 	max-width: 100%;
 	color: #555;
 	font-size: 16px;
-	background: white;
+	background: peachpuff;
 	border-radius: 15px;
 	color: red;
 }
@@ -171,7 +172,7 @@ input {
 	right: -30px;
 	margin-top: -15px;
 	border: 15px solid transparent;
-	border-left: 25px solid white;
+	border-left: 25px solid peachpuff;
 	/*	要調整*/
 }
 
@@ -187,6 +188,12 @@ input {
 }
 
 table {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	text-align: center;
+	border-radius: 5px;
+	background-color: #f06060;
 	padding-top: 30px;
 }
 
@@ -208,14 +215,4 @@ td {
 .emailTd {
 	width: 300px;
 	height: 30px;
-}
-
-.userProfile {
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 10px;
-	text-align: center;
-	border-radius: 5px;
-	background-color: #f06060;
-	padding-top: 30px;
 }

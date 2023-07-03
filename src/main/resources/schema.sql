@@ -2,7 +2,8 @@
 DROP TABLE IF EXISTS chats;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS todos;
-DROP TABLE IF EXISTS frends;
+DROP TABLE IF EXISTS friends;
+DROP TABLE IF EXISTS requests;
 
 -- チャットテーブル
 CREATE TABLE chats
@@ -22,13 +23,23 @@ CREATE TABLE users
    email TEXT,
    password TEXT
 );
+
 -- フレンドテーブル
-CREATE TABLE frends
+CREATE TABLE friends
 (
    id SERIAL PRIMARY KEY,
    user_id INTEGER,
    user2_id INTEGER
 );
+
+-- フレンドリクエストテーブル
+CREATE TABLE requests
+(
+   id SERIAL PRIMARY KEY,
+   user2_id INTEGER,
+   user_id INTEGER
+);
+
 -- TODOテーブル
 CREATE TABLE todos
 (
