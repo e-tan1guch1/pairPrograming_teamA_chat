@@ -376,25 +376,6 @@ button:hover {
 	left: 490px;
 }
 
-.right-liked:hover {
-	border: 0;
-	position: relative;
-<<<<<<< HEAD
-	float: left;
-	left: 70px;
-=======
-	float: right;
-	right: 0px;
->>>>>>> refs/remotes/origin/iyama2
-	width: 35px;
-	height: 35px;
-	background: #fff;
-	background-image: url(/images/checked.png);
-	background-repeat: no-repeat;
-	background-size: 50%;
-	left: 490px;
-}
-
 .underText {
 	float: right;
 	display: inline-flex;
