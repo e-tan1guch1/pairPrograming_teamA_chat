@@ -34,6 +34,7 @@
 				<div class="balloon-right">
 					<p>[[${chat.text}]]</p>
 				</div>
+<<<<<<< HEAD
 				<div>
 				<form th:action="|/chat/${chat.id}/delete|" method="post" class="deleteForm">
 					<input type="hidden" name="addressId" th:value="${addressId}">
@@ -41,15 +42,21 @@
 				</form>
 				<script th:inline="javascript">
 					let isLikedright = /*[[${chat.likeButton}]]*/
+				<div class="underText">
+					<form th:action="|/chat/${chat.id}/delete|" method="post" class="deleteForm">
+						<input type="hidden" name="addressId" th:value="${addressId}">
+						<button class="delete">削除</button>
+					</form>
+					<script th:inline="javascript">
+						var isLiked = /*[[${chat.likeButton}]]*/
+							function toggleLike() {
+							}
 
-						function toggleLike() {
+						if (isLiked) {
+							document.write('<button class="right-liked" onclick="toggleLike()" id="like_button"></button>')
+						} else {
+							document.write('<button class="right-like-button" onclick="toggleLike()" id="like_button"></button>')
 						}
-
-					if (isLikedright) {
-						document.write('<button class="right-liked" onclick="toggleLike()" id="like_button"></button>')
-					} else {
-						document.write('<button class="right-like-button" onclick="toggleLike()" id="like_button"></button>')
-					}
 				</script>
 			</th:block>
 
@@ -65,12 +72,12 @@
 					<input type="hidden" name="date" th:value="${chat.date}">
 
 					<script th:inline="javascript">
-						let isLikedleft = /*[[${chat.likeButton}]]*/
+						var isLiked = /*[[${chat.likeButton}]]*/
 
 							function toggleLike() {
 							}
 
-						if (isLikedleft) {
+						if (isLiked) {
 							document.write('<input type="hidden" name="likeButton" value="false">');
 							document.write('<button class="liked" onclick="toggleLike()" id="like_button"></button>')
 						} else {
