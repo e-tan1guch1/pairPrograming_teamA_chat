@@ -48,7 +48,8 @@
 				<div class="underText">
 					<form th:action="|/chat/${chat.id}/delete|" method="post" class="deleteForm">
 						<input type="hidden" name="addressId" th:value="${addressId}">
-						<button class="delete"></button>
+						<button class="delete" onclick="return confirm('削除します。よろしいですか？')"></button>
+						
 					</form>
 					<script th:inline="javascript">
 						var isLiked = /*[[${chat.likeButton}]]*/
