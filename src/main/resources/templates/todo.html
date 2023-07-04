@@ -5,57 +5,58 @@
 	<meta charset="UTF-8">
 	<title>TODOリスト</title>
 	<link rel="stylesheet" type="text/css" href="/css/base.css">
-	<link rel="stylesheet" type="text/css" href="/css/todo.css">
+	<link rel="stylesheet" type="text/css" href="/css/todoList.css">
 </head>
 
 <body>
-	<form action="/todolist/newtodo" method="post">
-		<h3>やることリスト</h3>
+	<header th:replace="header"></header>
+	<article>
+		<div class="side">
+			<a href="/todoList">リストへ戻る</a>
+		</div>
+		<th:block>
+			<div class="balloon-left">
+				戻ると内容は保存されません<br>
+				よろしいですか？
+			</div>
+		</th:block>
+		<div class="container-zigzag">
+			<form action="/todolist/newtodo" method="post">
+				<h3 style="color:darksalmon">やることリスト</h3>
+				<ul class="todo">
+					<li><span class="item"> 記入日 </span>　
+					<input type="date" class="record" name="releaseDate"></li><br>
+					
+					<li><span class="item"> 時間 </span>　
+					<select id="hour" class="record" name="hour"></select> 時
+					<select id="minute" class="record" name="minute"></select> 分</li><br>
+					
+					<li><span class="item"> 本日の実行リスト </span></li><br>
+					<textarea name="text"></textarea>
+					
+				</ul>
+				<br><button>送信</button>
 
-		<table border="1">
-			<tr>
-				<th>記入日</th>
-				<td><input type="date" name="releaseDate"></td>
-			</tr>
+				<script>
+					// 時間のドロップダウンメニューを生成
+					var hourDropdown = document.getElementById("hour");
+					for (var hour = 00; hour < 24; hour++) {
+						var option = document.createElement("option");
+						option.text = hour.toString().padStart(2, "0");
+						hourDropdown.add(option);
+					}
 
-			<tr>
-				<th>時間</th>
-				<td>
-					<select id="hour" name="hour"></select>時
-					<select id="minute" name="minute"></select>分
-				</td>
+					// 分のドロップダウンメニューを生成
+					var minuteDropdown = document.getElementById("minute");
+					for (var minute = 00; minute < 60; minute++) {
+						var option = document.createElement("option");
+						option.text = minute.toString().padStart(2, "0");
+						minuteDropdown.add(option);
+					}
+				</script>
 
-			</tr>
-			<tr>
-				<th>本日の実行リスト</th>
-				<td><textarea name="text"></textarea></td>
-			</tr>
-
-			<th></th>
-			<td><button>送信</button></td>
-			</tr>
-		</table>
-		<script>
-			// 時間のドロップダウンメニューを生成
-			var hourDropdown = document.getElementById("hour");
-			for (var hour = 00; hour < 24; hour++) {
-				var option = document.createElement("option");
-				option.text = hour.toString().padStart(2, "0");
-				hourDropdown.add(option);
-			}
-
-			// 分のドロップダウンメニューを生成
-			var minuteDropdown = document.getElementById("minute");
-			for (var minute = 00; minute < 60; minute++) {
-				var option = document.createElement("option");
-				option.text = minute.toString().padStart(2, "0");
-				minuteDropdown.add(option);
-			}
-		</script>
-
-	</form>
-
-	<footer th:replace="footer"></footer>
+			</form>
+		</div>
 </body>
 
 </html>

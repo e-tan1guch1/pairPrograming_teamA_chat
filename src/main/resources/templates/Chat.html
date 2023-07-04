@@ -12,6 +12,12 @@
 <body>
 	<header th:replace="header"></header>
 	<div class="side">
+		<h3>フレンドリスト</h3>
+		<p th:each="friend:${friends}">
+			<a th:href="|/chat/${friend.id}|">
+				[[${friend.name}]]</a><br>
+		</p>
+		<h3>ユーザーリスト</h3>
 		<p th:each="address:${addressList}">
 			<a th:href="|/chat/${address.id}|">
 				[[${address.name}]]</a><br>

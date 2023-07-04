@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+.content {
+	width: 1000px;
+	height: 300px;
+	text-align: center;
+}
+
+/*あとでやる*/
+
+section.scroll {
+	overflow-y: none;
+	height: 250px;
+}
+
+.send {
+	width: 60px;
+	height: 30px;
+	background: lightcoral;
+	border-radius: 5px;
+	border-color: white;
+	color: white;
+}
+
+textarea {
+	border: 2px solid lightcoral;
+	border-radius: 0.67em;
+	padding: 0.5em;
+	background-color: snow;
+	outline: none;
+	color: #666666;
+	white-space: pre-wrap;
+}
+
+header placeholder {
+	color: #F5B8B5;
+}
+
+.container {
+	display:inline-block;
+}

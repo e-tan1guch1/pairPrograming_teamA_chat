@@ -26,25 +26,32 @@ public class Todo {
 	private Integer hour;
 	private Integer minute;
 	private String text; // 内容
+	@Column(name="user_id")
+	private Integer userId;
+//	private LocalDateTime date;
 	
 
 	public Todo() {
 		
 	}
 	
-	public Todo(LocalDate releaseDate,Integer hour, Integer minute,String text) {
+	public Todo(LocalDate releaseDate,Integer hour, Integer minute,String text,Integer userId) {
 		this.releaseDate = releaseDate;
 		this.hour = hour;
 		this.minute = minute;
 		this.text = text;
+		this.userId = userId;
+//		this.date = date;
 	}
 
-	public Todo(Integer id, LocalDate releaseDate, Integer hour, Integer minute, String text) {
+	public Todo(Integer id, LocalDate releaseDate, Integer hour, Integer minute, String text,Integer userId) {
 		this.id = id;
 		this.releaseDate = releaseDate;
 		this.hour = hour;
 		this.minute = minute;
 		this.text = text;
+		this.userId = userId;
+//		this.date =date;
 	}
 	
 	

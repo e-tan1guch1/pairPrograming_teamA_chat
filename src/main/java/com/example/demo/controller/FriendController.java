@@ -15,6 +15,7 @@ import com.example.demo.entity.Friend;
 import com.example.demo.entity.Request;
 import com.example.demo.entity.User;
 import com.example.demo.model.Account;
+import com.example.demo.model.Address;
 import com.example.demo.repository.FriendRepository;
 import com.example.demo.repository.RequestRepository;
 import com.example.demo.repository.UserRepository;
@@ -44,13 +45,14 @@ public class FriendController {
 		//自分とフレンドの人のユーザIdを含むレコード一覧
 		List<Friend> friendListNumber = friendRepository.findFriend(account.getId());
 		//フレンドリスト格納用
-		List<User> friendList = new ArrayList<>();
+		List<Address> friendList = new ArrayList<>();
 
 		for (Friend friendNumber : friendListNumber) {
 			//自分とフレンドの人のユーザIdからユーザ情報を取得
 			Optional<User> opt = userRepository.findById(friendNumber.getUser2Id());
 			if (opt.isPresent()) {
-				friendList.add(opt.get());
+				User user = opt.get();
+				friendList.add(new Address(user.getId(), user.getName(), user.getEmail()));
 			}
 		}
 

@@ -10,42 +10,48 @@
 
 <body>
 	<header th:replace="header"></header>
+	<article>
+		<div class="side">
+			<a href="/todolist/newtodo">新規入力</a>
+		</div>
+		<th:block th:if="${#lists.isEmpty(todo2)}">
+			<div class="balloon-left">
+				予定を登録する？
+			</div>
+		</th:block>
+		<th:block th:if="${not #lists.isEmpty(todo2)}">
+			<div class="balloon-right">
+				今日の予定を確認しよう
+			</div>
+		</th:block>
 
-	<a href="/todolist/newtodo">新規入力</a>
+		<div class="container">
+			<th:block th:each="todo:${todo2}">
+				<input type="hidden" name="{todo.id}" value="id">
+				<div class="DATE" style="padding-top: 6px; clear:both;" th:if="${todo.id == 0}">
+					　　[[${todo.releaseDate}]]</div>
 
-	<hr>
-	<div class="container">
-		<table border="1">
-			<tr>
-				<th>記入日</th>
-				<th>時間</th>
-				<th>実行リスト</th>
-				<th> </th>
-				<th> </th>
-			</tr>
-			<th:block th:each=" todo: ${todos}">
-				<tr>
-					<input type="hidden" name="{todo.id}" value="id">
-
-					<td>[[${todo.releaseDate}]]</td>
-					<td>[[${todo.hour}]]時[[${todo.minute}]]分</td>
-					<td>[[${todo.text}]]</td>
-					<td>
-						<form th:action="|/todoList/${todo.id}/edit|" method="get">
-							<input type="submit" value="変更">
-						</form>
-					</td>
-					<td>
+				<th:block th:unless="${todo.id == 0}">
+					<div style="display:inline-flex">
+						　　<input type="checkbox" th:id="|checkbox${todo.id}|" name="checkbox01">
+						<label th:for="|checkbox${todo.id}|" class="check"><span class="TODO">
+								　[[${todo.hour}]]時[[${todo.minute}]]分
+								　[[${todo.text}]]　
+							</span></label>
+							
 						<form th:action="|/todoList/${todo.id}/delete|" method="post">
-							<input type="submit" value="実行済み">
+							<input type="image" name="submit" src="/images/delete.png" class="exe" value="削除">　
 						</form>
-					</td>
-				</tr>
+						<form th:action="|/todoList/${todo.id}/edit|" method="get">
+							<input type="image" name="submit" src="/images/edit.png" class="exe" value="編集">
+						</form>
+					</div>
+					<div></div>
+				</th:block>
+				<br>
 			</th:block>
-		</table>
-	</div>
-
-	<footer th:replace="footer"></footer>
+		</div>
+	</article>
 </body>
 
 </html>

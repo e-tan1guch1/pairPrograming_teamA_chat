@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Chat;
+import com.example.demo.entity.Friend;
 import com.example.demo.entity.User;
 import com.example.demo.model.Account;
 import com.example.demo.model.Address;
 import com.example.demo.repository.ChatRepository;
+import com.example.demo.repository.FriendRepository;
 import com.example.demo.repository.UserRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -38,6 +40,9 @@ public class ChatController {
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	FriendRepository friendRepository;
 
 	//	@GetMapping("/chat")
 	//	public String chat(
@@ -78,11 +83,28 @@ public class ChatController {
 		List<Address> addressList = new ArrayList<>();
 
 		List<Address> friendList = new ArrayList<>();
-		List<Address> otherList = new ArrayList<>();
 
 		for (User user : userList) {
 			if (user.getId() != account.getId()) {
 				addressList.add(new Address(user.getId(), user.getName(), user.getEmail()));
+			}
+		}
+		//フレンドリスト取得
+		//自分とフレンドの人のユーザIdを含むレコード一覧
+		List<Friend> friendListNumber = friendRepository.findFriend(account.getId());
+
+		for (Friend friendNumber : friendListNumber) {
+			//自分とフレンドの人のユーザIdからユーザ情報を取得
+			Optional<User> opt = userRepository.findById(friendNumber.getUser2Id());
+			if (opt.isPresent()) {
+				User user = opt.get();
+				friendList.add(new Address(user.getId(), user.getName(), user.getEmail()));
+			}
+		}
+
+		for (Address address : friendList) {
+			if (friendList.contains(address)) {
+				addressList.remove(address);
 			}
 		}
 
@@ -96,8 +118,7 @@ public class ChatController {
 		m.addAttribute("addressList", addressList);
 		m.addAttribute("demo", demo);
 
-		m.addAttribute("friendList", friendList);
-		m.addAttribute("otherList", otherList);
+		m.addAttribute("friends", friendList);
 
 		return "Chat";
 
@@ -151,16 +172,36 @@ public class ChatController {
 		//自分以外の連絡先を取得
 		List<User> userList = userRepository.findAll();
 		List<Address> addressList = new ArrayList<>();
+		List<Address> friendList = new ArrayList<>();
 		for (User user : userList) {
 			if (user.getId() != account.getId()) {
 				addressList.add(new Address(user.getId(), user.getName(), user.getEmail()));
 			}
 		}
+		//フレンドリスト取得
+				//自分とフレンドの人のユーザIdを含むレコード一覧
+				List<Friend> friendListNumber = friendRepository.findFriend(account.getId());
+
+				for (Friend friendNumber : friendListNumber) {
+					//自分とフレンドの人のユーザIdからユーザ情報を取得
+					Optional<User> opt = userRepository.findById(friendNumber.getUser2Id());
+					if (opt.isPresent()) {
+						User user = opt.get();
+						friendList.add(new Address(user.getId(), user.getName(), user.getEmail()));
+					}
+				}
+
+				for (Address address : friendList) {
+					if (friendList.contains(address)) {
+						addressList.remove(address);
+					}
+				}
 
 		m.addAttribute("addressId", addressId);
 		m.addAttribute("addressName", userRepository.findById(addressId).get().getName());
 		m.addAttribute("chats", chats);
 		m.addAttribute("addressList", addressList);
+		m.addAttribute("friends", friendList);
 
 		return "Chat";
 	}
@@ -201,11 +242,10 @@ public class ChatController {
 			@RequestParam("text") String text,
 			@PathVariable("addressId") Integer addressId,
 			@RequestParam("date") LocalDateTime date,
-			@RequestParam(name = "likeButton", defaultValue="false") Boolean likeButton,
+			@RequestParam(name = "likeButton", defaultValue = "false") Boolean likeButton,
 			Model m) {
-		
-		chatRepository.save(new Chat(id, userId, text, addressId, date, likeButton));
 
+		chatRepository.save(new Chat(id, userId, text, addressId, date, likeButton));
 
 		return "redirect:/chat/" + userId;
 	}
