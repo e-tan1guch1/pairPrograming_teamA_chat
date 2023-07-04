@@ -15,6 +15,8 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id; // ユーザID
+	
+	private String icon; // iconのURL
 
 	private String name; // ユーザネーム
 

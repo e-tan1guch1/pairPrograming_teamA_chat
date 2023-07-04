@@ -23,6 +23,19 @@
 	<div class="container">
 		<div>
 			<table>
+				<form action="/profile/edit/icon" method="post" class="saveForm">
+					<input type="hidden" name="id" th:value="${@account.id}">
+					<tr>
+						<td><label>アイコン</label></td>
+					</tr>
+					<tr>
+						<td class="iconTd"><img th:src="${user.icon}" alt="icon" class="sideIcon"></td>
+						<td><button>変更</button></td>
+					</tr>
+				</form>
+			</table>
+
+			<table>
 				<form action="/profile/edit/name" method="post" class="saveForm">
 					<input type="hidden" name="id" th:value="${@account.id}">
 					<tr>
@@ -47,7 +60,7 @@
 				</form>
 			</table>
 			<table>
-				<form action="/profile/edit/password" method="post" class="saveForm">.
+				<form action="/profile/edit/password" method="post" class="saveForm">
 					<input type="hidden" name="id" th:value="${@account.id}">
 					<tr>
 						<td><label>パスワード</label></td>
