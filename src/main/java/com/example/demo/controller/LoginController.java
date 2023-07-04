@@ -30,11 +30,11 @@ public class LoginController {
 
 	@GetMapping({ "/login", "/logout" })
 	public String index(
-			
+
 			Model m) {
-		
+
 		session.invalidate();
-		
+
 		return "Login";
 	}
 
@@ -56,20 +56,28 @@ public class LoginController {
 		} else {
 			page = "Login";
 		}
-		
+
 		List<String> errors = new ArrayList<>();
 		if (email.equals("") == true || email.length() == 0) {
-			errors.add( "e-mailを入力してください");
+			errors.add("e-mailを入力してください");
+		} else {
+			if (password.equals("") != true || password.length() != 0) {
+				Optional<User> record = userRepository.findByEmailAndPassword(email, password);
+				if (record.isEmpty() == true) {
+					errors.add("メールアドレスとパスワードが違います");
+				}
+			}
+
 		}
 		if (password.equals("") == true || password.length() == 0) {
 			errors.add("パスワードを入力してください");
 		}
+
 		if (errors.size() > 0) {
 			model.addAttribute("errors", errors);
 			model.addAttribute("email", email);
 			model.addAttribute("password", password);
 		}
-		
 
 		return page;
 	}
@@ -80,7 +88,7 @@ public class LoginController {
 			@RequestParam(name = "password", required = false) String password,
 
 			Model m) {
-		
+
 		m.addAttribute("name", name);
 		m.addAttribute("email", email);
 		m.addAttribute("password", password);
@@ -98,7 +106,7 @@ public class LoginController {
 			error.add("名前は必須です");
 
 		}
-		
+
 		if (email.equals("") == true) {
 			error.add("メールアドレスは必須です");
 
@@ -108,11 +116,11 @@ public class LoginController {
 				error.add("登録済みのメールアドレスです");
 			}
 		}
-		
+
 		if (password.equals("") == true) {
 			error.add("パスワードは必須です");
 		}
-		
+
 		if (error.size() > 0) {
 
 			m.addAttribute("error", error);
