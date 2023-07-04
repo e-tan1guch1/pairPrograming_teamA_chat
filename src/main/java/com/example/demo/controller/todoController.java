@@ -38,10 +38,43 @@ public class todoController {
 	
 	@GetMapping("/todoList")
 	public String list(Model m) {
-		List<Todo> todos = todoRepository.findAll();
-		m.addAttribute("todos",todos);
+//		List<Todo> todos = todoRepository.findAll();
+//		m.addAttribute("todos",todos);
+				
+//		Optional<Todo> opt = todoRepository.findById(account.getId());
+		List<Todo> todo2 = todoRepository.findByUserIdOrderByReleaseDate(account.getId());
+		
+//		for(Todo t : todo2) {
+//			System.err.println(t.getReleaseDate());
+//		}
+
+		Todo todo =null;
+			
+		LocalDate tmp = LocalDate.of(1900, 1, 1);
 		
 		
+		for (int i = 0; i<todo2.size(); i++) {
+			Todo t = todo2.get(i);
+			LocalDate date = t.getReleaseDate();
+			
+			if (!tmp.toString().equals(date.toString())) {
+				Todo insert = new Todo(0, date, 0,0,"",account.getId());
+				todo2.add(i, insert);
+		
+				tmp = date;
+				System.err.println(tmp);
+			}
+		}
+		
+		for (Todo t : todo2) {
+			System.err.println(t.getId()  + " " + t.getReleaseDate());
+		}
+//		if (todo2.size() ==0) {
+//			todo2 = null;
+//		}	
+//		List<Todo> list = todoRepository.findByReleaseDate(todo.getReleaseDate());
+		
+		m.addAttribute("todo2",todo2);		
 		return "todoList";
 	}
 	
@@ -59,7 +92,9 @@ public class todoController {
 			@RequestParam(name = "minute", required = false) Integer minute,
 			@RequestParam(name = "text", required = false) String text) {
 
-		Todo todos = new Todo(releaseDate,hour, minute, text);
+//		LocalDateTime timeNow = LocalDateTime.now();
+		
+	Todo todos = new Todo(releaseDate,hour, minute, text,account.getId());
 		todoRepository.save(todos);
 
 		return "redirect:/todoList";
@@ -84,7 +119,11 @@ public class todoController {
 			@RequestParam(name = "minute", required = false) Integer minute,
 			@RequestParam(name = "text", required = false) String text,
 			Model m) {
-		Todo todos = new Todo(id, releaseDate,hour, minute, text);
+		
+//		LocalDateTime timeNow = LocalDateTime.now();
+		
+//		Todo todos = new Todo(id,timeNow,hour, minute, text);
+		Todo todos = new Todo(id, releaseDate,hour, minute, text,account.getId());
 		todoRepository.save(todos);
 		
 		return "redirect:/todoList";

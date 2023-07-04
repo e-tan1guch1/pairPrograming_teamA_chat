@@ -131,6 +131,8 @@ background-color: white;
 	background:lightcoral;;
 	border-radius: 15px;
 	color: lightcoral;
+	
+	text-align: center;
 }
 
 .balloon-left:before {
