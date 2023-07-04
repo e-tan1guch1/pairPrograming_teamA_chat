@@ -81,6 +81,7 @@ public class ChatController {
 			}
 		}
 
+		m.addAttribute("addressName", "チャットアプリ君");
 		m.addAttribute("addressList", addressList);
 		m.addAttribute("demo", demo);
 
@@ -150,11 +151,12 @@ public class ChatController {
 		return "Chat";
 	}
 
-	@GetMapping("/chat/{addressId}/edit")
-	public String edit(
+	@GetMapping("/chat/{addressId}/reload")
+	public String reload(
 			@PathVariable("addressId") Integer addressId,
 			Model m) {
 
+		System.out.println("更新");
 		return "redirect:/chat/" + addressId;
 	}
 

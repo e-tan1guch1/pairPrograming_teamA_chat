@@ -17,21 +17,23 @@
 				[[${address.name}]]</a><br>
 		</p>
 	</div>
-	<th:block class="content">
-		<th:block th:if="${demo != null}" th:each="demo:${demo}">
-			<div class="balloon-demo">
-				<p>[[${demo}]]</p>
-			</div>
-			<br><br>
-		</th:block>
-	</th:block>
 
 	<div class="label">[[${addressName}]]</div>
 	<div class="scroll" id="el">
+		<th:block th:if="${demo != null}" th:each="demo:${demo}">
+			<div class="balloon-left">
+				[[${demo}]]
+			</div>
+			<br>
+		</th:block>
+
+
 		<th:block th:each="chat : ${chats}">
 
 			<th:block th:if="${chat.userId} == ${@account.id}">
-				<div class="balloon-right"><p>[[${chat.text}]]</p></div>
+				<div class="balloon-right">
+					<p>[[${chat.text}]]</p>
+				</div>
 				<form th:action="|/chat/${chat.id}/delete|" method="post">
 					<input type="hidden" name="addressId" th:value="${addressId}">
 					<button class="delete">削除</button>
@@ -39,36 +41,38 @@
 			</th:block>
 
 			<th:block th:if="${chat.userId} != ${@account.id}">
-				<div class="balloon-left"><p>[[${chat.text}]]</p></div><br><br>
-<!--				<form th:action="|/chat/${chat.addressId}/like_button|" method="get">-->
-<!--					<input type="hidden" name="chat" th:value="${chat}"><br>-->
-<!--					<input type="hidden" name="addressId" th:value="${chat.addressId}"><br>-->
-<!--					<button class="like-button" onclick="toggleLike()" id="like_button" name="likebutton">いいね！</button>-->
-<!--					<p>カウント: <span id="counter">0</span></p>-->
-<!--				</form>-->
-<!--				<script>-->
-<!--					let isLiked = false;-->
-<!--					//let count = 0;-->
+				<div class="balloon-left">
+					[[${chat.text}]]
+				</div><br><br>
+				<!--				<form th:action="|/chat/${chat.addressId}/like_button|" method="get">-->
+				<!--					<input type="hidden" name="chat" th:value="${chat}"><br>-->
+				<!--					<input type="hidden" name="addressId" th:value="${chat.addressId}"><br>-->
+				<!--					<button class="like-button" onclick="toggleLike()" id="like_button" name="likebutton">いいね！</button>-->
+				<!--					<p>カウント: <span id="counter">0</span></p>-->
+				<!--				</form>-->
+				<!--				<script>-->
+				<!--					let isLiked = false;-->
+				<!--					//let count = 0;-->
 
-<!--					function toggleLike() {-->
-<!--						isLiked = !isLiked;-->
-<!--						const likeButton = document.querySelector('.like-button');-->
-<!--						if (isLiked) {-->
-<!--							likeButton.textContent = 'いいね！';-->
-<!--							likeButton.classList.add('liked');-->
+				<!--					function toggleLike() {-->
+				<!--						isLiked = !isLiked;-->
+				<!--						const likeButton = document.querySelector('.like-button');-->
+				<!--						if (isLiked) {-->
+				<!--							likeButton.textContent = 'いいね！';-->
+				<!--							likeButton.classList.add('liked');-->
 
-<!--						} else {-->
-<!--							likeButton.textContent = 'いいね！';-->
-<!--							likeButton.classList.remove('liked');-->
-<!--							//likeButton.classList.add('liked');-->
-<!--						}-->
-<!--					}-->
-<!--							//カウントを追加するとき-->
-<!--							//document.getElementById('like-button').addEventListener('click', function () {-->
-<!--								//count++;-->
-<!--								//document.getElementById('counter').innerText = count;-->
-<!--							//});-->
-<!--				</script>-->
+				<!--						} else {-->
+				<!--							likeButton.textContent = 'いいね！';-->
+				<!--							likeButton.classList.remove('liked');-->
+				<!--							//likeButton.classList.add('liked');-->
+				<!--						}-->
+				<!--					}-->
+				<!--							//カウントを追加するとき-->
+				<!--							//document.getElementById('like-button').addEventListener('click', function () {-->
+				<!--								//count++;-->
+				<!--								//document.getElementById('counter').innerText = count;-->
+				<!--							//});-->
+				<!--				</script>-->
 			</th:block>
 
 		</th:block>
@@ -80,18 +84,17 @@
 	</script>
 
 	<th:block th:if="${addressId != null}">
-		<br>
-		<br>
+		
 		<form action="/chat/add" method="post">
 			<textarea name="text" cols="40" rows="10" placeholder="メッセージを入力"></textarea>
 			<input type="hidden" name="addressId" th:value="${addressId}"><br>
 			<button class="send">送信</button>
-
-		</form><br>
-		<form　action="| /chat/${addressId}/edit|" method="get">
-			<input type="hidden" name="addressId" th:value="${addressId}"><br><br>
+		</form>
+		
+		<form th:action="|/chat/${addressId}/reload|" method="get">
 			<button class="recieve">更新</button>
 		</form>
+		
 	</th:block>
 </body>
 

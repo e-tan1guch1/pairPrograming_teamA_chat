@@ -21,9 +21,9 @@
 		<form action="/login" method="post" class="loginForm">
 			<span th:each="e:${errors}">[[${e}]]<br></span>
 			
-			<input type="text" class="email" name="email" placeholder="　　メールアドレス"
+			<input type="text" class="email" name="email" placeholder="メールアドレス"
 			th:value="${email}">
-			<input type="password" class="password" name="password" placeholder="　　パスワード"
+			<input type="password" class="password" name="password" placeholder="パスワード"
 			th:value="${password}">
 			<button>ログイン</button>
 			
