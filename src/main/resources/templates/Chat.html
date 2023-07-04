@@ -11,18 +11,23 @@
 
 <body>
 	<header th:replace="header"></header>
+
 	<div class="side">
 		<h3>フレンドリスト</h3>
 		<p th:each="friend:${friends}">
 			<a th:href="|/chat/${friend.id}|">
-				[[${friend.name}]]</a><br>
+				<img src="/images/businessman48px.png" alt="icon" class="sideIcon">[[${friend.name}]]</a><br>
 		</p>
 		<h3>ユーザーリスト</h3>
 		<p th:each="address:${addressList}">
 			<a th:href="|/chat/${address.id}|">
-				[[${address.name}]]</a><br>
+				<img src="/images/businessman48px.png" alt="icon" class="sideIcon">[[${address.name}]]</a><br>
 		</p>
 	</div>
+
+	<th:block th:if="${deleteConfirm}">
+		<div>[[${deleteConfirm}]]</div>
+	</th:block>
 
 	<div class="label">[[${addressName}]]</div>
 	<div class="scroll" id="el">
@@ -43,7 +48,7 @@
 				<div class="underText">
 					<form th:action="|/chat/${chat.id}/delete|" method="post" class="deleteForm">
 						<input type="hidden" name="addressId" th:value="${addressId}">
-						<button class="delete">削除</button>
+						<button class="delete"></button>
 					</form>
 					<script th:inline="javascript">
 						var isLiked = /*[[${chat.likeButton}]]*/
