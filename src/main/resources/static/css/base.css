@@ -89,7 +89,7 @@ ul>li>span {
 }
 
 ul>li:hover>a {
-	background-color: #efefef;
+		background-color: #f06060;
 	/*	color: #444;*/
 	color: white;
 }
@@ -108,12 +108,12 @@ ul li ul li {
 }
 
 ul li ul li a {
-	background-color: #efefef;
-	color: #444;
+	background-color: #f06060;
+	color: white;
 }
 
 ul li ul li a:hover {
-	background-color: #ddd;
+		background-color: #f06060;
 }
 
 .application ul li ul {

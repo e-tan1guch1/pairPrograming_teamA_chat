@@ -7,10 +7,17 @@ body {
 .side {
 	position: absolute;
 	width: 200px;
-	height: 1000px;
+	height: 480px;
 	text-align: center;
 	background-color: lightcoral;
-	overflow: hidden;
+	display: block;
+	
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+h3{
+	color:white;
 }
 
 .side a {
@@ -22,11 +29,29 @@ body {
 	padding-bottom: 10px;
 	margin: 0;
 	background: lightcoral;
-	text-align: center;
+	text-align: left;
+}
+
+.side p {
+	margin: 0;
+
 }
 
 .side a:hover {
 	background: #f07070;
+}
+
+.side::-webkit-scrollbar {
+	width: 10px;
+}
+
+.side::-webkit-scrollbar-track {
+	background-color: lightcoral;
+}
+
+.side::-webkit-scrollbar-thumb {
+	background-color: #f06060;
+	border-radius: 5px;
 }
 
 .content {
@@ -143,7 +168,7 @@ small {
 .balloon-left {
 	position: relative;
 	float: left;
-	left: 70px;
+	left: 60px;
 	text-align: left;
 	padding: 7px 10px;
 	min-width: 0px;
@@ -153,7 +178,7 @@ small {
 	background: peachpuff;
 	border-radius: 15px;
 	z-index: 20;
-	
+
 	max-width: 500px;
 	margin: 0;
 	word-break: break-all;
@@ -291,7 +316,7 @@ button:hover {
 	background-repeat: no-repeat;
 	background-size: 50%;
 	left: 490px;
-	color:darksalmon;
+	color: darksalmon;
 }
 
 .delete:hover {
