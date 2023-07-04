@@ -40,12 +40,12 @@
 						<button class="delete">削除</button>
 					</form>
 					<script th:inline="javascript">
-						let isLikedright = /*[[${chat.likeButton}]]*/
+						var isLiked = /*[[${chat.likeButton}]]*/
 
 							function toggleLike() {
 							}
 
-						if (isLikedright) {
+						if (isLiked) {
 							document.write('<button class="right-liked" onclick="toggleLike()" id="like_button"></button>')
 						} else {
 							document.write('<button class="right-like-button" onclick="toggleLike()" id="like_button"></button>')
@@ -66,12 +66,12 @@
 					<input type="hidden" name="date" th:value="${chat.date}">
 
 					<script th:inline="javascript">
-						let isLikedleft = /*[[${chat.likeButton}]]*/
+						var isLiked = /*[[${chat.likeButton}]]*/
 
 							function toggleLike() {
 							}
 
-						if (isLikedleft) {
+						if (isLiked) {
 							document.write('<input type="hidden" name="likeButton" value="false">');
 							document.write('<button class="liked" onclick="toggleLike()" id="like_button"></button>')
 						} else {
