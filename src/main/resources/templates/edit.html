@@ -3,52 +3,61 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>TODOリスト変更</title>
+	<title>TODO変更</title>
+	<link rel="stylesheet" type="text/css" href="/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/css/todoList.css">
 </head>
 
 <body>
-
-	<form th:action="|/todoList/${todo.id}/edit|" method="post">
-		<table border="1">
-			<input type="hidden" name="{todo.id}" value="id">
-			<tr>
-				<th>記入日</th>
-				<td><input type="date" name="releaseDate"></td>
-			</tr>
-
-			<tr>
-				<th>時間</th>
-				<td>
+	<header th:replace="header"></header>
+	<article>
+		<div class="side">
+			<a href="/todoList">リストへ戻る</a>
+		</div>
+		<th:block>
+			<div class="balloon-left">
+				戻ると変更は保存されません<br>
+				よろしいですか？
+			</div>
+		</th:block>
+		<div class="container-zigzag">
+			<form th:action="|/todoList/${todo.id}/edit|" method="post">
+					<input type="hidden" name="{todo.id}" value="id">
+					<h3 style="color:darksalmon">項目修正</h3>
+					<ul class="todo">
+					<li><span>記入日</span>　
+					<input type="date" name="releaseDate"></li><br>
+					
+					<li><span>時間</span>　
 					<select id="hour" name="hour"></select>時
-					<select id="minute" name="minute"></select>分
-				</td>
-			</tr>
-			<tr>
-				<th>本日の実行リスト</th>
-				<td><textarea name="text"></textarea></td>
-			</tr>
-		</table>
-		<script>
-			// 時間のドロップダウンメニューを生成
-			var hourDropdown = document.getElementById("hour");
-			for (var hour = 00; hour < 24; hour++) {
-				var option = document.createElement("option");
-				option.text = hour.toString().padStart(2, "0");
-				hourDropdown.add(option);
-			}
+					<select id="minute" name="minute"></select>分</li><br>
+					
+					<li><span>本日の実行リスト</span></li><br>
+					<textarea name="text"></textarea>
+					
+				</ul>
+				<script>
+					// 時間のドロップダウンメニューを生成
+					var hourDropdown = document.getElementById("hour");
+					for (var hour = 00; hour < 24; hour++) {
+						var option = document.createElement("option");
+						option.text = hour.toString().padStart(2, "0");
+						hourDropdown.add(option);
+					}
 
-			// 分のドロップダウンメニューを生成
-			var minuteDropdown = document.getElementById("minute");
-			for (var minute = 00; minute < 60; minute++) {
-				var option = document.createElement("option");
-				option.text = minute.toString().padStart(2, "0");
-				minuteDropdown.add(option);
-			}
-		</script>
-		<button>更新</button>
+					// 分のドロップダウンメニューを生成
+					var minuteDropdown = document.getElementById("minute");
+					for (var minute = 00; minute < 60; minute++) {
+						var option = document.createElement("option");
+						option.text = minute.toString().padStart(2, "0");
+						minuteDropdown.add(option);
+					}
+				</script>
+				<br><button>更新</button>
 
 
-	</form>
+			</form>
+		</div>
 </body>
 
 </html>

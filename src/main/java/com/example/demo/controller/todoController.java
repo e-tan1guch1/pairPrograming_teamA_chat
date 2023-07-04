@@ -44,10 +44,10 @@ public class todoController {
 //		Optional<Todo> opt = todoRepository.findById(account.getId());
 		List<Todo> todo2 = todoRepository.findByUserIdOrderByReleaseDate(account.getId());
 		
-		for(Todo t : todo2) {
-			System.err.println(t.getReleaseDate());
-		}
-		
+//		for(Todo t : todo2) {
+//			System.err.println(t.getReleaseDate());
+//		}
+
 		Todo todo =null;
 			
 		LocalDate tmp = LocalDate.of(1900, 1, 1);
@@ -69,7 +69,9 @@ public class todoController {
 		for (Todo t : todo2) {
 			System.err.println(t.getId()  + " " + t.getReleaseDate());
 		}
-		
+//		if (todo2.size() ==0) {
+//			todo2 = null;
+//		}	
 //		List<Todo> list = todoRepository.findByReleaseDate(todo.getReleaseDate());
 		
 		m.addAttribute("todo2",todo2);		
