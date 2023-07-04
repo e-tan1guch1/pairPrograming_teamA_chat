@@ -148,3 +148,15 @@ footer {
 	height: 300px;
 	float: right;
 }
+.box2 {
+    padding:12px  21px;
+    margin-top: 50px;
+    font-weight: bold;
+    color: #f06060;/*文字色*/
+    background:#fff1e6;
+    border-radius: 5px;/*角の丸み*/
+}
+.box2 p {
+    margin: 0; 
+    padding: 0;
+}
