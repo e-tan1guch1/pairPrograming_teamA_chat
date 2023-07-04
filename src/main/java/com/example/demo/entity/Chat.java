@@ -42,12 +42,12 @@ public class Chat {
 		this.addressId = addressId;
 		this.date = date;
 	}
-//	public Chat(Integer id,Integer userId, String text, Integer addressId, LocalDateTime date, Integer likebutton) {
-//		this.id = id;
-//		this.userId = userId;
-//		this.text = text;
-//		this.addressId = addressId;
-//		this.date = date;
-//		this.likebutton = likebutton;
-//	}
+	public Chat(Integer id,Integer userId, String text, Integer addressId, LocalDateTime date, Integer likebutton) {
+		this.id = id;
+		this.userId = userId;
+		this.text = text;
+		this.addressId = addressId;
+		this.date = date;
+		this.likebutton = likebutton;
+	}
 }
