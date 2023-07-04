@@ -64,7 +64,10 @@ public class FriendController {
 			@RequestParam(name = "search", defaultValue = "") String search
 
 	) {
-		m.addAttribute("error", "メールアドレスを入力して検索");
+		if(email.equals("")) {
+			m.addAttribute("error", "メールアドレスを入力して検索");
+		}
+		
 		if (!search.equals("")) {
 			if (!email.equals("")) {
 				Optional<User> opt = userRepository.findByEmail(email);

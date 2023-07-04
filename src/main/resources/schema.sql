@@ -13,7 +13,7 @@ CREATE TABLE chats
    text TEXT,
    address_id INTEGER,
    date TIMESTAMP,
-   like_button INTEGER
+   like_button BOOLEAN DEFAULT false
 );
 -- ユーザーテーブル
 CREATE TABLE users
