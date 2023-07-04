@@ -218,7 +218,7 @@ small {
 .delete {
 	position: relative;
 	float: right;
-	right: 50px;
+	left: 490px;
 	margin-bottom: 10px;
 }
 
@@ -282,15 +282,100 @@ button:hover {
 }
 
 .like-button {
+	border: 0;
+	position: relative;
 	float: left;
-	padding: 10px 20px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
+	left: 70px;
+	width: 35px;
+	height: 35px;
+	background: #fff;
+	background-image: url(/images/check_pink.png);
+	background-repeat: no-repeat;
+	background-size: 50%;
+}
+
+.like-button:hover {
 	cursor: pointer;
+	border: 0;
+	position: relative;
+	float: left;
+	left: 70px;
+	width: 35px;
+	height: 35px;
+	background: #fff;
+	background-image: url(/images/check_pink.png);
+	background-repeat: no-repeat;
+	background-size: 50%;
 }
 
 .liked {
+	cursor: pointer;
+	border: 0;
+	position: relative;
 	float: left;
-	background-color: pink;
-	color: #fff;
+	left: 70px;
+	width: 35px;
+	height: 35px;
+	background: #fff;
+	background-image: url(/images/checked.png);
+	background-repeat: no-repeat;
+	background-size: 50%;
+}
+
+.liked:hover {
+	cursor: pointer;
+	border: 0;
+	position: relative;
+	float: left;
+	left: 70px;
+	width: 35px;
+	height: 35px;
+	background: #fff;
+	background-image: url(/images/checked.png);
+	background-repeat: no-repeat;
+	background-size: 50%;
+}
+
+.right-like-button {
+	border: 0;
+	position: relative;
+	float: right;
+	width: 35px;
+	height: 35px;
+	background: #fff;
+	background-image: url(/images/check_pink.png);
+	background-repeat: no-repeat;
+	background-size: 50%;
+	left: 490px;
+}
+
+.right-like-button:hover {
+	border: 0;
+	position: relative;
+	float: right;
+	width: 35px;
+	height: 35px;
+	background: #fff;
+	background-image: url(/images/check_pink.png);
+	background-repeat: no-repeat;
+	background-size: 50%;
+	left: 490px;
+}
+
+.right-liked {
+	border: 0;
+	position: relative;
+	float: right;
+	right: 0px;
+	width: 35px;
+	height: 35px;
+	background: #fff;
+	background-image: url(/images/checked.png);
+	background-repeat: no-repeat;
+	background-size: 50%;
+}
+
+.underText {
+	float: right;
+	display: inline-flex;
 }

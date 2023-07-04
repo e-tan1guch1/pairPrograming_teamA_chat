@@ -30,7 +30,7 @@ public class Chat {
 	private LocalDateTime date;
 	
 	@Column(name = "like_button")
-	private Integer likebutton;
+	private boolean likeButton;
 	
 	public Chat(){
 		
@@ -42,12 +42,12 @@ public class Chat {
 		this.addressId = addressId;
 		this.date = date;
 	}
-	public Chat(Integer id,Integer userId, String text, Integer addressId, LocalDateTime date, Integer likebutton) {
+	public Chat(Integer id,Integer userId, String text, Integer addressId, LocalDateTime date, boolean likeButton) {
 		this.id = id;
 		this.userId = userId;
 		this.text = text;
 		this.addressId = addressId;
 		this.date = date;
-		this.likebutton = likebutton;
+		this.likeButton = likeButton;
 	}
 }

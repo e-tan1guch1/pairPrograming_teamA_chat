@@ -7,8 +7,10 @@ INSERT INTO users(name, email,password) VALUES('大魔神', 'mazion@mail', 'mmm'
 INSERT INTO users(name, email,password) VALUES('犬', 'inu@mail', 'iii');
 INSERT INTO users(name, email,password) VALUES('スコティッシュフォールド', 'nekosama@mail', 'nnn');
 
-INSERT INTO chats(user_id, text, address_id, date, like_button) VALUES(1, 'こんにちは', 2, '2023-07-04 09:29:30.053193', null);
-INSERT INTO chats(user_id, text, address_id, date, like_button) VALUES(2, 'お疲れ様です', 1, '2023-07-04 09:31:30.053193', null);
+INSERT INTO chats(user_id, text, address_id, date) VALUES(1, 'こんにちは', 2, '2023-07-04 09:29:30.053193');
+INSERT INTO chats(user_id, text, address_id, date) VALUES(1, '荒川です', 2, '2023-07-04 09:30:30.053193');
+INSERT INTO chats(user_id, text, address_id, date) VALUES(2, 'お疲れ様です', 1, '2023-07-04 09:31:30.053193');
+INSERT INTO chats(user_id, text, address_id, date) VALUES(2, 'こんにちは', 1, '2023-07-04 09:32:30.053193');
 
 INSERT INTO friends(user_id, user2_id) VALUES(1, 2);
 INSERT INTO friends(user_id, user2_id) VALUES(2, 1);
