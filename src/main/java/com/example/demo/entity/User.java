@@ -22,6 +22,12 @@ public class User {
 
 	private String password; // パスワード
 	
+	
+	 public boolean isFriend() {
+		 
+		 return false;
+	 }
+	
 	User(){
 		
 	}
@@ -39,6 +45,7 @@ public class User {
 		this.email = email;
 		this.password = password;
 	}
+	
 	
 	
 	

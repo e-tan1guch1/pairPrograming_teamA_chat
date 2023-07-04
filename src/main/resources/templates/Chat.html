@@ -31,7 +31,9 @@
 		<th:block th:each="chat : ${chats}">
 
 			<th:block th:if="${chat.userId} == ${@account.id}">
-				<div class="balloon-right"><p>[[${chat.text}]]</p></div>
+				<div class="balloon-right">
+					<p>[[${chat.text}]]</p>
+				</div>
 				<form th:action="|/chat/${chat.id}/delete|" method="post">
 					<input type="hidden" name="addressId" th:value="${addressId}">
 					<button class="delete">削除</button>
@@ -39,36 +41,42 @@
 			</th:block>
 
 			<th:block th:if="${chat.userId} != ${@account.id}">
-				<div class="balloon-left"><p>[[${chat.text}]]</p></div><br><br>
-<!--				<form th:action="|/chat/${chat.addressId}/like_button|" method="get">-->
-<!--					<input type="hidden" name="chat" th:value="${chat}"><br>-->
-<!--					<input type="hidden" name="addressId" th:value="${chat.addressId}"><br>-->
-<!--					<button class="like-button" onclick="toggleLike()" id="like_button" name="likebutton">いいね！</button>-->
+				<div class="balloon-left">
+					<p>[[${chat.text}]]</p>
+				</div><br><br>
+				<form th:action="|/chat/${chat.addressId}/like_button|" method="post">
+					<input type="hidden" name="id" th:value="${chat.id}">
+					<input type="hidden" name="userId" th:value="${chat.userId}">
+					<input type="hidden" name="text" th:value="${chat.text}">
+					<input type="hidden" name="addressId" th:value="${chat.addressId}">
+					<input type="hidden" name="likebutton" th:value="0">
+					<button class="like-button" onclick="toggleLike()" id="like_button" >いいね！</button>
+					<!--					<input type="hidden" name="likebutton" value="0">-->
 <!--					<p>カウント: <span id="counter">0</span></p>-->
-<!--				</form>-->
-<!--				<script>-->
-<!--					let isLiked = false;-->
-<!--					//let count = 0;-->
+				</form>
+				<script>
+					let isLiked = false;
+					//let count = 0;
 
-<!--					function toggleLike() {-->
-<!--						isLiked = !isLiked;-->
-<!--						const likeButton = document.querySelector('.like-button');-->
-<!--						if (isLiked) {-->
-<!--							likeButton.textContent = 'いいね！';-->
-<!--							likeButton.classList.add('liked');-->
+					function toggleLike() {
+						isLiked = !isLiked;
+						const likeButton = document.querySelector('.like-button');
+						if (isLiked) {
+							likeButton.textContent = 'いいね！';
+							likeButton.classList.add('liked');
 
-<!--						} else {-->
-<!--							likeButton.textContent = 'いいね！';-->
-<!--							likeButton.classList.remove('liked');-->
-<!--							//likeButton.classList.add('liked');-->
-<!--						}-->
-<!--					}-->
-<!--							//カウントを追加するとき-->
-<!--							//document.getElementById('like-button').addEventListener('click', function () {-->
-<!--								//count++;-->
-<!--								//document.getElementById('counter').innerText = count;-->
-<!--							//});-->
-<!--				</script>-->
+						} else {
+							likeButton.textContent = 'いいね！';
+							likeButton.classList.remove('liked');
+							//likeButton.classList.add('liked');
+						}
+					}
+							//カウントを追加するとき
+							//document.getElementById('like-button').addEventListener('click', function () {
+								//count++;
+								//document.getElementById('counter').innerText = count;
+							//});
+				</script>
 			</th:block>
 
 		</th:block>

@@ -75,15 +75,28 @@ public class ChatController {
 		//自分以外の連絡先を取得
 		List<User> userList = userRepository.findAll();
 		List<Address> addressList = new ArrayList<>();
+
+		List<Address> friendList = new ArrayList<>();
+		List<Address> otherList = new ArrayList<>();
+
 		for (User user : userList) {
 			if (user.getId() != account.getId()) {
 				addressList.add(new Address(user.getId(), user.getName(), user.getEmail()));
 			}
 		}
+		 
+//		if (friendList.contains(user)) {
+//            friendList.add(new Address(user.getId(), user.getName(), user.getEmail()));
+//        } else {
+//            otherList.add(new Address(user.getId(), user.getName(), user.getEmail()));
+//        }
 
 		m.addAttribute("addressList", addressList);
 		m.addAttribute("demo", demo);
-
+		
+		m.addAttribute("friendList", friendList);
+		m.addAttribute("otherList", otherList);
+		
 		return "Chat";
 
 	}
@@ -170,28 +183,26 @@ public class ChatController {
 		//		return "redirect:/chat/"+  ;
 	}
 
-	//	@PostMapping("/chat/{addressId}/like_button")
-	//	public String like(
-	//			@RequestParam("chat") Chat chat,
-	//			@RequestParam("id") Integer id,
-	//			@RequestParam("userId") Integer userId,
-	//			@RequestParam("text") String text,
-	//			@PathVariable("addressId") Integer addressId,
-	//			@RequestParam("likebutton") Integer likebutton,
-	//			Model m) {
-	//		System.out.println(id);
-	//		System.out.println(userId);
-	//		System.out.println(text);
-	//		System.out.println(addressId);
-	//		System.out.println(likebutton);
-	//		chatRepository.save(new Chat(chat.getId(), chat.getUserId(), chat.getText(),
-	//				chat.getAddressId(), chat.getDate(), chat.getLikebutton()));
-	//		chatRepository.save(new Chat(id,userId, text,
-	//				addressId, LocalDateTime.now(), likebutton));
-	//		
-	//		m.addAttribute("likebutton", likebutton);
-	//
-	//		return "redirect:/chat/" + addressId;
-	//	}
+		@PostMapping("/chat/{addressId}/like_button")
+		public String like(
+				@RequestParam("id") Integer id,
+				@RequestParam("userId") Integer userId,
+				@RequestParam("text") String text,
+				@PathVariable("addressId") Integer addressId,
+				@RequestParam("likebutton") Integer likebutton,
+				Model m) {
+//			System.out.println(id);
+//			System.out.println(userId);
+//			System.out.println(text);
+//			System.out.println(addressId);
+//			System.out.println(likebutton);
+//			chatRepository.save(new Chat(chat.getId(), chat.getUserId(), chat.getText(),
+//					chat.getAddressId(), chat.getDate(), chat.getLikebutton()));
+			chatRepository.save(new Chat(id,userId, text,addressId, LocalDateTime.now(), 1));
+			
+			m.addAttribute("likebutton", 1);
+	
+			return "redirect:/chat/" + userId;
+		}
 
 }
