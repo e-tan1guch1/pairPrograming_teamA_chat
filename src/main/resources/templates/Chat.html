@@ -34,14 +34,6 @@
 				<div class="balloon-right">
 					<p>[[${chat.text}]]</p>
 				</div>
-<<<<<<< HEAD
-				<div>
-				<form th:action="|/chat/${chat.id}/delete|" method="post" class="deleteForm">
-					<input type="hidden" name="addressId" th:value="${addressId}">
-					<button class="delete">削除</button>
-				</form>
-				<script th:inline="javascript">
-					let isLikedright = /*[[${chat.likeButton}]]*/
 				<div class="underText">
 					<form th:action="|/chat/${chat.id}/delete|" method="post" class="deleteForm">
 						<input type="hidden" name="addressId" th:value="${addressId}">
@@ -49,6 +41,7 @@
 					</form>
 					<script th:inline="javascript">
 						var isLiked = /*[[${chat.likeButton}]]*/
+
 							function toggleLike() {
 							}
 
@@ -57,7 +50,8 @@
 						} else {
 							document.write('<button class="right-like-button" onclick="toggleLike()" id="like_button"></button>')
 						}
-				</script>
+					</script>
+				</div>
 			</th:block>
 
 			<th:block th:if="${chat.userId} != ${@account.id}">
