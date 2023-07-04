@@ -12,13 +12,10 @@
 <body>
 	<header th:replace="header"></header>
 	<div class="side">
-
-		<h3>＜アドレスリスト＞</h3>
 		<p th:each="address:${addressList}">
 			<a th:href="|/chat/${address.id}|">
 				[[${address.name}]]</a><br>
 		</p>
-
 	</div>
 
 	<div class="label">[[${addressName}]]</div>
@@ -66,18 +63,7 @@
 					<input type="hidden" name="userId" th:value="${chat.userId}">
 					<input type="hidden" name="text" th:value="${chat.text}">
 					<input type="hidden" name="addressId" th:value="${chat.addressId}">
-<<<<<<< HEAD
-					<input type="hidden" name="likebutton" th:value="0">
-					<button class="like-button" onclick="toggleLike()" id="like_button">いいね！</button>
-					<!--					<input type="hidden" name="likebutton" value="0">-->
-					<!--					<p>カウント: <span id="counter">0</span></p>-->
-				</form>
-				<script>
-					let isLiked = false;
-					//let count = 0;
-=======
 					<input type="hidden" name="date" th:value="${chat.date}">
->>>>>>> refs/heads/master
 
 					<script th:inline="javascript">
 						var isLiked = /*[[${chat.likeButton}]]*/
