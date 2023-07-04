@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -179,6 +180,14 @@ public class ChatController {
 			@RequestParam("addressId") Integer addressId,
 			Model m) {
 
+		Optional<Chat> opt = chatRepository.findById(chatId);
+		if(opt.isPresent()) {
+			Chat chat = opt.get();
+			if(chat.isLikeButton()) {
+				m.addAttribute("deleteConfirm", "相手がチェックをつけていますが本当に削除しますか？");
+			}
+		}
+		
 		chatRepository.deleteById(chatId);
 
 		return "redirect:/chat/" + addressId;

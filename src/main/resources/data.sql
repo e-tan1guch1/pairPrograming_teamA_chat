@@ -3,9 +3,10 @@ INSERT INTO users(name, email,password) VALUES('荒川講師', 'arakawa@mail', '
 INSERT INTO users(name, email,password) VALUES('白戸講師', 'shiroto@mail', 'sss');
 INSERT INTO users(name, email,password) VALUES('伊山', 'iyama@mail', 'iii');
 INSERT INTO users(name, email,password) VALUES('谷口', 'taniguchi@mail', 'ttt');
-INSERT INTO users(name, email,password) VALUES('大魔神', 'mazion@mail', 'mmm');
 INSERT INTO users(name, email,password) VALUES('犬', 'inu@mail', 'iii');
-INSERT INTO users(name, email,password) VALUES('スコティッシュフォールド', 'nekosama@mail', 'nnn');
+INSERT INTO users(name, email,password) VALUES('猫', 'neko@mail', 'nnn');
+INSERT INTO users(name, email,password) VALUES('魔神', 'mazion@mail', 'mmm');
+INSERT INTO users(name, email,password) VALUES('山田', 'yamada@mail', 'yyy');
 
 INSERT INTO chats(user_id, text, address_id, date) VALUES(1, 'こんにちは', 2, '2023-07-04 09:29:30.053193');
 INSERT INTO chats(user_id, text, address_id, date) VALUES(1, '荒川です', 2, '2023-07-04 09:30:30.053193');

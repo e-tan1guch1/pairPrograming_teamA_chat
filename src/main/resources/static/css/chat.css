@@ -215,13 +215,6 @@ small {
 	padding: 0;
 }
 
-.delete {
-	position: relative;
-	float: right;
-	left: 490px;
-	margin-bottom: 10px;
-}
-
 button {
 	display: block;
 	text-align: center;
@@ -279,6 +272,37 @@ button:hover {
 .balloon-demo p {
 	margin: 0;
 	padding: 0;
+}
+
+
+.delete {
+	margin-top: 1px;
+	border: 0;
+	position: relative;
+	float: right;
+	width: 35px;
+	height: 35px;
+	background: #fff;
+	background-image: url(/images/delete.png);
+	background-repeat: no-repeat;
+	background-size: 50%;
+	left: 490px;
+	color:darksalmon;
+}
+
+.delete:hover {
+	margin-top: 1px;
+	cursor: pointer;
+	border: 0;
+	position: relative;
+	float: right;
+	width: 35px;
+	height: 35px;
+	background: #fff;
+	background-image: url(/images/delete.png);
+	background-repeat: no-repeat;
+	background-size: 50%;
+	left: 490px;
 }
 
 .like-button {

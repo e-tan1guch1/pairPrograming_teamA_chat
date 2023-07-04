@@ -17,6 +17,9 @@
 				[[${address.name}]]</a><br>
 		</p>
 	</div>
+	<th:block th:if="${deleteConfirm}">
+		<div>[[${deleteConfirm}]]</div>
+	</th:block>
 
 	<div class="label">[[${addressName}]]</div>
 	<div class="scroll" id="el">
@@ -37,7 +40,7 @@
 				<div class="underText">
 					<form th:action="|/chat/${chat.id}/delete|" method="post" class="deleteForm">
 						<input type="hidden" name="addressId" th:value="${addressId}">
-						<button class="delete">削除</button>
+						<button class="delete"></button>
 					</form>
 					<script th:inline="javascript">
 						var isLiked = /*[[${chat.likeButton}]]*/
