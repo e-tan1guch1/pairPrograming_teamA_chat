@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,10 +16,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Chat;
+import com.example.demo.entity.Friend;
 import com.example.demo.entity.User;
 import com.example.demo.model.Account;
 import com.example.demo.model.Address;
 import com.example.demo.repository.ChatRepository;
+import com.example.demo.repository.FriendRepository;
 import com.example.demo.repository.UserRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -37,6 +40,9 @@ public class ChatController {
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	FriendRepository friendRepository;
 
 	//	@GetMapping("/chat")
 	//	public String chat(
@@ -77,26 +83,38 @@ public class ChatController {
 		List<Address> addressList = new ArrayList<>();
 
 		List<Address> friendList = new ArrayList<>();
-		List<Address> otherList = new ArrayList<>();
 
 		for (User user : userList) {
 			if (user.getId() != account.getId()) {
 				addressList.add(new Address(user.getId(), user.getName(), user.getEmail()));
 			}
 		}
-		 
-//		if (friendList.contains(user)) {
-//            friendList.add(new Address(user.getId(), user.getName(), user.getEmail()));
-//        } else {
-//            otherList.add(new Address(user.getId(), user.getName(), user.getEmail()));
-//        }
+		
+		//フレンドリスト取得
+		//自分とフレンドの人のユーザIdを含むレコード一覧
+		List<Friend> friendListNumber = friendRepository.findFriend(account.getId());
 
+		for (Friend friendNumber : friendListNumber) {
+			//自分とフレンドの人のユーザIdからユーザ情報を取得
+			Optional<User> opt = userRepository.findById(friendNumber.getUser2Id());
+			if (opt.isPresent()) {
+				User user = opt.get();
+				friendList.add(new Address(user.getId(), user.getName(), user.getEmail()));
+			}
+		}
+		for (Address address : friendList) {
+			if (friendList.contains(address)) {
+		        addressList.remove(address);
+		    }
+		}
+		
 		m.addAttribute("addressList", addressList);
 		m.addAttribute("demo", demo);
+		m.addAttribute("friends", friendList);
 		
-		m.addAttribute("friendList", friendList);
-		m.addAttribute("otherList", otherList);
-		
+//		System.out.println(addressList);
+//		System.out.println(friendList);
+
 		return "Chat";
 
 	}
@@ -183,26 +201,26 @@ public class ChatController {
 		//		return "redirect:/chat/"+  ;
 	}
 
-		@PostMapping("/chat/{addressId}/like_button")
-		public String like(
-				@RequestParam("id") Integer id,
-				@RequestParam("userId") Integer userId,
-				@RequestParam("text") String text,
-				@PathVariable("addressId") Integer addressId,
-				@RequestParam("likebutton") Integer likebutton,
-				Model m) {
-//			System.out.println(id);
-//			System.out.println(userId);
-//			System.out.println(text);
-//			System.out.println(addressId);
-//			System.out.println(likebutton);
-//			chatRepository.save(new Chat(chat.getId(), chat.getUserId(), chat.getText(),
-//					chat.getAddressId(), chat.getDate(), chat.getLikebutton()));
-			chatRepository.save(new Chat(id,userId, text,addressId, LocalDateTime.now(), 1));
-			
-			m.addAttribute("likebutton", 1);
-	
-			return "redirect:/chat/" + userId;
-		}
+	@PostMapping("/chat/{addressId}/like_button")
+	public String like(
+			@RequestParam("id") Integer id,
+			@RequestParam("userId") Integer userId,
+			@RequestParam("text") String text,
+			@PathVariable("addressId") Integer addressId,
+			@RequestParam("likebutton") Integer likebutton,
+			Model m) {
+		//			System.out.println(id);
+		//			System.out.println(userId);
+		//			System.out.println(text);
+		//			System.out.println(addressId);
+		//			System.out.println(likebutton);
+		//			chatRepository.save(new Chat(chat.getId(), chat.getUserId(), chat.getText(),
+		//					chat.getAddressId(), chat.getDate(), chat.getLikebutton()));
+		chatRepository.save(new Chat(id, userId, text, addressId, LocalDateTime.now(), 1));
+
+		m.addAttribute("likebutton", 1);
+
+		return "redirect:/chat/" + userId;
+	}
 
 }
