@@ -89,11 +89,15 @@ public class ChatController {
 				addressList.add(new Address(user.getId(), user.getName(), user.getEmail()));
 			}
 		}
+<<<<<<< HEAD
 		
 		//フレンドリスト取得
 		//自分とフレンドの人のユーザIdを含むレコード一覧
 		List<Friend> friendListNumber = friendRepository.findFriend(account.getId());
+=======
+>>>>>>> refs/heads/master
 
+<<<<<<< HEAD
 		for (Friend friendNumber : friendListNumber) {
 			//自分とフレンドの人のユーザIdからユーザ情報を取得
 			Optional<User> opt = userRepository.findById(friendNumber.getUser2Id());
@@ -108,12 +112,27 @@ public class ChatController {
 		    }
 		}
 		
+=======
+		//		if (friendList.contains(user)) {
+		//            friendList.add(new Address(user.getId(), user.getName(), user.getEmail()));
+		//        } else {
+		//            otherList.add(new Address(user.getId(), user.getName(), user.getEmail()));
+		//        }
+
+		m.addAttribute("addressName", "チャットアプリ君");
+>>>>>>> refs/heads/master
 		m.addAttribute("addressList", addressList);
 		m.addAttribute("demo", demo);
+<<<<<<< HEAD
 		m.addAttribute("friends", friendList);
 		
 //		System.out.println(addressList);
 //		System.out.println(friendList);
+=======
+
+		m.addAttribute("friendList", friendList);
+		m.addAttribute("otherList", otherList);
+>>>>>>> refs/heads/master
 
 		return "Chat";
 
@@ -181,11 +200,12 @@ public class ChatController {
 		return "Chat";
 	}
 
-	@GetMapping("/chat/{addressId}/edit")
-	public String edit(
+	@GetMapping("/chat/{addressId}/reload")
+	public String reload(
 			@PathVariable("addressId") Integer addressId,
 			Model m) {
 
+		System.out.println("更新");
 		return "redirect:/chat/" + addressId;
 	}
 
@@ -207,6 +227,7 @@ public class ChatController {
 			@RequestParam("userId") Integer userId,
 			@RequestParam("text") String text,
 			@PathVariable("addressId") Integer addressId,
+<<<<<<< HEAD
 			@RequestParam("likebutton") Integer likebutton,
 			Model m) {
 		//			System.out.println(id);
@@ -219,6 +240,14 @@ public class ChatController {
 		chatRepository.save(new Chat(id, userId, text, addressId, LocalDateTime.now(), 1));
 
 		m.addAttribute("likebutton", 1);
+=======
+			@RequestParam("date") LocalDateTime date,
+			@RequestParam(name = "likeButton", defaultValue="false") Boolean likeButton,
+			Model m) {
+		
+		chatRepository.save(new Chat(id, userId, text, addressId, date, likeButton));
+
+>>>>>>> refs/heads/master
 
 		return "redirect:/chat/" + userId;
 	}

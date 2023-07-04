@@ -20,38 +20,53 @@
 		</p>
 
 	</div>
-	<th:block class="content">
-		<th:block th:if="${demo != null}" th:each="demo:${demo}">
-			<div class="balloon-demo">
-				<p>[[${demo}]]</p>
-			</div>
-			<br><br>
-		</th:block>
-	</th:block>
 
 	<div class="label">[[${addressName}]]</div>
 	<div class="scroll" id="el">
+		<th:block th:if="${demo != null}" th:each="demo:${demo}">
+			<div class="balloon-left">
+				[[${demo}]]
+			</div>
+			<br>
+		</th:block>
+
+
 		<th:block th:each="chat : ${chats}">
 
 			<th:block th:if="${chat.userId} == ${@account.id}">
 				<div class="balloon-right">
 					<p>[[${chat.text}]]</p>
 				</div>
-				<form th:action="|/chat/${chat.id}/delete|" method="post">
-					<input type="hidden" name="addressId" th:value="${addressId}">
-					<button class="delete">削除</button>
-				</form>
+				<div class="underText">
+					<form th:action="|/chat/${chat.id}/delete|" method="post" class="deleteForm">
+						<input type="hidden" name="addressId" th:value="${addressId}">
+						<button class="delete">削除</button>
+					</form>
+					<script th:inline="javascript">
+						var isLiked = /*[[${chat.likeButton}]]*/
+
+							function toggleLike() {
+							}
+
+						if (isLiked) {
+							document.write('<button class="right-liked" onclick="toggleLike()" id="like_button"></button>')
+						} else {
+							document.write('<button class="right-like-button" onclick="toggleLike()" id="like_button"></button>')
+						}
+					</script>
+				</div>
 			</th:block>
 
 			<th:block th:if="${chat.userId} != ${@account.id}">
 				<div class="balloon-left">
-					<p>[[${chat.text}]]</p>
-				</div><br><br>
+					[[${chat.text}]]
+				</div>
 				<form th:action="|/chat/${chat.addressId}/like_button|" method="post">
 					<input type="hidden" name="id" th:value="${chat.id}">
 					<input type="hidden" name="userId" th:value="${chat.userId}">
 					<input type="hidden" name="text" th:value="${chat.text}">
 					<input type="hidden" name="addressId" th:value="${chat.addressId}">
+<<<<<<< HEAD
 					<input type="hidden" name="likebutton" th:value="0">
 					<button class="like-button" onclick="toggleLike()" id="like_button">いいね！</button>
 					<!--					<input type="hidden" name="likebutton" value="0">-->
@@ -60,26 +75,25 @@
 				<script>
 					let isLiked = false;
 					//let count = 0;
+=======
+					<input type="hidden" name="date" th:value="${chat.date}">
+>>>>>>> refs/heads/master
 
-					function toggleLike() {
-						isLiked = !isLiked;
-						const likeButton = document.querySelector('.like-button');
+					<script th:inline="javascript">
+						var isLiked = /*[[${chat.likeButton}]]*/
+
+							function toggleLike() {
+							}
+
 						if (isLiked) {
-							likeButton.textContent = 'いいね！';
-							likeButton.classList.add('liked');
-
+							document.write('<input type="hidden" name="likeButton" value="false">');
+							document.write('<button class="liked" onclick="toggleLike()" id="like_button"></button>')
 						} else {
-							likeButton.textContent = 'いいね！';
-							likeButton.classList.remove('liked');
-							//likeButton.classList.add('liked');
+							document.write('<input type="hidden" name="likeButton" value="true">');
+							document.write('<button class="like-button" onclick="toggleLike()" id="like_button"></button>')
 						}
-					}
-							//カウントを追加するとき
-							//document.getElementById('like-button').addEventListener('click', function () {
-								//count++;
-								//document.getElementById('counter').innerText = count;
-							//});
-				</script>
+					</script>
+				</form>
 			</th:block>
 
 		</th:block>
@@ -91,18 +105,17 @@
 	</script>
 
 	<th:block th:if="${addressId != null}">
-		<br>
-		<br>
+
 		<form action="/chat/add" method="post">
 			<textarea name="text" cols="40" rows="10" placeholder="メッセージを入力"></textarea>
 			<input type="hidden" name="addressId" th:value="${addressId}"><br>
 			<button class="send">送信</button>
+		</form>
 
-		</form><br>
-		<form　action="| /chat/${addressId}/edit|" method="get">
-			<input type="hidden" name="addressId" th:value="${addressId}"><br><br>
+		<form th:action="|/chat/${addressId}/reload|" method="get">
 			<button class="recieve">更新</button>
 		</form>
+
 	</th:block>
 </body>
 
