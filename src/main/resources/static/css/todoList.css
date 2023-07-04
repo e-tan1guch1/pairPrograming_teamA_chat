@@ -234,6 +234,9 @@ textarea{
 	color:#666666;
 	border: 2px solid lightcoral;
 	border-radius: 0.67em;
+	padding: 0.2em;
+	background-color: snow;
+	outline: none;
 }
 
 button {
