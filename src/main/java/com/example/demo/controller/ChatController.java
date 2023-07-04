@@ -172,16 +172,36 @@ public class ChatController {
 		//自分以外の連絡先を取得
 		List<User> userList = userRepository.findAll();
 		List<Address> addressList = new ArrayList<>();
+		List<Address> friendList = new ArrayList<>();
 		for (User user : userList) {
 			if (user.getId() != account.getId()) {
 				addressList.add(new Address(user.getId(), user.getName(), user.getEmail()));
 			}
 		}
+		//フレンドリスト取得
+				//自分とフレンドの人のユーザIdを含むレコード一覧
+				List<Friend> friendListNumber = friendRepository.findFriend(account.getId());
+
+				for (Friend friendNumber : friendListNumber) {
+					//自分とフレンドの人のユーザIdからユーザ情報を取得
+					Optional<User> opt = userRepository.findById(friendNumber.getUser2Id());
+					if (opt.isPresent()) {
+						User user = opt.get();
+						friendList.add(new Address(user.getId(), user.getName(), user.getEmail()));
+					}
+				}
+
+				for (Address address : friendList) {
+					if (friendList.contains(address)) {
+						addressList.remove(address);
+					}
+				}
 
 		m.addAttribute("addressId", addressId);
 		m.addAttribute("addressName", userRepository.findById(addressId).get().getName());
 		m.addAttribute("chats", chats);
 		m.addAttribute("addressList", addressList);
+		m.addAttribute("friends", friendList);
 
 		return "Chat";
 	}
