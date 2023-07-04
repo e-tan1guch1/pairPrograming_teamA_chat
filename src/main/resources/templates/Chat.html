@@ -34,24 +34,23 @@
 				<div class="balloon-right">
 					<p>[[${chat.text}]]</p>
 				</div>
-				<div class="underText">
-					<form th:action="|/chat/${chat.id}/delete|" method="post" class="deleteForm">
-						<input type="hidden" name="addressId" th:value="${addressId}">
-						<button class="delete">削除</button>
-					</form>
-					<script th:inline="javascript">
-						let isLikedright = /*[[${chat.likeButton}]]*/
+				<div>
+				<form th:action="|/chat/${chat.id}/delete|" method="post" class="deleteForm">
+					<input type="hidden" name="addressId" th:value="${addressId}">
+					<button class="delete">削除</button>
+				</form>
+				<script th:inline="javascript">
+					let isLikedright = /*[[${chat.likeButton}]]*/
 
-							function toggleLike() {
-							}
-
-						if (isLikedright) {
-							document.write('<button class="right-liked" onclick="toggleLike()" id="like_button"></button>')
-						} else {
-							document.write('<button class="right-like-button" onclick="toggleLike()" id="like_button"></button>')
+						function toggleLike() {
 						}
-					</script>
-				</div>
+
+					if (isLikedright) {
+						document.write('<button class="right-liked" onclick="toggleLike()" id="like_button"></button>')
+					} else {
+						document.write('<button class="right-like-button" onclick="toggleLike()" id="like_button"></button>')
+					}
+				</script>
 			</th:block>
 
 			<th:block th:if="${chat.userId} != ${@account.id}">

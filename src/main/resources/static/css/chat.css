@@ -373,6 +373,21 @@ button:hover {
 	background-image: url(/images/checked.png);
 	background-repeat: no-repeat;
 	background-size: 50%;
+	left: 490px;
+}
+
+.right-liked:hover {
+	border: 0;
+	position: relative;
+	float: left;
+	left: 70px;
+	width: 35px;
+	height: 35px;
+	background: #fff;
+	background-image: url(/images/checked.png);
+	background-repeat: no-repeat;
+	background-size: 50%;
+	left: 490px;
 }
 
 .underText {
