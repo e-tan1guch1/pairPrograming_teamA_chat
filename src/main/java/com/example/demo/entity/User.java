@@ -41,8 +41,9 @@ public class User {
 		this.password = password;
 	}
 
-	public User(Integer id, String name, String email, String password) {
+	public User(Integer id, String icon, String name, String email, String password) {
 		this.id = id;
+		this.icon = icon;
 		this.name = name;
 		this.email = email;
 		this.password = password;

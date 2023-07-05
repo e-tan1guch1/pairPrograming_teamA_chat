@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS todos;
 DROP TABLE IF EXISTS friends;
 DROP TABLE IF EXISTS requests;
+DROP TABLE IF EXISTS icons;
 
 -- チャットテーブル
 CREATE TABLE chats
@@ -39,6 +40,13 @@ CREATE TABLE requests
    id SERIAL PRIMARY KEY,
    user2_id INTEGER,
    user_id INTEGER
+);
+
+-- アイコンテーブル
+CREATE TABLE icons
+(
+   id SERIAL PRIMARY KEY,
+   icon_url TEXT
 );
 
 -- TODOテーブル

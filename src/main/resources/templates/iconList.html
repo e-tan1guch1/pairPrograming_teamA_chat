@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>チャット画面</title>
+	<link rel="stylesheet" type="text/css" href="/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/css/iconList.css">
+</head>
+
+<body>
+	<header th:replace="header"></header>
+
+
+
+
+	<div class="label">アイコンリスト</div>
+	<div class="scroll">
+		<div class="icons">
+			<th:block th:if="${icons}" th:each="icon:${icons}">
+				<div class="icons">
+					<form method="post" name="form" action="/profile/edit/icon">
+						<input type="hidden" name="icon" th:value="${icon.iconUrl}">
+						<a href="javascript:form.submit()"><img th:src="${icon.iconUrl}"></a>
+					</form>
+				</div>
+			</th:block>
+		</div>
+	</div>
+</body>
+
+</html>

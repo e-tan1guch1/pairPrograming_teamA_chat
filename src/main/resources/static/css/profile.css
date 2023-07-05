@@ -34,12 +34,41 @@ div.user a {
 	color: white;
 }
 
+.scroll {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 400px;
+	width: 600px;
+	display: block;
+
+	margin-left: auto;
+	margin-right: auto;
+
+	background-color: white;
+	padding-top: 15px;
+	margin-bottom: 15px;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.scroll::-webkit-scrollbar {
+	width: 10px;
+}
+
+.scroll::-webkit-scrollbar-track {
+	background-color: white;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+	background-color: #f06060;
+	border-radius: 5px;
+}
+
 
 .container {
-	display: block;
 	width: 600px;
 	height: 400px;
-	/*	background-color: #f06060;*/
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 15px;
@@ -62,6 +91,24 @@ button {
 	text-align: center;
 	text-decoration: none;
 	width: 50px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	font-weight: bold;
+	border: 2px solid #fff;
+	color: #fff;
+	/*	background: #f06060;*/
+
+	border-radius: 10px;
+	background: lightcoral;
+
+}
+
+#selectIcon {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	width: 150px;
 	margin-top: 0px;
 	margin-right: 0px;
 	margin-left: 0px;
@@ -142,10 +189,11 @@ button:hover {
 	width: 200px;
 	height: 300px;
 	float: right;
+	position: absolute;
 }
 
 table {
-	padding-top: 30px;
+	padding-bottom: 30px;
 }
 
 .saveForm div input {
@@ -165,6 +213,6 @@ td {
 }
 
 .iconTd img {
-	margin-left:10px;
+	margin-left: 10px;
 	background-color: lightcoral;
 }

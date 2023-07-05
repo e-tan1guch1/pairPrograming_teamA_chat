@@ -24,3 +24,9 @@ INSERT INTO friends(user_id, user2_id) VALUES(5, 1);
 
 
 INSERT INTO requests(user2_id, user_id) VALUES(1, 6);
+
+INSERT INTO icons(icon_url) VALUES('/images/icons/businessman.png');
+INSERT INTO icons(icon_url) VALUES('/images/icons/businesswoman.png');
+INSERT INTO icons(icon_url) VALUES('/images/icons/car.png');
+INSERT INTO icons(icon_url) VALUES('/images/icons/fish.png');
+INSERT INTO icons(icon_url) VALUES('/images/icons/flower.png');
