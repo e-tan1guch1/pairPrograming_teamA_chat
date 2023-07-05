@@ -20,7 +20,7 @@ CREATE TABLE chats
 CREATE TABLE users
 (
    id SERIAL PRIMARY KEY,
-   icon TEXT DEFAULT '/images/businessman48px.png',
+   icon_id INTEGER DEFAULT 1,
    name TEXT,
    email TEXT,
    password TEXT

@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Friend;
+import com.example.demo.entity.Icon;
 import com.example.demo.entity.Request;
 import com.example.demo.entity.User;
 import com.example.demo.model.Account;
-import com.example.demo.model.Address;
+import com.example.demo.model.UserForDisplay;
 import com.example.demo.repository.FriendRepository;
+import com.example.demo.repository.IconRepository;
 import com.example.demo.repository.RequestRepository;
 import com.example.demo.repository.UserRepository;
 
@@ -38,6 +40,9 @@ public class FriendController {
 
 	@Autowired
 	RequestRepository requestRepository;
+	
+	@Autowired
+	IconRepository iconRepository;
 
 	@GetMapping("/friends")
 	public String index(Model m) {
@@ -45,14 +50,15 @@ public class FriendController {
 		//自分とフレンドの人のユーザIdを含むレコード一覧
 		List<Friend> friendListNumber = friendRepository.findFriend(account.getId());
 		//フレンドリスト格納用
-		List<Address> friendList = new ArrayList<>();
+		List<UserForDisplay> friendList = new ArrayList<>();
 
 		for (Friend friendNumber : friendListNumber) {
 			//自分とフレンドの人のユーザIdからユーザ情報を取得
 			Optional<User> opt = userRepository.findById(friendNumber.getUser2Id());
 			if (opt.isPresent()) {
 				User user = opt.get();
-				friendList.add(new Address(user.getId(), user.getName(), user.getEmail()));
+				Icon icon = iconRepository.findById(user.getIconId()).get();
+				friendList.add(new UserForDisplay(user.getId(), user.getName(), user.getEmail(), icon.getIconUrl()));
 			}
 		}
 

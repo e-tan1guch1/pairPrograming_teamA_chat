@@ -40,6 +40,8 @@ public class ProfileController {
 
 		//アカウント情報表示用
 		User user = userRepository.findById(account.getId()).get();
+		Icon icon = iconRepository.findById(user.getIconId()).get();
+		m.addAttribute("icon", icon.getIconUrl());
 		m.addAttribute("user", user);
 
 		return "profile";
@@ -48,12 +50,12 @@ public class ProfileController {
 	//名前変更用メソッド
 	@PostMapping("/profile/edit/name")
 	public String editNmae(Model m,
-			@RequestParam(name = "id", defaultValue = "") Integer id,
 			@RequestParam(name = "name", defaultValue = "") String name) {
 
 		List<String> error = new ArrayList<>();
-		User user = userRepository.findById(id).get();
-
+		User user = userRepository.findById(account.getId()).get();
+		Icon icon = iconRepository.findById(user.getIconId()).get();
+		
 		//名前のエラーチェック
 		if (name.equals("") == true) {
 			error.add("名前は1文字以上で記入してください");
@@ -62,12 +64,13 @@ public class ProfileController {
 			m.addAttribute("error", error);
 		} else {
 			//エラーがなければ変更
-			userRepository.save(new User(account.getId(), user.getIcon(), name, user.getEmail(), user.getPassword()));
+			userRepository.save(new User(account.getId(), icon.getId(), name, user.getEmail(), user.getPassword()));
 			account.setName(name);
 		}
+		m.addAttribute("icon", icon.getIconUrl());
 		m.addAttribute("user", user);
 
-		return "profile";
+		return "redirect:/profile";
 	}
 
 	@PostMapping("/profile/edit/email")
@@ -90,7 +93,8 @@ public class ProfileController {
 			m.addAttribute("error", error);
 		} else {
 			//エラーがなければ変更
-			userRepository.save(new User(account.getId(), user.getIcon(), user.getName(), email, user.getPassword()));
+			Icon icon = iconRepository.findById(user.getIconId()).get();
+			userRepository.save(new User(account.getId(), icon.getId(), user.getName(), email, user.getPassword()));
 		}
 		m.addAttribute("user", user);
 
@@ -114,19 +118,19 @@ public class ProfileController {
 			m.addAttribute("error", error);
 		} else {
 			//エラーがなければ変更
-			userRepository.save(new User(account.getId(), user.getIcon(), user.getName(), user.getEmail(), password));
+			Icon icon = iconRepository.findById(user.getIconId()).get();
+			userRepository.save(new User(account.getId(), icon.getId(), user.getName(), user.getEmail(), password));
 		}
 		m.addAttribute("user", user);
 
 		return "profile";
 	}
 
-	//名前変更用メソッド
+	//アイコンリスト表示用メソッド
 	@PostMapping("/profile/iconList")
 	public String IconList(Model m) {
 
 		List<Icon> icons = iconRepository.findAll();
-
 		m.addAttribute("icons", icons);
 
 		User user = userRepository.findById(account.getId()).get();
@@ -135,15 +139,18 @@ public class ProfileController {
 		return "iconList";
 	}
 
-	//名前変更用メソッド
-	@GetMapping("/profile/edit/icon/{icon}")
+	//アイコン変更用メソッド
+	@GetMapping("/profile/edit/icon/{icon_id}")
 	public String editIcon(Model m,
-			@PathVariable("icon") String icon) {
+			@PathVariable("icon_id") Integer icon_id) {
 
 		// ログインしているアカウントのアカウント情報
 		User user = userRepository.findById(account.getId()).get();
+		
+		// アイコンURLをIDから検索
+		Icon icon = iconRepository.findById(icon_id).get();
 		// 変更したアイコン情報の保存
-		userRepository.save(new User(user.getId(), icon, user.getName(), user.getEmail(), user.getPassword()));
+		userRepository.save(new User(user.getId(), icon.getId(), user.getName(), user.getEmail(), user.getPassword()));
 		// 情報表示用
 		m.addAttribute("user", user);
 
