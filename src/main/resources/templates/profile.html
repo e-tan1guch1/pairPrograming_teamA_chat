@@ -18,48 +18,71 @@
 		</th:block>
 	</div>
 
+	<div class="icons">
+		<th:block th:if="${icons}" th:each="icon:${icons}">
+			<div>
+				<a th:href="|/profile/edit/icon/${icon.iconUrl}|"><img th:src="${icon.iconUrl}"></a>
+			</div>
+		</th:block>
+	</div>
+
 
 	<div class="label">プロフィール</div>
-	<div class="container">
-		<div>
-			<table>
-				<form action="/profile/edit/name" method="post" class="saveForm">
-					<input type="hidden" name="id" th:value="${@account.id}">
-					<tr>
-						<td><label>名前</label></td>
-					</tr>
-					<tr>
-						<td><input type="text" name="name" placeholder="名前" th:value="${user.name}"></td>
-						<td><button>変更</button></td>
-					</tr>
-				</form>
-			</table>
-			<table>
-				<form action="/profile/edit/email" method="post" class="saveForm">
-					<input type="hidden" name="id" th:value="${@account.id}">
-					<tr>
-						<td><label>メールアドレス</label></td>
-					</tr>
-					<tr>
-						<td><input type="text" name="email" placeholder="メールアドレス" th:value="${user.email}"></td>
-						<td><button>変更</button></td>
-					</tr>
-				</form>
-			</table>
-			<table>
-				<form action="/profile/edit/password" method="post" class="saveForm">.
-					<input type="hidden" name="id" th:value="${@account.id}">
-					<tr>
-						<td><label>パスワード</label></td>
-					</tr>
-					<tr>
-						<td><input type="password" name="password" placeholder="パスワード" th:value="${user.password}"></td>
-						<td><button>変更</button></td>
-					</tr>
-				</form>
-			</table>
-		</div>
+	<div class="scroll">
+		<div class="container"></div>
+			<div>
+				<table>
+					<form action="/profile/iconList" method="post" class="saveForm">
+						<tr>
+							<td><label>アイコン</label></td>
+						</tr>
+						<tr>
+							<td class="iconTd"><img th:src="${user.icon}" alt="icon" class="sideIcon"></td>
+							<td><button id="selectIcon">アイコンを選択</button></td>
+						</tr>
+					</form>
+				</table>
 
+				<table>
+					<form action="/profile/edit/name" method="post" class="saveForm">
+						<input type="hidden" name="id" th:value="${@account.id}">
+						<tr>
+							<td><label>名前</label></td>
+						</tr>
+						<tr>
+							<td><input type="text" name="name" placeholder="名前" th:value="${user.name}"></td>
+							<td><button>変更</button></td>
+						</tr>
+					</form>
+				</table>
+				<table>
+					<form action="/profile/edit/email" method="post" class="saveForm">
+						<input type="hidden" name="id" th:value="${@account.id}">
+						<tr>
+							<td><label>メールアドレス</label></td>
+						</tr>
+						<tr>
+							<td><input type="text" name="email" placeholder="メールアドレス" th:value="${user.email}"></td>
+							<td><button>変更</button></td>
+						</tr>
+					</form>
+				</table>
+				<table>
+					<form action="/profile/edit/password" method="post" class="saveForm">
+						<input type="hidden" name="id" th:value="${@account.id}">
+						<tr>
+							<td><label>パスワード</label></td>
+						</tr>
+						<tr>
+							<td><input type="password" name="password" placeholder="パスワード" th:value="${user.password}">
+							</td>
+							<td><button>変更</button></td>
+						</tr>
+					</form>
+				</table>
+			</div>
+
+		</div>
 	</div>
 </body>
 
