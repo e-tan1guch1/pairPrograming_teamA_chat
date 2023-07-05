@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Chat;
 import com.example.demo.entity.Friend;
+import com.example.demo.entity.Icon;
 import com.example.demo.entity.User;
 import com.example.demo.model.Account;
-import com.example.demo.model.Address;
+import com.example.demo.model.UserForDisplay;
 import com.example.demo.repository.ChatRepository;
 import com.example.demo.repository.FriendRepository;
+import com.example.demo.repository.IconRepository;
 import com.example.demo.repository.UserRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -44,30 +46,8 @@ public class ChatController {
 	@Autowired
 	FriendRepository friendRepository;
 
-	//	@GetMapping("/chat")
-	//	public String chat(
-	//			Model m) {
-	//
-	//		// チャット内容の全件検索
-	//		List<Chat> chats = chatRepository.findAll();
-	//		List<Display> displays = new ArrayList<>();
-	//		List<User> addressList = userRepository.findAll();
-	//
-	//		for (Chat chat : chats) {
-	//			int userId = chat.getUserId();
-	//			Optional<User> opt = userRepository.findById(userId);
-	//			if (opt.isPresent()) {
-	//				displays.add(new Display(opt.get().getName(), chat.getText()));
-	//			}
-	//		}
-	//		for (Display display : displays) {
-	//			System.out.println(display);
-	//		}
-	//		m.addAttribute("chats", displays);
-	//		m.addAttribute("addressList", addressList);
-	//
-	//		return "Chat";
-	//	}
+	@Autowired
+	IconRepository iconRepository;
 
 	@GetMapping("/chat")
 	public String chat(
@@ -80,13 +60,15 @@ public class ChatController {
 
 		//自分以外の連絡先を取得
 		List<User> userList = userRepository.findAll();
-		List<Address> addressList = new ArrayList<>();
+		List<UserForDisplay> addressList = new ArrayList<>();
 
-		List<Address> friendList = new ArrayList<>();
+		List<UserForDisplay> friendList = new ArrayList<>();
 
 		for (User user : userList) {
+			
+			Icon icon = iconRepository.findById(user.getIconId()).get();
 			if (user.getId() != account.getId()) {
-				addressList.add(new Address(user.getId(), user.getName(), user.getEmail()));
+				addressList.add(new UserForDisplay(user.getId(), user.getName(), user.getEmail(), icon.getIconUrl()));
 			}
 		}
 		//フレンドリスト取得
@@ -98,11 +80,12 @@ public class ChatController {
 			Optional<User> opt = userRepository.findById(friendNumber.getUser2Id());
 			if (opt.isPresent()) {
 				User user = opt.get();
-				friendList.add(new Address(user.getId(), user.getName(), user.getEmail()));
+				Icon icon = iconRepository.findById(user.getIconId()).get();
+				friendList.add(new UserForDisplay(user.getId(), user.getName(), user.getEmail(), icon.getIconUrl()));
 			}
 		}
 
-		for (Address address : friendList) {
+		for (UserForDisplay address : friendList) {
 			if (friendList.contains(address)) {
 				addressList.remove(address);
 			}
@@ -171,11 +154,12 @@ public class ChatController {
 
 		//自分以外の連絡先を取得
 		List<User> userList = userRepository.findAll();
-		List<Address> addressList = new ArrayList<>();
-		List<Address> friendList = new ArrayList<>();
+		List<UserForDisplay> addressList = new ArrayList<>();
+		List<UserForDisplay> friendList = new ArrayList<>();
 		for (User user : userList) {
 			if (user.getId() != account.getId()) {
-				addressList.add(new Address(user.getId(), user.getName(), user.getEmail()));
+				Icon icon = iconRepository.findById(user.getIconId()).get();
+				addressList.add(new UserForDisplay(user.getId(), user.getName(), user.getEmail(), icon.getIconUrl()));
 			}
 		}
 		//フレンドリスト取得
@@ -187,11 +171,12 @@ public class ChatController {
 					Optional<User> opt = userRepository.findById(friendNumber.getUser2Id());
 					if (opt.isPresent()) {
 						User user = opt.get();
-						friendList.add(new Address(user.getId(), user.getName(), user.getEmail()));
+						Icon icon = iconRepository.findById(user.getIconId()).get();
+						friendList.add(new UserForDisplay(user.getId(), user.getName(), user.getEmail(), icon.getIconUrl()));
 					}
 				}
 
-				for (Address address : friendList) {
+				for (UserForDisplay address : friendList) {
 					if (friendList.contains(address)) {
 						addressList.remove(address);
 					}

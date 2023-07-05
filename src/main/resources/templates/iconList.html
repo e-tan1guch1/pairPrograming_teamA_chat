@@ -10,19 +10,12 @@
 
 <body>
 	<header th:replace="header"></header>
-
-
-
-
 	<div class="label">アイコンリスト</div>
 	<div class="scroll">
 		<div class="icons">
 			<th:block th:if="${icons}" th:each="icon:${icons}">
 				<div class="icons">
-					<form method="post" name="form" action="/profile/edit/icon">
-						<input type="hidden" name="icon" th:value="${icon.iconUrl}">
-						<a href="javascript:form.submit()"><img th:src="${icon.iconUrl}"></a>
-					</form>
+					<a th:href="|/profile/edit/icon/${icon.id}|" class="aIcon"><img th:src="${icon.iconUrl}"></a>
 				</div>
 			</th:block>
 		</div>

@@ -6,20 +6,22 @@ import lombok.Data;
 
 @Component
 @Data
-public class Address {
+public class UserForDisplay {
 	
 	private Integer id;
 	private String name;
 	private String email;
+	private String iconUrl;
 	
-	public Address() {
+	public UserForDisplay() {
 
 	}
 	
-	public Address(Integer id, String name, String email) {
+	public UserForDisplay(Integer id, String name, String email,  String iconUrl) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
+		this.iconUrl = iconUrl;
 	}
 	
 	
