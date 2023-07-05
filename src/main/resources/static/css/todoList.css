@@ -16,7 +16,7 @@ article {
 	background-color: lightcoral;
 }
 
-.side a {
+.side a.todoList {
 	color: white;
 	text-decoration: none;
 	display: inline-block;
@@ -26,9 +26,10 @@ article {
 	margin: 0;
 	background: lightcoral;
 	text-align: center;
+	
 }
 
-.side a:hover {
+.side a.todoList:hover {
 	background: #f07070;
 }
 
@@ -59,7 +60,7 @@ article {
 	text-decoration: underline dashed 2px lightcoral;
 	text-underline-offset: 8px;
 	margin-right: -16px;
-/*	margin-right: 0px;*/
+	/*	margin-right: 0px;*/
 
 }
 
@@ -133,9 +134,9 @@ div.container::-webkit-scrollbar {
 	content: "";
 	position: absolute;
 	top: 50%;
-	/*	left: -25px;*/
 	right: -30px;
 	margin-top: -15px;
+	/*	margin:-15px,0px,300px,300px;*/
 	border: 15px solid transparent;
 	border-left: 25px solid floralwhite;
 }
@@ -148,14 +149,16 @@ div.container::-webkit-scrollbar {
 .balloon-left {
 	position: absolute;
 	top: 11.5em;
-	left: 210px;
+	left: 220px;
 	display: inline-block;
-	margin: 1px 15px 1.5em 20px;
+/*	margin: 1px 1px 1.5em 70px;*/
+		margin: -15px, 0, 30em, 30em;
 	padding: 7px 10px;
 	min-width: 120px;
 	max-width: 100%;
 	font-size: 16px;
 	background: floralwhite;
+	/*	background-color: blue;*/
 	border-radius: 15px;
 	color: #f06060;
 	text-align: center;
@@ -213,12 +216,12 @@ ul.todo {
 	/*	list-style:disc*/
 }
 
-span.item{
+span.item {
 	text-decoration: underline dashed 2px lightcoral;
 	text-underline-offset: 10px;
 }
 
-textarea{
+textarea {
 	border: 2px solid lightcoral;
 	border-radius: 0.67em;
 	padding: 0.5em;
@@ -226,12 +229,12 @@ textarea{
 	outline: none;
 	color: #666666;
 	white-space: pre-wrap;
-	margin-left:40px;
+	margin-left: 40px;
 	width: 300px;
 }
 
-.record{
-	color:#666666;
+.record {
+	color: #666666;
 	border: 2px solid lightcoral;
 	border-radius: 0.67em;
 	padding: 0.2em;
@@ -246,11 +249,11 @@ button {
 	width: 500px;
 	padding: 1rem 4rem;
 	margin-top: 10px;
-	margin:auto;
+	margin: auto;
 	font-weight: bold;
 	border: 2px solid #fff;
 	color: #fff;
-/*	background: #f06060;*/
+	/*	background: #f06060;*/
 
 	border-radius: 10px;
 	background: lightcoral;
@@ -263,70 +266,103 @@ button:hover {
 }
 
 input[type=checkbox] {
-    display: none;
+	display: none;
 }
+
 .check {
-    box-sizing: border-box;
-    cursor: pointer;
-    display: inline-block;
-    padding: 5px 30px;
-    position: relative;
-    width: auto;
+	box-sizing: border-box;
+	cursor: pointer;
+	display: inline-block;
+	padding: 5px 30px;
+	position: relative;
+	width: auto;
 }
+
 .check::before {
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    content: '';
-    display: block;
-    height: 16px;
-    left: 5px;
-    margin-top: -8px;
-    position: absolute;
-    top: 50%;
-    width: 16px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	content: '';
+	display: block;
+	height: 16px;
+	left: 5px;
+	margin-top: -8px;
+	position: absolute;
+	top: 50%;
+	width: 16px;
 }
+
 .check::after {
-    border-right: 6px solid #f06060;
-    border-bottom: 3px solid #f06060;
-    content: '';
-    display: block;
-    height: 20px;
-    left: 7px;
-    margin-top: -16px;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    transform: rotate(45deg);
-    width: 9px;
+	border-right: 6px solid #f06060;
+	border-bottom: 3px solid #f06060;
+	content: '';
+	display: block;
+	height: 20px;
+	left: 7px;
+	margin-top: -16px;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	transform: rotate(45deg);
+	width: 9px;
 }
 
-input[type=checkbox]:checked + .check::before {
-    border-color: #666;
-}
-input[type=checkbox]:checked + .check::after {
-    opacity: 1;
+input[type=checkbox]:checked+.check::before {
+	border-color: #666;
 }
 
-.exe{
+input[type=checkbox]:checked+.check::after {
+	opacity: 1;
+}
+
+.exe {
 	padding-top: 10px;
 	height: 15px;
 }
 
-/*div.container-zigzag::after {*/
-/*	position: absolute;*/
-/*	left: 0;*/
-/*	width: 100%;*/
-/*	bottom: -20px;*/
-/*	background: linear-gradient(135deg, #fff 10px, transparent 0), linear-gradient(225deg, #fff 10px, transparent 0);*/
-/*	background-size: 20px 20px;*/
-/*}*/
+.mouseOver{
+	position: absolute;
+	top:179px;
+	left:0px;
+	height: 25px;
+	display: inline-block;
+	width: 200px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin: 0;
+	text-align: center;
+	
+	color: white;
+	text-decoration: none;
+}
 
-/*div.container-zigzag::before {*/
-/*	position: absolute;*/
-/*	left: 0;*/
-/*	width: 100%;*/
-/*	top: -20px;*/
-/*	background: linear-gradient(45deg, #fff 10px, transparent 0), linear-gradient(315deg, #fff 10px, transparent 0);*/
-/*	background-size: 20px 20px;*/
-/*	}*/
+.mouseOver:hover{
+	background: #f07070;
+}
+
+.balloon-error {
+	position: absolute;
+	right: 80px;
+	display: inline-block;
+	margin: 1.5em 15px 1.5em 20px;
+	padding: 7px 10px;
+	min-width: 120px;
+	max-width: 100%;
+	font-size: 16px;
+	background:lightcoral;;
+	border-radius: 15px;
+	color: white;
+	
+	text-align: center;
+}
+
+.balloon-error:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -25px;
+	margin-top: -15px;
+	border: 15px solid transparent;
+	border-right: 25px solid lightcoral;
+	/*	要調整*/
+}

@@ -7,11 +7,13 @@
 	margin: 0 auto;
 	border-radius: 5px;
 	background: #f6f5f4;
-	color: #1a1a1a;
+/*	color: #1a1a1a;*/
+	color: #555555;
 }
 
 .calenderDiv{
 	text-align: center;
+	color:lightcoral;
 }
 
 th,
