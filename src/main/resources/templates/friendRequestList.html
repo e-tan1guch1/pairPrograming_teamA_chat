@@ -30,7 +30,7 @@
 					<td>
 						<form action="/friend/deleteRequest" method="post">
 							<input type="hidden" name="recieveUserId" th:value="${friend.id}">
-							<button>取り消し</button>
+							<button onclick="return confirm('取り消しを行います。よろしいですか？')">取り消し</button>
 						</form>
 					</td>
 				</tr>
@@ -48,7 +48,7 @@
 					<td>
 						<form action="/friend/refuseRequest" method="post">
 							<input type="hidden" name="sendUserId" th:value="${friend.id}">
-							<button>拒否する</button>
+							<button onclick="return confirm('拒否します。よろしいですか？')">拒否する</button>
 						</form>
 					</td>
 				</tr>
