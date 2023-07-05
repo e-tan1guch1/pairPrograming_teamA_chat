@@ -21,6 +21,7 @@ h3{
 	text-align: center;
 }
 
+
 .side a {
 	color: white;
 	text-decoration: none;
@@ -28,9 +29,16 @@ h3{
 	width: 200px;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	padding-left: 25px;
 	margin: 0;
 	background: lightcoral;
 	text-align: left;
+}
+
+#ah3{
+padding-top: 0;	
+padding-bottom: 0;
+padding-left: 0;
 }
 
 .side p {
