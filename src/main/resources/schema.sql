@@ -48,5 +48,6 @@ CREATE TABLE todos
    hour INTEGER,
    minute INTEGER,
    text TEXT,
-    user_id INTEGER
+    user_id INTEGER,
+    checked BOOLEAN
 );

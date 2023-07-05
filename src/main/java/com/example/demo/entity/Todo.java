@@ -28,29 +28,30 @@ public class Todo {
 	private String text; // 内容
 	@Column(name="user_id")
 	private Integer userId;
-//	private LocalDateTime date;
-	
+	private boolean checked;
 
 	public Todo() {
 		
 	}
 	
-	public Todo(LocalDate releaseDate,Integer hour, Integer minute,String text,Integer userId) {
+	public Todo(LocalDate releaseDate,Integer hour, Integer minute,String text,Integer userId,boolean checked) {
 		this.releaseDate = releaseDate;
 		this.hour = hour;
 		this.minute = minute;
 		this.text = text;
 		this.userId = userId;
+		this.checked = false;
 //		this.date = date;
 	}
 
-	public Todo(Integer id, LocalDate releaseDate, Integer hour, Integer minute, String text,Integer userId) {
+	public Todo(Integer id, LocalDate releaseDate, Integer hour, Integer minute, String text,Integer userId,boolean checked) {
 		this.id = id;
 		this.releaseDate = releaseDate;
 		this.hour = hour;
 		this.minute = minute;
 		this.text = text;
 		this.userId = userId;
+		this.checked = false;
 //		this.date =date;
 	}
 	

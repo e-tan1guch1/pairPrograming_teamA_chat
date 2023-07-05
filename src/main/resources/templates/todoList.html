@@ -27,7 +27,7 @@
 
 		<div class="container">
 			<th:block th:if="${#lists.isEmpty(todo2)}">
-				<div class="DATE">　　未消化のTODOはありません！</div>
+				<div style="color:#666666;">　　未消化のTODOはありません。</div>
 			</th:block></th:block>
 			
 			<th:block th:each="todo:${todo2}">
@@ -37,7 +37,7 @@
 
 				<th:block th:unless="${todo.id == 0}">
 					<div style="display:inline-flex">
-						　　<input type="checkbox" th:id="|checkbox${todo.id}|" name="checkbox01">
+						　　<input type="checkbox" th:id="|checkbox${todo.id}|" name="1" th:checked="${todo.checked}">
 						<label th:for="|checkbox${todo.id}|" class="check"><span class="TODO">
 								<th:p th:if="${todo.hour != null}">　[[${todo.hour}]]時</th:p>
 								<th:p th:if="${todo.minute != null}">[[${todo.minute}]]分

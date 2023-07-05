@@ -57,15 +57,15 @@ public class todoController {
 			Todo t = todo2.get(i);
 			LocalDate date = t.getReleaseDate();
 
-			if (date != null) { /*この行エラー対処で記述したけど不要かも*/
+			if (date != null) { /*この行エラー対処のつもりで記述したけど不要かも*/
 				if (!tmp.toString().equals(date.toString())) {
-					Todo insert = new Todo(0, date, 0, 0, "", account.getId());
+					Todo insert = new Todo(0, date, 0, 0, "", account.getId(),false);
 					todo2.add(i, insert);
 
 					tmp = date;
 					System.err.println(tmp);
 				}
-			}/*この行エラー対処で記述したけど不要かも*/
+			}/*この行エラー対処のつもりで記述したけど不要かも*/
 		}
 
 		for (Todo t : todo2) {
@@ -102,9 +102,7 @@ public class todoController {
 			@RequestParam(name = "hour", required = false) Integer hour,
 			@RequestParam(name = "minute", required = false) Integer minute,
 			@RequestParam(name = "text", required = false) String text) {
-
-		//		LocalDateTime timeNow = LocalDateTime.now();
-
+		
 		List<String> error = new ArrayList<>();
 
 		if (releaseDate == null) {
@@ -125,8 +123,8 @@ public class todoController {
 			
 			return "todo";
 		}
-
-		Todo todos = new Todo(releaseDate, hour, minute, text, account.getId());
+		
+		Todo todos = new Todo(releaseDate, hour, minute, text, account.getId(),false);
 		todoRepository.save(todos);
 
 		return "redirect:/todoList";
@@ -178,7 +176,7 @@ public class todoController {
 			return "redirect:/todoList/" + id + "/edit";
 		}
 
-		Todo todos = new Todo(id, releaseDate, hour, minute, text, account.getId());
+		Todo todos = new Todo(id, releaseDate, hour, minute, text, account.getId(),false);
 		todoRepository.save(todos);
 
 		return "redirect:/todoList";

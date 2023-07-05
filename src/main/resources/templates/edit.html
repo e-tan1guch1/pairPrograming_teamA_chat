@@ -21,17 +21,17 @@
 				</div>
 			</div>
 		</div>
-		<div class="error">
-				<th:block th:if="${error}" th:each="e:${error}">
-					<div class="balloon-error">
-						[[${e}]]
-					</div><br><br>
-				</th:block>
-			</div>
-		<div class="container-zigzag">
+<!--		<div class="error">-->
+<!--				<th:block th:if="${error}" th:each="e:${error}">-->
+<!--					<div class="balloon-error">-->
+<!--						[[${e}]]-->
+<!--					</div><br><br>-->
+<!--				</th:block>-->
+<!--			</div>-->
+		<div class="container">
 			<form th:action="|/todoList/${todo.id}/edit|" method="post">
 				<input type="hidden" name="{todo.id}" value="id">
-				<h3 style="color:darksalmon">項目修正</h3>
+				<h3 style="color:darksalmon">　　項目修正</h3>
 				<ul class="todo">
 					<li><span>記入日</span>　
 						<input type="date" class="record" name="releaseDate" th:value="${todo.releaseDate}">
@@ -46,7 +46,7 @@
 						</select>分
 					</li><br>
 
-					<li><span>TODO内容</span></li><br>
+					<li><span>TODO</span></li><br>
 					<textarea name="text">[[${todo.text}]]</textarea>
 
 				</ul>
