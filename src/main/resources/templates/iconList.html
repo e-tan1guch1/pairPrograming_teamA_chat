@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>チャット画面</title>
+	<link rel="stylesheet" type="text/css" href="/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/css/iconList.css">
+</head>
+
+<body>
+	<header th:replace="header"></header>
+	<div class="label">アイコンリスト</div>
+	<div class="scroll">
+		<div class="icons">
+			<th:block th:if="${icons}" th:each="icon:${icons}">
+				<div class="icons">
+					<a th:href="|/profile/edit/icon/${icon.id}|" class="aIcon"><img th:src="${icon.iconUrl}"></a>
+				</div>
+			</th:block>
+		</div>
+	</div>
+</body>
+
+</html>

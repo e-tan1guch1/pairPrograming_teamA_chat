@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +16,9 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id; // ユーザID
+	
+	@Column(name="icon_id")
+	private Integer iconId; // iconのURL
 
 	private String name; // ユーザネーム
 
@@ -39,8 +43,9 @@ public class User {
 		this.password = password;
 	}
 
-	public User(Integer id, String name, String email, String password) {
+	public User(Integer id, Integer iconId, String name, String email, String password) {
 		this.id = id;
+		this.iconId = iconId;
 		this.name = name;
 		this.email = email;
 		this.password = password;

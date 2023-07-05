@@ -22,7 +22,7 @@
 		<th:block th:each="friend: ${friends}">
 			<table>
 				<tr>
-					<td rowspan="2"><img src="/images/businessman48px.png" alt="icon"></td>
+					<td rowspan="2"><img th:src="${friend.iconUrl}" alt="icon"></td>
 					<td class="nameTd">[[${friend.name}]]</td>
 				</tr>
 				<tr>
@@ -30,7 +30,7 @@
 					<td>
 						<form action="/friend/delete" method="post">
 							<input type="hidden" name="friendId" th:value="${friend.id}">
-							<button>削除</button>
+							<button onclick="return confirm('削除します。よろしいですか？')">削除</button>
 						</form>
 					</td>
 				</tr>
