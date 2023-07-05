@@ -40,10 +40,12 @@ public class ProfileController {
 
 		//アカウント情報表示用
 		User user = userRepository.findById(account.getId()).get();
-		Icon icon = iconRepository.findById(user.getIconId()).get();
-		m.addAttribute("icon", icon.getIconUrl());
 		m.addAttribute("user", user);
 
+		//プロフィールアイコン表示用
+		Icon icon = iconRepository.findById(user.getIconId()).get();
+		m.addAttribute("icon", icon.getIconUrl());
+		
 		return "profile";
 	}
 
@@ -70,16 +72,16 @@ public class ProfileController {
 		m.addAttribute("icon", icon.getIconUrl());
 		m.addAttribute("user", user);
 
-		return "redirect:/profile";
+		return "profile";
 	}
 
 	@PostMapping("/profile/edit/email")
 	public String editEmail(Model m,
-			@RequestParam(name = "id", defaultValue = "") Integer id,
 			@RequestParam(name = "email", defaultValue = "") String email) {
 
 		List<String> error = new ArrayList<>();
-		User user = userRepository.findById(id).get();
+		User user = userRepository.findById(account.getId()).get();
+		Icon icon = iconRepository.findById(user.getIconId()).get();
 
 		//メールアドレスのエラーチェック
 		if (email.equals("") == true) {
@@ -93,9 +95,9 @@ public class ProfileController {
 			m.addAttribute("error", error);
 		} else {
 			//エラーがなければ変更
-			Icon icon = iconRepository.findById(user.getIconId()).get();
 			userRepository.save(new User(account.getId(), icon.getId(), user.getName(), email, user.getPassword()));
 		}
+		m.addAttribute("icon", icon.getIconUrl());
 		m.addAttribute("user", user);
 
 		return "profile";
@@ -104,11 +106,11 @@ public class ProfileController {
 	//名前変更用メソッド
 	@PostMapping("/profile/edit/password")
 	public String editPassword(Model m,
-			@RequestParam(name = "id", defaultValue = "") Integer id,
 			@RequestParam(name = "password", defaultValue = "") String password) {
 
 		List<String> error = new ArrayList<>();
-		User user = userRepository.findById(id).get();
+		User user = userRepository.findById(account.getId()).get();
+		Icon icon = iconRepository.findById(user.getIconId()).get();
 
 		//名前のエラーチェック
 		if (password.equals("") == true) {
@@ -118,9 +120,9 @@ public class ProfileController {
 			m.addAttribute("error", error);
 		} else {
 			//エラーがなければ変更
-			Icon icon = iconRepository.findById(user.getIconId()).get();
 			userRepository.save(new User(account.getId(), icon.getId(), user.getName(), user.getEmail(), password));
 		}
+		m.addAttribute("icon", icon.getIconUrl());
 		m.addAttribute("user", user);
 
 		return "profile";
@@ -146,15 +148,12 @@ public class ProfileController {
 
 		// ログインしているアカウントのアカウント情報
 		User user = userRepository.findById(account.getId()).get();
-		
 		// アイコンURLをIDから検索
 		Icon icon = iconRepository.findById(icon_id).get();
 		// 変更したアイコン情報の保存
 		userRepository.save(new User(user.getId(), icon.getId(), user.getName(), user.getEmail(), user.getPassword()));
-		// 情報表示用
-		m.addAttribute("user", user);
 
-		return "profile";
+		return "redirect:/profile";
 	}
 
 	// メールアドレスかどうかを判定

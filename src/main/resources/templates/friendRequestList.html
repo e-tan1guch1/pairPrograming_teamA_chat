@@ -22,7 +22,7 @@
 		<th:block th:each="friend: ${sendRequests}">
 			<table>
 				<tr>
-					<td rowspan="2"><img src="/images/businessman48px.png" alt="icon"></td>
+					<td rowspan="2"><img th:src="${friend.iconUrl}" alt="icon"></td>
 					<td class="nameTd">[[${friend.name}]]</td>
 				</tr>
 				<tr>
@@ -43,7 +43,7 @@
 		<th:block th:each="friend: ${recieveRequests}">
 			<table>
 				<tr>
-					<td rowspan="2"><img src="/images/businessman48px.png" alt="icon"></td>
+					<td rowspan="2"><img th:src="${friend.iconUrl}" alt="icon"></td>
 					<td class="nameTd">[[${friend.name}]]</td>
 					<td>
 						<form action="/friend/refuseRequest" method="post">

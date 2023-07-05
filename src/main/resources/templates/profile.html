@@ -18,18 +18,9 @@
 		</th:block>
 	</div>
 
-	<div class="icons">
-		<th:block th:if="${icons}" th:each="icon:${icons}">
-			<div>
-				<a th:href="|/profile/edit/icon/${icon.iconUrl}|"><img th:src="${icon.iconUrl}"></a>
-			</div>
-		</th:block>
-	</div>
-
-
 	<div class="label">プロフィール</div>
 	<div class="scroll">
-		<div class="container"></div>
+		<div class="container">
 			<div>
 				<table>
 					<form action="/profile/iconList" method="post" class="saveForm">
@@ -81,8 +72,9 @@
 					</form>
 				</table>
 			</div>
-
 		</div>
+
+	</div>
 	</div>
 </body>
 

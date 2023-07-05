@@ -10,18 +10,18 @@ import com.example.demo.entity.Request;
 
 public interface RequestRepository extends JpaRepository<Request, Integer> {
 	@Query(
-			value = "SELECT * FROM requests WHERE user2_id = ?1", 
+			value = "SELECT * FROM requests WHERE reciever_id = ?1", 
 			nativeQuery = true
 			)
-	List<Request> findRequests(Integer user2Id);
+	List<Request> findRequests(Integer recieverId);
 	
 	@Query(
-			value = "SELECT * FROM requests WHERE user2_id = ?1 AND user_id = ?2", 
+			value = "SELECT * FROM requests WHERE reciever_id = ?1 AND sender_id = ?2", 
 			nativeQuery = true
 			)
-	Optional<Request> findOnlyRequest(Integer user2Id, Integer userId);
+	Optional<Request> findOnlyRequest(Integer recieverId, Integer senderId);
 	
-	List<Request> findByUser2Id(Integer user2Id);
+	List<Request> findByRecieverId(Integer recieverId);
 	
-	List<Request> findByUserId(Integer userId);
+	List<Request> findBySenderId(Integer senderId);
 }

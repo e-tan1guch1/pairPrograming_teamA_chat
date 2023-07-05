@@ -38,8 +38,8 @@ CREATE TABLE friends
 CREATE TABLE requests
 (
    id SERIAL PRIMARY KEY,
-   user2_id INTEGER,
-   user_id INTEGER
+   reciever_id INTEGER,
+   sender_id INTEGER
 );
 
 -- アイコンテーブル

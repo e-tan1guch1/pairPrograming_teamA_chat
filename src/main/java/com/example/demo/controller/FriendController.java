@@ -83,7 +83,9 @@ public class FriendController {
 					if (opt.get().getEmail().equals(userRepository.findById(account.getId()).get().getEmail())) {
 						m.addAttribute("error", "自分のメールアドレスです");
 					} else {
-						m.addAttribute("friend", opt.get());
+						User user = opt.get();
+						Icon icon = iconRepository.findById(user.getIconId()).get();
+						m.addAttribute("friend", new UserForDisplay(user.getId(), user.getName(), user.getEmail(), icon.getIconUrl()));
 					}
 				} else {
 					m.addAttribute("error", "そのアカウントは見つかりません");
@@ -100,23 +102,23 @@ public class FriendController {
 	@GetMapping("/friends/list")
 	public String requestList(Model m) {
 
-		List<Request> recieveRequestNumners = requestRepository.findByUser2Id(account.getId());
+		List<Request> recieveRequestNumners = requestRepository.findByRecieverId(account.getId());
 		List<User> recieveRequests = new ArrayList<>();
 		for (Request recieveRequestNumber : recieveRequestNumners) {
-			User user = userRepository.findById(recieveRequestNumber.getUserId()).get();
+			User user = userRepository.findById(recieveRequestNumber.getSenderId()).get();
 			recieveRequests.add(user);
 		}
 
-		List<Request> sendRequestNumners = requestRepository.findByUserId(account.getId());
+		List<Request> sendRequestNumners = requestRepository.findBySenderId(account.getId());
 		List<User> sendRequests = new ArrayList<>();
 		for (Request sendRequestNumber : sendRequestNumners) {
-			User user = userRepository.findById(sendRequestNumber.getUser2Id()).get();
+			User user = userRepository.findById(sendRequestNumber.getRecieverId()).get();
 			sendRequests.add(user);
 		}
 
 		m.addAttribute("recieveRequests", recieveRequests);
 		m.addAttribute("sendRequests", sendRequests);
-		requestRepository.findByUserId(null);
+		requestRepository.findBySenderId(null);
 
 		return "friendRequestList";
 	}
@@ -137,19 +139,19 @@ public class FriendController {
 		}
 
 		//既にリクエストがあるかどうか確認
-		List<Request> requestListNumber = requestRepository.findByUserId(account.getId());
+		List<Request> requestListNumber = requestRepository.findBySenderId(account.getId());
 		for (Request requestNumber : requestListNumber) {
 
-			if (requestNumber.getUser2Id() == friendId && requestNumber.getUserId() == account.getId()) {
+			if (requestNumber.getRecieverId() == friendId && requestNumber.getSenderId() == account.getId()) {
 				m.addAttribute("error", "リクエストの承認待ちです");
 				return "addFriend";
 			}
 		}
 
-		requestListNumber = requestRepository.findByUserId(friendId);
+		requestListNumber = requestRepository.findBySenderId(friendId);
 		for (Request requestNumber : requestListNumber) {
 
-			if (requestNumber.getUser2Id() == account.getId() && requestNumber.getUserId() == friendId) {
+			if (requestNumber.getRecieverId() == account.getId() && requestNumber.getSenderId() == friendId) {
 				m.addAttribute("error", "相手からリクエストが届いています");
 				return "addFriend";
 			}
