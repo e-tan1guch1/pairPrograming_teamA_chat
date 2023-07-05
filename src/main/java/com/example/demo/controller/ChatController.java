@@ -59,7 +59,7 @@ public class ChatController {
 		demo.add(new String("左のリストから送信先を選択して、 チャットを始めよう！"));
 
 		//自分以外の連絡先を取得
-		List<User> userList = userRepository.findAll();
+		List<User> userList = userRepository.findAllOrderByNameAsc();
 		List<UserForDisplay> addressList = new ArrayList<>();
 		List<UserForDisplay> friendList = new ArrayList<>();
 
@@ -147,7 +147,7 @@ public class ChatController {
 				});
 
 		//自分以外の連絡先を取得
-		List<User> userList = userRepository.findAll();
+		List<User> userList = userRepository.findAllOrderByNameAsc();
 		List<UserForDisplay> addressList = new ArrayList<>();
 		List<UserForDisplay> friendList = new ArrayList<>();
 		for (User user : userList) {
