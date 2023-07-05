@@ -12,20 +12,24 @@
 	<header th:replace="header"></header>
 	<article>
 		<div class="side">
-			<a href="/todolist/newtodo">新規入力</a>
+			<a href="/todolist/newtodo" class="todoList">新規入力</a>
 		</div>
 		<th:block th:if="${#lists.isEmpty(todo2)}">
 			<div class="balloon-left">
-				予定を登録する？
+				TODOを追加する？
 			</div>
 		</th:block>
 		<th:block th:if="${not #lists.isEmpty(todo2)}">
 			<div class="balloon-right">
-				今日の予定を確認しよう
+				今日のTODOを確認しよう
 			</div>
 		</th:block>
 
 		<div class="container">
+			<th:block th:if="${#lists.isEmpty(todo2)}">
+				<div style="color:#666666;">　　未消化のTODOはありません。</div>
+			</th:block></th:block>
+			
 			<th:block th:each="todo:${todo2}">
 				<input type="hidden" name="{todo.id}" value="id">
 				<div class="DATE" style="padding-top: 6px; clear:both;" th:if="${todo.id == 0}">
@@ -33,9 +37,11 @@
 
 				<th:block th:unless="${todo.id == 0}">
 					<div style="display:inline-flex">
-						　　<input type="checkbox" th:id="|checkbox${todo.id}|" name="checkbox01">
+						　　<input type="checkbox" th:id="|checkbox${todo.id}|" name="1" th:checked="${todo.checked}">
 						<label th:for="|checkbox${todo.id}|" class="check"><span class="TODO">
-								　[[${todo.hour}]]時[[${todo.minute}]]分
+								<th:p th:if="${todo.hour != null}">　[[${todo.hour}]]時</th:p>
+								<th:p th:if="${todo.minute != null}">[[${todo.minute}]]分
+								</th:p>
 								　[[${todo.text}]]　
 							</span></label>
 							
