@@ -13,7 +13,8 @@
 	<header th:replace="header"></header>
 
 	<div class="side">
-		<h3>フレンドリスト</h3>
+		<a th:href="|/friends|">
+		<h3>フレンドリスト</h3></a><!--<&nbsp; 半角スペース-->
 		<p th:each="friend:${friends}">
 			<a th:href="|/chat/${friend.id}|">
 				<img src="/images/businessman48px.png" alt="icon" class="sideIcon">[[${friend.name}]]</a><br>
