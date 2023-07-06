@@ -11,13 +11,40 @@ body {
 	text-align: center;
 	background-color: lightcoral;
 	display: block;
-	
+
 	overflow-y: scroll;
 	overflow-x: hidden;
+	transition: .5s;
 }
 
-h3{
-	color:white;
+.side.is-closed {
+	transform: translate(-200px);
+}
+
+.sidebar-toggle {
+	content: ">";
+	position: fixed;
+	z-index: 60;
+	border: 4px solid white;
+	outline: none;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	margin-left: 220px;
+	margin-top: 1em;
+	background-color: lightcoral;
+	cursor: pointer;
+	transition: .5s;
+}
+.sidebar-toggle.is-closed{
+	content: "<";
+	transform: translateX(-200px);
+}
+
+
+
+h3 {
+	color: white;
 	text-align: center;
 }
 
@@ -128,7 +155,8 @@ article {
 	color: white;
 	position: absolute;
 	bottom: 110px;
-	right: 15%;
+	right: 200px;
+	z-index: 50;
 }
 
 .recieve {
@@ -140,13 +168,14 @@ article {
 	color: white;
 	position: absolute;
 	bottom: 110px;
-	right: 10%;
+	right: 135px;
+	z-index: 50;
 }
 
 textarea {
 	position: absolute;
 	bottom: 150px;
-	right: 3%;
+	right: 40px;
 	border: 2px solid lightcoral;
 	border-radius: 0.67em;
 	padding: 0.5em;
@@ -154,6 +183,7 @@ textarea {
 	outline: none;
 	color: #666666;
 	white-space: pre-wrap;
+	z-index: 50;
 }
 
 header placeholder {

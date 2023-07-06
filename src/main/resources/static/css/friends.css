@@ -4,25 +4,6 @@ body {
 	background: peachpuff;
 }
 
-div.user {
-	margin-left: auto;
-	margin-right: 20px;
-	margin-top: 15px;
-	width: 23%;
-}
-
-div.aplication a {
-	color: white;
-	/*	height: 24px;*/
-}
-
-div.user a {
-	color: #ffffff;
-	position: absolute;
-	top: 2%;
-	right: 2%;
-}
-
 .side {
 	position: absolute;
 	width: 200px;

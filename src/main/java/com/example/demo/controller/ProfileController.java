@@ -152,6 +152,7 @@ public class ProfileController {
 		Icon icon = iconRepository.findById(icon_id).get();
 		// 変更したアイコン情報の保存
 		userRepository.save(new User(user.getId(), icon.getId(), user.getName(), user.getEmail(), user.getPassword()));
+		account.setIcon(icon.getIconUrl());
 
 		return "redirect:/profile";
 	}
