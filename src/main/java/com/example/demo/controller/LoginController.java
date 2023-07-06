@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -125,6 +126,10 @@ public class LoginController {
 			if (opt.isPresent()) {
 				error.add("登録済みのメールアドレスです");
 			}
+			
+			if(!isMailAddress(email)) {
+				error.add("メールアドレスを入力してください");
+			}
 		}
 
 		if (password.equals("") == true) {
@@ -174,6 +179,17 @@ public class LoginController {
 		m.addAttribute("user", user);
 
 		return "Login2";
+	}
+	
+
+	// メールアドレスかどうかを判定
+	public static boolean isMailAddress(String value) {
+		boolean result = false;
+		if (value != null) {
+			Pattern pattern = Pattern.compile("^([a-zA-Z0-9])+([a-zA-Z0-9._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9._-]+)+$");
+			result = pattern.matcher(value).matches();
+		}
+		return result;
 	}
 
 }

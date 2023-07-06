@@ -102,6 +102,12 @@ button {
 
 }
 
+#selectIcon:hover {
+	background: #fff;
+	color: #f06060;
+	border-color: lightcoral;
+}
+
 button:hover {
 	background: #fff;
 	color: #f06060;
@@ -113,6 +119,7 @@ footer {
 	bottom: 0;
 	width: 100%;
 }
+
 button:hover {
 	background: #fff;
 	color: #f06060;
@@ -157,6 +164,7 @@ button:hover {
 	margin-left: auto;
 	right: 50px;
 }
+
 /*.error {*/
 /*	width: 200px;*/
 /*	height: 300px;*/
