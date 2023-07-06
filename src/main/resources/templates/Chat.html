@@ -13,17 +13,32 @@
 	<header th:replace="header"></header>
 
 	<div class="side">
-		<a th:href="|/friends|">
-		<h3>フレンドリスト</h3></a><!--<&nbsp; 半角スペース-->
+		<a th:href="|/friends|" id="ah3">
+			<h3>フレンドリスト</h3>
+		</a>
+		<!--<&nbsp; 半角スペース-->
 		<p th:each="friend:${friends}">
 			<a th:href="|/chat/${friend.id}|">
-				<img src="/images/businessman48px.png" alt="icon" class="sideIcon">[[${friend.name}]]</a><br>
+				<img th:src="${friend.iconUrl}" alt="icon" class="sideIcon">[[${friend.name}]]</a><br>
 		</p>
-		<h3>ユーザーリスト</h3>
-		<p th:each="address:${addressList}">
-			<a th:href="|/chat/${address.id}|">
-				<img src="/images/businessman48px.png" alt="icon" class="sideIcon">[[${address.name}]]</a><br>
-		</p>
+		<div>
+			<label class="fold-trigger" onclick="toggleFold(this)">
+				<a id="userlist"><h3>ユーザーリスト▼</h3></a>
+			</label>
+			<div class="fold-content">
+				<p th:each="address:${addressList}">
+					<a th:href="|/chat/${address.id}|">
+						<img th:src="${address.iconUrl}" alt="icon" class="sideIcon">[[${address.name}]]</a><br>
+				</p>
+			</div>
+		</div>
+
+		<script>
+			function toggleFold(trigger) {
+				trigger.classList.toggle("open");
+			}
+		</script>
+
 	</div>
 
 	<th:block th:if="${deleteConfirm}">
@@ -50,7 +65,7 @@
 					<form th:action="|/chat/${chat.id}/delete|" method="post" class="deleteForm">
 						<input type="hidden" name="addressId" th:value="${addressId}">
 						<button class="delete" onclick="return confirm('削除します。よろしいですか？')"></button>
-						
+
 					</form>
 					<script th:inline="javascript">
 						var isLiked = /*[[${chat.likeButton}]]*/

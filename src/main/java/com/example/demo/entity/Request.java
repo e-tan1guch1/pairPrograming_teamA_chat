@@ -17,18 +17,18 @@ public class Request {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name="user2_id")
-	private Integer user2Id;
+	@Column(name="reciever_id")
+	private Integer recieverId;
 	
-	@Column(name="user_id")
-	private Integer userId;
+	@Column(name="sender_id")
+	private Integer senderId;
 	
 	public Request() {
 	}
 
-	public Request(Integer user2Id, Integer userId) {
-		this.user2Id = user2Id;
-		this.userId = userId;
+	public Request(Integer recieverId, Integer senderId) {
+		this.recieverId = recieverId;
+		this.senderId = senderId;
 
 	}
 }

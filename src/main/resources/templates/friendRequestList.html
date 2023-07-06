@@ -22,7 +22,7 @@
 		<th:block th:each="friend: ${sendRequests}">
 			<table>
 				<tr>
-					<td rowspan="2"><img src="/images/businessman48px.png" alt="icon"></td>
+					<td rowspan="2"><img th:src="${friend.iconUrl}" alt="icon"></td>
 					<td class="nameTd">[[${friend.name}]]</td>
 				</tr>
 				<tr>
@@ -30,7 +30,7 @@
 					<td>
 						<form action="/friend/deleteRequest" method="post">
 							<input type="hidden" name="recieveUserId" th:value="${friend.id}">
-							<button>取り消し</button>
+							<button onclick="return confirm('取り消しを行います。よろしいですか？')">取り消し</button>
 						</form>
 					</td>
 				</tr>
@@ -43,12 +43,12 @@
 		<th:block th:each="friend: ${recieveRequests}">
 			<table>
 				<tr>
-					<td rowspan="2"><img src="/images/businessman48px.png" alt="icon"></td>
+					<td rowspan="2"><img th:src="${friend.iconUrl}" alt="icon"></td>
 					<td class="nameTd">[[${friend.name}]]</td>
 					<td>
 						<form action="/friend/refuseRequest" method="post">
 							<input type="hidden" name="sendUserId" th:value="${friend.id}">
-							<button>拒否する</button>
+							<button onclick="return confirm('拒否します。よろしいですか？')">拒否する</button>
 						</form>
 					</td>
 				</tr>

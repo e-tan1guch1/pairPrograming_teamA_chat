@@ -44,7 +44,7 @@
 			<th:block th:if="${friend}">
 				<table class="userProfile">
 					<tr>
-						<td rowspan="2"><img src="/images/businessman48px.png" alt="icon"></td>
+						<td rowspan="2"><img th:src="${friend.iconUrl}" alt="icon"></td>
 						<td class="nameTd">[[${friend.name}]]</td>
 					</tr>
 					<tr>

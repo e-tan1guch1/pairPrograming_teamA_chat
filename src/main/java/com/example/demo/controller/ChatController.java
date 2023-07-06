@@ -59,13 +59,14 @@ public class ChatController {
 		demo.add(new String("左のリストから送信先を選択して、 チャットを始めよう！"));
 
 		//自分以外の連絡先を取得
-		List<User> userList = userRepository.findAll();
+		List<User> userList = userRepository.findAllOrderByNameAsc();
 		List<UserForDisplay> addressList = new ArrayList<>();
-
 		List<UserForDisplay> friendList = new ArrayList<>();
 
+		
+		// パスワードを抜いたリストを作成
 		for (User user : userList) {
-			
+			//icon_idからicon_urlを取得しリストに追加する
 			Icon icon = iconRepository.findById(user.getIconId()).get();
 			if (user.getId() != account.getId()) {
 				addressList.add(new UserForDisplay(user.getId(), user.getName(), user.getEmail(), icon.getIconUrl()));
@@ -90,17 +91,10 @@ public class ChatController {
 				addressList.remove(address);
 			}
 		}
-
-		//		if (friendList.contains(user)) {
-		//            friendList.add(new Address(user.getId(), user.getName(), user.getEmail()));
-		//        } else {
-		//            otherList.add(new Address(user.getId(), user.getName(), user.getEmail()));
-		//        }
-
+		
 		m.addAttribute("addressName", "チャットアプリ君");
 		m.addAttribute("addressList", addressList);
 		m.addAttribute("demo", demo);
-
 		m.addAttribute("friends", friendList);
 
 		return "Chat";
@@ -153,7 +147,7 @@ public class ChatController {
 				});
 
 		//自分以外の連絡先を取得
-		List<User> userList = userRepository.findAll();
+		List<User> userList = userRepository.findAllOrderByNameAsc();
 		List<UserForDisplay> addressList = new ArrayList<>();
 		List<UserForDisplay> friendList = new ArrayList<>();
 		for (User user : userList) {
@@ -205,14 +199,6 @@ public class ChatController {
 			@PathVariable("chatId") Integer chatId,
 			@RequestParam("addressId") Integer addressId,
 			Model m) {
-
-		Optional<Chat> opt = chatRepository.findById(chatId);
-		if(opt.isPresent()) {
-			Chat chat = opt.get();
-			if(chat.isLikeButton()) {
-				m.addAttribute("deleteConfirm", "相手がチェックをつけていますが本当に削除しますか？");
-			}
-		}
 		
 		chatRepository.deleteById(chatId);
 
