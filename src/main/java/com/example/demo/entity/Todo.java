@@ -41,7 +41,6 @@ public class Todo {
 		this.text = text;
 		this.userId = userId;
 		this.checked = false;
-//		this.date = date;
 	}
 
 	public Todo(Integer id, LocalDate releaseDate, Integer hour, Integer minute, String text,Integer userId,boolean checked) {
@@ -51,10 +50,7 @@ public class Todo {
 		this.minute = minute;
 		this.text = text;
 		this.userId = userId;
-		this.checked = false;
-//		this.date =date;
+		this.checked = checked;
 	}
 	
-	
-
 }

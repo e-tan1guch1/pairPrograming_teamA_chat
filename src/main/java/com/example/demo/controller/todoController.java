@@ -6,12 +6,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.entity.Todo;
 import com.example.demo.model.Account;
@@ -59,13 +63,13 @@ public class todoController {
 
 			if (date != null) { /*この行エラー対処のつもりで記述したけど不要かも*/
 				if (!tmp.toString().equals(date.toString())) {
-					Todo insert = new Todo(0, date, 0, 0, "", account.getId(),false);
+					Todo insert = new Todo(0, date, 0, 0, "", account.getId(), false);
 					todo2.add(i, insert);
 
 					tmp = date;
 					System.err.println(tmp);
 				}
-			}/*この行エラー対処のつもりで記述したけど不要かも*/
+			} /*この行エラー対処のつもりで記述したけど不要かも*/
 		}
 
 		for (Todo t : todo2) {
@@ -102,7 +106,7 @@ public class todoController {
 			@RequestParam(name = "hour", required = false) Integer hour,
 			@RequestParam(name = "minute", required = false) Integer minute,
 			@RequestParam(name = "text", required = false) String text) {
-		
+
 		List<String> error = new ArrayList<>();
 
 		if (releaseDate == null) {
@@ -120,11 +124,11 @@ public class todoController {
 			m.addAttribute("hour", hour);
 			m.addAttribute("minute", minute);
 			m.addAttribute("text", text);
-			
+
 			return "todo";
 		}
-		
-		Todo todos = new Todo(releaseDate, hour, minute, text, account.getId(),false);
+
+		Todo todos = new Todo(releaseDate, hour, minute, text, account.getId(), false);
 		todoRepository.save(todos);
 
 		return "redirect:/todoList";
@@ -140,9 +144,9 @@ public class todoController {
 
 		Todo todo = todoRepository.findById(id).get();
 		m.addAttribute("todo", todo);
-		
-//		m.addAttribute("todo.id",todo.getId());
-		
+
+		//		m.addAttribute("todo.id",todo.getId());
+
 		return "edit";
 	}
 
@@ -167,21 +171,20 @@ public class todoController {
 		}
 
 		if (error.size() > 0) {
-//			m.addAttribute("error", error);
+			//			m.addAttribute("error", error);
 			m.addAttribute("releaseDate", releaseDate);
 			m.addAttribute("hour", hour);
 			m.addAttribute("minute", minute);
 			m.addAttribute("text", text);
-			
+
 			return "redirect:/todoList/" + id + "/edit";
 		}
 
-		Todo todos = new Todo(id, releaseDate, hour, minute, text, account.getId(),false);
+		Todo todos = new Todo(id, releaseDate, hour, minute, text, account.getId(), false);
 		todoRepository.save(todos);
 
 		return "redirect:/todoList";
 	}
-	
 
 	@PostMapping("/todoList/{id}/delete")
 	public String delete(
@@ -192,4 +195,36 @@ public class todoController {
 		return "redirect:/todoList";
 	}
 
+	@GetMapping("/todoList/{id}/check")
+	@ResponseBody
+	public ResponseEntity<String> check(
+			@PathVariable("id") Integer id,
+			@RequestParam(name = "releaseDate", defaultValue = "") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate releaseDate,
+			@RequestParam(name = "hour", required = false) Integer hour,
+			@RequestParam(name = "minute", required = false) Integer minute,
+			@RequestParam(name = "text", required = false) String text,
+			Model m) {
+
+		Todo todo = todoRepository.findById(id).get();
+		System.out.println("id;" + todo.getId()
+				+ " text;" + todo.getText()
+				+ " hour;" + todo.getHour()
+				+ " minute;" + todo.getMinute()
+				+ " checked;" + todo.isChecked()
+				+ " releaseDate;" + todo.getReleaseDate());
+
+		if (todo.isChecked() == false) {
+			todo.setChecked(true);
+		} else if(!todo.isChecked() == false) {
+			todo.setChecked(false);
+		}
+		
+		Todo todos = new Todo(todo.getId(), todo.getReleaseDate(), todo.getHour(), todo.getMinute(), todo.getText(),account.getId(), todo.isChecked());
+		todoRepository.save(todos);
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Connection", "Keep-Alive");
+		HttpStatus status = HttpStatus.OK;
+		return new ResponseEntity<String>("text content", headers, status);
+	}
 }

@@ -21,6 +21,18 @@ h3{
 	text-align: center;
 }
 
+.fold-content {
+    display: none;
+  }
+  .fold-trigger {
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .fold-trigger.open + .fold-content {
+    display: block;
+  }
+
+
 .side a {
 	color: white;
 	text-decoration: none;
@@ -28,15 +40,30 @@ h3{
 	width: 200px;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	padding-left: 25px;
 	margin: 0;
 	background: lightcoral;
 	text-align: left;
 }
 
+#ah3{
+padding-top: 0;	
+padding-bottom: 0;
+padding-left: 0;
+}
+#userlist{
+	padding-left:0;
+}
+
+#userlist:hover{
+	background: #f07070;
+}
+	
+
 .side p {
 	margin: 0;
-
 }
+
 
 .side a:hover {
 	background: #f07070;

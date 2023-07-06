@@ -152,6 +152,7 @@ button:hover {
 	background: peachpuff;
 	border-radius: 15px;
 	color: red;
+	background-color: white;
 }
 
 .balloon-right:before {
@@ -174,6 +175,7 @@ button:hover {
 	width: 200px;
 	height: 300px;
 	float: right;
+	padding-right: 1300px;
 	position: absolute;
 }
 

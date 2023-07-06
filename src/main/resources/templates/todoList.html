@@ -6,19 +6,35 @@
 	<title>TODOリスト</title>
 	<link rel="stylesheet" type="text/css" href="/css/base.css">
 	<link rel="stylesheet" type="text/css" href="/css/todoList.css">
+	<script>
+		function clickPost(id) {
+			let request = new XMLHttpRequest();
+			request.open("get", "/todoList/" + id + "/check", true);
+			request.send(null);
+			request.onload = function (event) {
+				if (request.status === 200) {
+					return;
+				} else {
+					alert('通信失敗');
+				}
+			}
+		}
+	</script>
 </head>
-
 <body>
 	<header th:replace="header"></header>
 	<article>
 		<div class="side">
-			<a href="/todolist/newtodo" class="todoList">新規入力</a>
-		</div>
-		<th:block th:if="${#lists.isEmpty(todo2)}">
-			<div class="balloon-left">
-				TODOを追加する？
+			<!--			<a href="/todolist/newtodo" class="todoList">新規入力</a>-->
+
+			<a href="/todolist/newtodo" class="todoList" . style="opacity: 1.0;">新規登録</a>
+			<div style="opacity: 0.0;" ; onMouseOver="this.style.opacity=1.0" onMouseOut="this.style.opacity=0.0">
+				<a href="/todolist/newtodo" class="mouseOver">新規登録</a>
+				<div class="balloon-left">
+					TODOを追加する？
+				</div>
 			</div>
-		</th:block>
+		</div>
 		<th:block th:if="${not #lists.isEmpty(todo2)}">
 			<div class="balloon-right">
 				今日のTODOを確認しよう
@@ -28,8 +44,10 @@
 		<div class="container">
 			<th:block th:if="${#lists.isEmpty(todo2)}">
 				<div style="color:#666666;">　　未消化のTODOはありません。</div>
-			</th:block></th:block>
-			
+				<div class="rakugaki"><img src="/images/IjustDrewThat.png" art="ilust" width="150" height="150"></div>
+			</th:block>
+			</th:block>
+
 			<th:block th:each="todo:${todo2}">
 				<input type="hidden" name="{todo.id}" value="id">
 				<div class="DATE" style="padding-top: 6px; clear:both;" th:if="${todo.id == 0}">
@@ -37,14 +55,15 @@
 
 				<th:block th:unless="${todo.id == 0}">
 					<div style="display:inline-flex">
-						　　<input type="checkbox" th:id="|checkbox${todo.id}|" name="1" th:checked="${todo.checked}">
+						　　<input type="checkbox" th:id="|checkbox${todo.id}|" th:checked="${todo.checked}"
+						th:onchange="|clickPost(${todo.id});|">
 						<label th:for="|checkbox${todo.id}|" class="check"><span class="TODO">
 								<th:p th:if="${todo.hour != null}">　[[${todo.hour}]]時</th:p>
 								<th:p th:if="${todo.minute != null}">[[${todo.minute}]]分
 								</th:p>
 								　[[${todo.text}]]　
 							</span></label>
-							
+
 						<form th:action="|/todoList/${todo.id}/delete|" method="post">
 							<input type="image" name="submit" src="/images/delete.png" class="exe" value="削除">　
 						</form>
@@ -54,6 +73,7 @@
 					</div>
 					<div></div>
 				</th:block>
+
 				<br>
 			</th:block>
 		</div>

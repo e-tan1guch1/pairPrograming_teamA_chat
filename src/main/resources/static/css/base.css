@@ -129,3 +129,7 @@ ul li ul li a:hover {
 img {
 	color: #000;
 }
+
+input:-webkit-autofill {
+    box-shadow: 0 0 0 1000px whitesmoke inset;
+}
