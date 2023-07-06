@@ -3,8 +3,8 @@ INSERT INTO users(name, email,password) VALUES('荒川講師', 'arakawa@mail', '
 INSERT INTO users(name, email,password) VALUES('白戸講師', 'shiroto@mail', 'sss');
 INSERT INTO users(icon_id,name, email,password) VALUES('10','伊山', 'iyama@mail', 'iii');
 INSERT INTO users(icon_id,name, email,password) VALUES('35','谷口', 'taniguchi@mail', 'ttt');
-INSERT INTO users(name, email,password) VALUES('犬', 'inu@mail', 'iii');
-INSERT INTO users(name, email,password) VALUES('猫', 'neko@mail', 'nnn');
+INSERT INTO users(icon_id,name, email,password) VALUES('37','犬', 'inu@mail', 'iii');
+INSERT INTO users(icon_id,name, email,password) VALUES('40','猫', 'neko@mail', 'nnn');
 INSERT INTO users(icon_id,name, email,password) VALUES('9','魔女', 'majyo@mail', 'mmm');
 INSERT INTO users(name, email,password) VALUES('山田', 'yamada@mail', 'yyy');
 INSERT INTO users(name, email,password) VALUES('朝青龍', 'asa@mail', 'aaa');
@@ -111,4 +111,14 @@ INSERT INTO icons(icon_url) VALUES('/images/icons/tako.png');--32
 INSERT INTO icons(icon_url) VALUES('/images/icons/tetsukaosamu.png');--33
 INSERT INTO icons(icon_url) VALUES('/images/icons/tonakai.png');--34
 INSERT INTO icons(icon_url) VALUES('/images/icons/woman.png');--35
-
+INSERT INTO icons(icon_url) VALUES('/images/icons/gaikotsu.png');--36
+INSERT INTO icons(icon_url) VALUES('/images/icons/inu.png');--37
+INSERT INTO icons(icon_url) VALUES('/images/icons/kajino.png');--38
+INSERT INTO icons(icon_url) VALUES('/images/icons/kani.png');--39
+INSERT INTO icons(icon_url) VALUES('/images/icons/manekineko.png');--40
+INSERT INTO icons(icon_url) VALUES('/images/icons/niwatori.png');--41
+INSERT INTO icons(icon_url) VALUES('/images/icons/okame.png');--42
+INSERT INTO icons(icon_url) VALUES('/images/icons/shinkansen.png');--43
+INSERT INTO icons(icon_url) VALUES('/images/icons/shishimai.png');--44
+INSERT INTO icons(icon_url) VALUES('/images/icons/woman2.png');--45
+INSERT INTO icons(icon_url) VALUES('/images/icons/zou.png');--46
