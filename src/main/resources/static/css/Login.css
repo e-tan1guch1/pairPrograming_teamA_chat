@@ -57,6 +57,16 @@ div.user a {
 	background-position: 11px 11px;
 }
 
+.email:focus,.password:focus{
+	background-image: none;
+	box-shadow: 0 0 0 1000px whitesmoke inset;
+}
+
+/*.password:valid{*/
+/*	background-image: none;*/
+/*	box-shadow: 0 0 0 1000px whitesmoke inset;*/
+/*}*/
+
 .loginForm {
 	display: inline-block;
 	margin: auto;

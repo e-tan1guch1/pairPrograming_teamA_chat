@@ -88,7 +88,14 @@ div.container {
 
 	background-image: linear-gradient(#feecd3 1px, transparent 0),
 		linear-gradient(90deg, #feecd3 1px, transparent 0);
+/*		,url(/images/edit.png) left top / 100% auto no-repeat;*/
 	background-size: 20px 20px;
+	
+/*	background-image: url(/images/edit.png);*/
+/*	background-repeat: no-repeat;*/
+/*	background-size: 50px 50px;*/
+/*	background-position: 11px 11px;*/
+	
 }
 
 div.container::-webkit-scrollbar {
@@ -205,6 +212,8 @@ textarea {
 	white-space: pre-wrap;
 	margin-left: 40px;
 	width: 300px;
+	
+	white-space: pre-wrap;
 }
 
 .record {
@@ -339,4 +348,10 @@ input[type=checkbox]:checked+.check::after {
 	border: 15px solid transparent;
 	border-right: 25px solid lightcoral;
 	/*	要調整*/
+}
+
+.rakugaki{
+	position: relative;
+	margin-top:35%;
+	margin-left:70%;
 }
