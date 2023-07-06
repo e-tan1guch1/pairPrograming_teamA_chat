@@ -106,6 +106,9 @@ public class LoginController {
 			error.add("名前は必須です");
 
 		}
+		if (name.length() > 9) {
+			error.add("名前は9文字以内です");
+		}
 
 		if (email.equals("") == true) {
 			error.add("メールアドレスは必須です");
