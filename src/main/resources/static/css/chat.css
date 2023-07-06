@@ -21,6 +21,17 @@ h3{
 	text-align: center;
 }
 
+.fold-content {
+    display: none;
+  }
+  .fold-trigger {
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .fold-trigger.open + .fold-content {
+    display: block;
+  }
+
 
 .side a {
 	color: white;
@@ -40,11 +51,19 @@ padding-top: 0;
 padding-bottom: 0;
 padding-left: 0;
 }
+#userlist{
+	padding-left:0;
+}
+
+#userlist:hover{
+	background: #f07070;
+}
+	
 
 .side p {
 	margin: 0;
-
 }
+
 
 .side a:hover {
 	background: #f07070;
