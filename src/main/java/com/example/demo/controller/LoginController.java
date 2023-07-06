@@ -174,7 +174,7 @@ public class LoginController {
 			return "newuser";
 		}
 
-		User user = new User(name, email, password);
+		User user = new User(1, name, email, password);
 		userRepository.save(user);
 		m.addAttribute("user", user);
 
