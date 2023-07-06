@@ -103,17 +103,19 @@ public class FriendController {
 	public String requestList(Model m) {
 
 		List<Request> recieveRequestNumners = requestRepository.findByRecieverId(account.getId());
-		List<User> recieveRequests = new ArrayList<>();
+		List<UserForDisplay> recieveRequests = new ArrayList<>();
 		for (Request recieveRequestNumber : recieveRequestNumners) {
 			User user = userRepository.findById(recieveRequestNumber.getSenderId()).get();
-			recieveRequests.add(user);
+			Icon icon = iconRepository.findById(user.getIconId()).get();
+			recieveRequests.add(new UserForDisplay(user.getId(), user.getName(), user.getEmail(), icon.getIconUrl()));
 		}
 
 		List<Request> sendRequestNumners = requestRepository.findBySenderId(account.getId());
-		List<User> sendRequests = new ArrayList<>();
+		List<UserForDisplay> sendRequests = new ArrayList<>();
 		for (Request sendRequestNumber : sendRequestNumners) {
 			User user = userRepository.findById(sendRequestNumber.getRecieverId()).get();
-			sendRequests.add(user);
+			Icon icon = iconRepository.findById(user.getIconId()).get();
+			sendRequests.add(new UserForDisplay(user.getId(), user.getName(), user.getEmail(), icon.getIconUrl()));
 		}
 
 		m.addAttribute("recieveRequests", recieveRequests);

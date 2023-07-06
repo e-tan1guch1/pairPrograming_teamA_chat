@@ -28,7 +28,7 @@
 	<div class="container">
 
 		<form action="/login/newuser" method="post" class="saveForm">
-			<input type="text" name="name" placeholder="名前" th:value="${name}">
+			<input type="text" name="name" placeholder="名前:9文字以内" th:value="${name}">
 			<input type="text" name="email" placeholder="メールアドレス" th:value="${email}">
 			<input type="password" name="password" placeholder="パスワード" th:value="${password}">
 			<button>確認画面に進む</button>

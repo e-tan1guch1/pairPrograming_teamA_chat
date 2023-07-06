@@ -62,6 +62,9 @@ public class ProfileController {
 		if (name.equals("") == true) {
 			error.add("名前は1文字以上で記入してください");
 		}
+		if (name.length() > 9) {
+			error.add("名前は9文字以内です");
+		}
 		if (error.size() > 0) {
 			m.addAttribute("error", error);
 		} else {
@@ -75,6 +78,7 @@ public class ProfileController {
 		return "profile";
 	}
 
+	//メールアドレス変更用メソッド
 	@PostMapping("/profile/edit/email")
 	public String editEmail(Model m,
 			@RequestParam(name = "email", defaultValue = "") String email) {
@@ -103,7 +107,7 @@ public class ProfileController {
 		return "profile";
 	}
 
-	//名前変更用メソッド
+	//パスワード変更用メソッド
 	@PostMapping("/profile/edit/password")
 	public String editPassword(Model m,
 			@RequestParam(name = "password", defaultValue = "") String password) {
@@ -112,10 +116,11 @@ public class ProfileController {
 		User user = userRepository.findById(account.getId()).get();
 		Icon icon = iconRepository.findById(user.getIconId()).get();
 
-		//名前のエラーチェック
+		//パスワードのエラーチェック
 		if (password.equals("") == true) {
 			error.add("パスワードは1文字以上で記入してください");
 		}
+		
 		if (error.size() > 0) {
 			m.addAttribute("error", error);
 		} else {
@@ -152,6 +157,7 @@ public class ProfileController {
 		Icon icon = iconRepository.findById(icon_id).get();
 		// 変更したアイコン情報の保存
 		userRepository.save(new User(user.getId(), icon.getId(), user.getName(), user.getEmail(), user.getPassword()));
+		account.setIcon(icon.getIconUrl());
 
 		return "redirect:/profile";
 	}
