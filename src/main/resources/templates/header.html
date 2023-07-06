@@ -1,7 +1,7 @@
 <header>
 	<div class="user">
 		<p th:text="${@account.name}+' さんがログイン中'"></p>
-		<a href=""></a>
+		<a href="/profile"><img th:src="${@account.icon}"></a>
 	</div>
 	<!--	<div class="setting">-->
 	<!--		<p th:text="設定"></p>-->

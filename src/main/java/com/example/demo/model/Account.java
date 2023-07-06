@@ -13,5 +13,6 @@ public class Account {
 	
 	private int id; //ユーザID
 	private String name; //ユーザ名
+	private String icon; //アイコンのURL
 
 }

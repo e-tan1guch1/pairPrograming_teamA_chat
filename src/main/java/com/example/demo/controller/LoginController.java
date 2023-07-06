@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.Icon;
 import com.example.demo.entity.User;
 import com.example.demo.model.Account;
+import com.example.demo.repository.IconRepository;
 import com.example.demo.repository.UserRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -21,6 +23,9 @@ import jakarta.servlet.http.HttpSession;
 public class LoginController {
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired 
+	IconRepository iconRepository;
 
 	@Autowired
 	HttpSession session;
@@ -53,6 +58,8 @@ public class LoginController {
 			page = "redirect:/chat";
 			account.setId(u.getId());
 			account.setName(u.getName());
+			Icon icon = iconRepository.findById(u.getIconId()).get();
+			account.setIcon(icon.getIconUrl());
 		} else {
 			page = "Login";
 		}
