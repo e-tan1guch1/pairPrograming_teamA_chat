@@ -79,8 +79,17 @@ public class todoController {
 		//			todo2 = null;
 		//		}	
 		//		List<Todo> list = todoRepository.findByReleaseDate(todo.getReleaseDate());
-
+		
 		m.addAttribute("todo2", todo2);
+		
+		List<String> demo = new ArrayList<>();
+		
+		if(todo2 != null) {
+		demo.add("今日のTODOを確認しよう");
+		demo.add("達成できたらチェックを入れてね");
+		m.addAttribute("demo", demo);
+		}
+		
 		return "todoList";
 	}
 

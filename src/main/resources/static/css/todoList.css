@@ -9,11 +9,13 @@ article {
 }
 
 .side {
+	position: absolute;
 	width: 200px;
-	/*	height: 1000px;*/
-	height: 3000px;
+	height: 480px;
 	text-align: center;
 	background-color: lightcoral;
+
+	display: block;
 }
 
 .side a.todoList {
@@ -26,27 +28,14 @@ article {
 	margin: 0;
 	background: lightcoral;
 	text-align: center;
-	
+
 }
 
 .side a.todoList:hover {
 	background: #f07070;
 }
 
-/*.container div{*/
-/*	display:inline-block;*/
-/*	display:block;*/
-
-/*	position: relative;*/
-/*	text-decoration: underline dashed 2px lightcoral;*/
-/*	text-underline-offset: 8px;*/
-/*	padding-top: 10px;*/
-/*	left: 120px;*/
-/*	min-width:500px;*/
-/*}*/
-
 .DATE {
-	/*	position:relative;*/
 	position: static;
 	float: left;
 	left: 300px;
@@ -60,26 +49,24 @@ article {
 	text-decoration: underline dashed 2px lightcoral;
 	text-underline-offset: 8px;
 	margin-right: -16px;
-	/*	margin-right: 0px;*/
 
 }
 
 div.container {
 	overflow-y: scroll;
 	height: 480px;
-	/*	width: 105%;*/
 	width: 600px;
 	height: 400px;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
-	/*	border:solid blue;*/
 	overflow-x: hidden;
 
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: 15px;
 
-	margin-top: 50px;
 	background-color: white;
+
 	padding-top: 15px;
 	margin-bottom: 15px;
 
@@ -88,14 +75,7 @@ div.container {
 
 	background-image: linear-gradient(#feecd3 1px, transparent 0),
 		linear-gradient(90deg, #feecd3 1px, transparent 0);
-/*		,url(/images/edit.png) left top / 100% auto no-repeat;*/
 	background-size: 20px 20px;
-	
-/*	background-image: url(/images/edit.png);*/
-/*	background-repeat: no-repeat;*/
-/*	background-size: 50px 50px;*/
-/*	background-position: 11px 11px;*/
-	
 }
 
 div.container::-webkit-scrollbar {
@@ -119,12 +99,11 @@ div.container::-webkit-scrollbar {
 	align-items: flex-start;
 }
 
-.balloon-right {
+.balloon-demo {
 	position: absolute;
-	top: 18em;
-	left: 235px;
+	right: 100px;
 	display: inline-block;
-	margin: 10px 15px 1.5em 20px;
+	margin: 40px 0 1.5em 5em;
 	padding: 7px 10px;
 	min-width: 120px;
 	max-width: 100%;
@@ -132,12 +111,10 @@ div.container::-webkit-scrollbar {
 	background: floralwhite;
 	border-radius: 15px;
 	color: #f06060;
-
-
 	text-align: center;
 }
 
-.balloon-right:before {
+.balloon-demo:before {
 	content: "";
 	position: absolute;
 	top: 50%;
@@ -148,7 +125,7 @@ div.container::-webkit-scrollbar {
 	border-left: 25px solid floralwhite;
 }
 
-.balloon-right p {
+.balloon-demo p {
 	margin: 0;
 	padding: 0;
 }
@@ -158,8 +135,8 @@ div.container::-webkit-scrollbar {
 	top: 11.5em;
 	left: 220px;
 	display: inline-block;
-/*	margin: 1px 1px 1.5em 70px;*/
-		margin: -15px, 0, 30em, 30em;
+	/*	margin: 1px 1px 1.5em 70px;*/
+	margin: -15px, 0, 30em, 30em;
 	padding: 7px 10px;
 	min-width: 120px;
 	max-width: 100%;
@@ -212,7 +189,7 @@ textarea {
 	white-space: pre-wrap;
 	margin-left: 40px;
 	width: 300px;
-	
+
 	white-space: pre-wrap;
 }
 
@@ -303,10 +280,10 @@ input[type=checkbox]:checked+.check::after {
 	height: 15px;
 }
 
-.mouseOver{
+.message {
 	position: absolute;
-	top:179px;
-	left:0px;
+	top: -179px;
+	left: 0px;
 	height: 25px;
 	display: inline-block;
 	width: 200px;
@@ -314,28 +291,42 @@ input[type=checkbox]:checked+.check::after {
 	padding-bottom: 10px;
 	margin: 0;
 	text-align: center;
-	
+}
+
+.mouseOver {
+	position: absolute;
+	top: 179px;
+	left: 0px;
+	height: 25px;
+	display: inline-block;
+	width: 200px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin: 0;
+	text-align: center;
+
 	color: white;
 	text-decoration: none;
 }
 
-.mouseOver:hover{
+.mouseOver:hover {
 	background: #f07070;
 }
 
 .balloon-error {
 	position: absolute;
-	right: 80px;
+	right: 190px;
 	display: inline-block;
 	margin: 3.5em 15px 1.5em 25px;
 	padding: 7px 10px;
 	min-width: 120px;
 	max-width: 100%;
 	font-size: 16px;
-	background:lightcoral;;
+	background: lightcoral;
+	;
 	border-radius: 15px;
 	color: white;
-	
+
 	text-align: center;
 }
 
@@ -350,8 +341,13 @@ input[type=checkbox]:checked+.check::after {
 	/*	要調整*/
 }
 
-.rakugaki{
+.balloon-error p {
+	margin: 0;
+	padding: 0;
+}
+
+.rakugaki {
 	position: relative;
-	margin-top:35%;
-	margin-left:70%;
+	margin-top: 35%;
+	margin-left: 70%;
 }
