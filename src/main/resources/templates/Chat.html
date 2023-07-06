@@ -11,9 +11,10 @@
 
 <body>
 	<header th:replace="header"></header>
-
+	<button class="sidebar-toggle"><i class="arrow-left"></i></button>
 	<div class="side">
 		<a th:href="|/friends|" id="ah3">
+
 			<h3>フレンドリスト</h3>
 		</a>
 		<!--<&nbsp; 半角スペース-->
@@ -112,6 +113,16 @@
 
 		</th:block>
 	</div>
+
+	<script>
+		var toggleBtn = document.querySelector('.sidebar-toggle');
+		var side = document.querySelector('.side');
+
+		toggleBtn.addEventListener('click', function () {
+			toggleBtn.classList.toggle('is-closed');
+			side.classList.toggle('is-closed');
+		})
+	</script>
 
 	<script>
 		const el = document.getElementById('el');
