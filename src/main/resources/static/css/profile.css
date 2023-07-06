@@ -162,7 +162,7 @@ button:hover {
 	right: -30px;
 	margin-top: -15px;
 	border: 15px solid transparent;
-	border-left: 25px solid peachpuff;
+	border-left: 25px solid white;
 	/*	要調整*/
 }
 
@@ -172,12 +172,20 @@ button:hover {
 }
 
 .error {
-	width: 200px;
 	height: 300px;
 	float: right;
-	padding-right: 1300px;
-	position: absolute;
+	margin-left: auto;
+	right: 50px;
 }
+/*.error {*/
+/*	width: 200px;*/
+/*	height: 300px;*/
+/*	float: right;*/
+/*	text-align: right;*/
+/*	margin-left: auto;*/
+/*	position: absolute;*/
+/*}*/
+
 
 table {
 	padding-bottom: 30px;
